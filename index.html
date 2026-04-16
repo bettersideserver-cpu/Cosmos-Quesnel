@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cosmos Quesnel</title>
+    <link rel=" stylesheet" href="wbn05d6fbh.css">
+    <link rel="stylesheet" href="JS/ahrb012icb.css">
+    <link rel="stylesheet" href="JS/Notification/bz0mp28u74.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        .mdb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pdf-icon {
+            width: 50px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .fallback-text {
+            margin-left: 6px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .info-card {
+            top: -100px;
+            left: -50px;
+            position: fixed;
+            background-color: transparent;
+            z-index: 8999;
+            pointer-events: none;
+            transform: scale(.9);
+        }
+
+        @media (max-width: 600px) {
+            .Front {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            .info-card,
+            .info-content {
+                transform: scale(0.7);
+                top: -50px;
+                left: -30px;
+            }
+        }
+
+        body.splash-active {
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        .call-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 11px 1px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            background: #C9A87C;
+            color: #111;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .call-btn:hover {
+            background: #0078be;
+            color: #fff;
+        }
+
+        .splash {
+            position: fixed;
+            inset: 0;
+            z-index: 12000;
+            display: grid;
+            place-items: center;
+            pointer-events: auto;
+            opacity: 1;
+            transition: opacity .6s ease;
+        }
+
+        .splash__backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 10, .45);
+            backdrop-filter: blur(14px);
+        }
+
+        .splash__content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            transform: translateY(8px);
+            animation: splash-pop .5s ease forwards;
+            pointer-events: none;
+        }
+
+        .splash__logo {
+            width: 300px;
+            height: auto;
+            object-fit: contain;
+            filter: brightness(1.3) drop-shadow(0 4px 10px rgba(0, 0, 0, .15));
+        }
+
+        .splash__text {
+            font: 600 18px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: #fff;
+            letter-spacing: .2px;
+            opacity: .95;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+        }
+
+        @keyframes splash-pop {
+            from {
+                opacity: 0;
+                transform: translateY(16px) scale(.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .splash.is-hidden {
+            opacity: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .splash__content {
+                animation: none;
+                transform: none;
+            }
+
+            .splash {
+                transition: opacity .2s linear;
+            }
+        }
+
+        .rera-blueprint {
+            position: fixed;
+            top: 26px;
+            left: 30px;
+            z-index: 1000;
+            padding-left: 14px;
+            border-left: 2px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .bp-label {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: rgba(0, 0, 0, 0.55);
+        }
+
+        .bp-id {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #000000;
+        }
+
+        @media (max-width: 600px) {
+            .rera-blueprint {
+                left: 10px;
+                transform: scale(.7);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-header {
+                position: fixed !important;
+                top: 10px !important;
+                right: 10px !important;
+                left: auto !important;
+                z-index: 99999 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 8px !important;
+                width: auto !important;
+            }
+
+            .top-header a,
+            .top-header .top-btn {
+                display: inline-flex !important;
+                flex: 0 0 auto !important;
+                width: auto !important;
+                max-width: none !important;
+                padding: 6px 10px !important;
+                font-size: 12px !important;
+                line-height: 1 !important;
+                white-space: nowrap !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .Front {
+                position: fixed;
+                top: 55%;
+                left: 50%;
+            }
+        }
+
+        .enquiry-btn {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10001;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            padding: 22px 11px;
+            background: #0078be;
+            color: #fff;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.7px;
+            border: none;
+            border-radius: 8px 0 0 8px;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: -4px 0 16px rgba(0, 0, 0, 0.22);
+            transition: opacity 0.3s ease, background 0.2s ease, padding 0.2s ease;
+        }
+
+        .enquiry-btn.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .enquiry-btn:hover {
+            background: #b8936a;
+            padding: 22px 14px;
+        }
+
+        @media (max-width: 600px) {
+            .enquiry-btn {
+                font-size: 11px;
+                padding: 16px 9px;
+            }
+        }
+
+        .enquiry .overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-end;
+            background: rgba(0, 0, 0, 0);
+            backdrop-filter: blur(0px);
+            -webkit-backdrop-filter: blur(0px);
+            z-index: 99999;
+            pointer-events: none;
+            transition: background 0.35s ease, backdrop-filter 0.35s ease;
+        }
+
+        .enquiry .overlay.is-open {
+            background: rgba(0, 0, 0, 0.52);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            pointer-events: auto;
+        }
+
+        .enquiry .modal {
+            width: min(400px, 100vw);
+            height: 100%;
+            background: rgba(16, 17, 20, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0;
+            box-shadow: -12px 0 40px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transform: translateX(100%);
+            transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+
+        .enquiry .overlay.is-open .modal {
+            transform: translateX(0);
+        }
+
+        .enquiry .modal-header {
+            padding: 20px 20px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .enquiry .modal-header::before {
+            content: '';
+            flex-shrink: 0;
+            width: 3px;
+            height: 22px;
+            background: #C9A87C;
+            border-radius: 2px;
+        }
+
+        .enquiry .modal-header .title {
+            flex: 1;
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.3px;
+        }
+
+        .enquiry .close {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #d7d7db;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+
+        .enquiry .close:hover {
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .enquiry .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .enquiry .form {
+            display: grid;
+            gap: 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .enquiry .input,
+        .enquiry .select,
+        .enquiry .phone {
+            width: 100%;
+            box-sizing: border-box;
+            background: #e9eaed;
+            border: 1px solid #cfd2d8;
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: 14px;
+            color: #0f0f11;
+        }
+
+        .enquiry .input::placeholder {
+            color: #b9bcc4;
+        }
+
+        .enquiry .select {
+            appearance: none;
+            cursor: pointer;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5" fill="none" stroke="%23555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+        }
+
+        .enquiry .phone {
+            display: flex;
+            padding: 0;
+        }
+
+        .enquiry .phone select {
+            appearance: none;
+            border: none;
+            border-right: 1px solid #cfd2d8;
+            padding: 0 10px;
+            min-width: 72px;
+            background: transparent;
+            color: #3a3a3f;
+            font-size: 14px;
+        }
+
+        .enquiry .phone input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        .enquiry .agree {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 12px;
+            color: #a0a0a8;
+        }
+
+        .enquiry .agree a {
+            color: #C9A87C;
+            text-decoration: underline;
+        }
+
+        .enquiry .submit {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 13px;
+            font-weight: 700;
+            font-size: 15px;
+            background: #0078be;
+            color: #111;
+            cursor: pointer;
+            margin-top: 4px;
+            transition: background 0.2s ease;
+        }
+
+        .enquiry .submit:hover {
+            background: #b8936a;
+        }
+
+        .submit[aria-busy="true"] {
+            position: relative;
+            pointer-events: none;
+            opacity: .8;
+        }
+
+        .submit[aria-busy="true"]::after {
+            content: "";
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            border-right-color: transparent;
+            animation: spin .7s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: translateY(-50%) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .enquiry .modal {
+                width: 100vw;
+            }
+        }
+
+        .enquiry .modal,
+        .enquiry .form,
+        .enquiry .input,
+        .enquiry .select,
+        .enquiry .phone,
+        .enquiry .title,
+        .enquiry .submit,
+        .enquiry .agree {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* ═══════════════════════════════════════════════
+           JUMPBAR — macOS Dock Style (ENHANCED VISIBILITY)
+           ═══════════════════════════════════════════════ */
+        .dock-wrap {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 50% !important;
+            translate: -50% 0;
+            z-index: 11000 !important;
+            display: flex !important;
+            align-items: flex-end;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            animation: dock-bounce .7s cubic-bezier(.34, 1.56, .64, 1) both;
+            animation-delay: .2s;
+        }
+
+        @keyframes dock-bounce {
+            from {
+                opacity: 0;
+                translate: -50% 80px;
+                scale: .8;
+            }
+
+            to {
+                opacity: 1;
+                translate: -50% 0;
+                scale: 1;
+            }
+        }
+
+        /* glass shelf — ENHANCED */
+        .dock-shelf {
+            position: absolute;
+            bottom: 0;
+            left: -18px;
+            right: -18px;
+            height: 94px;
+            background: linear-gradient(135deg,
+                    rgba(20, 22, 28, 0.88),
+                    rgba(12, 14, 18, 0.92));
+            border: 1.5px solid rgba(201, 168, 124, 0.25);
+            border-radius: 24px;
+            backdrop-filter: blur(32px) saturate(1.4);
+            -webkit-backdrop-filter: blur(32px) saturate(1.4);
+            box-shadow:
+                0 8px 40px rgba(0, 0, 0, 0.6),
+                0 2px 0 rgba(201, 168, 124, 0.08) inset,
+                0 -1px 0 rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(201, 168, 124, 0.06);
+            transition: height .35s cubic-bezier(.22, .68, 0, 1.04),
+                border-radius .35s,
+                left .35s, right .35s,
+                box-shadow .35s;
+            z-index: -1;
+        }
+
+        .dock-wrap:hover .dock-shelf {
+            height: 112px;
+            left: -24px;
+            right: -24px;
+            border-radius: 28px;
+            border-color: rgba(201, 168, 124, 0.35);
+            box-shadow:
+                0 12px 50px rgba(0, 0, 0, 0.7),
+                0 2px 0 rgba(201, 168, 124, 0.12) inset,
+                0 0 80px rgba(201, 168, 124, 0.1);
+        }
+
+        .dock-items {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            padding: 0 14px 14px;
+        }
+
+        .dock-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            text-decoration: none;
+            cursor: pointer;
+            --size: 52px;
+            width: var(--size);
+            transition: width .25s cubic-bezier(.22, .68, 0, 1.04),
+                margin .25s cubic-bezier(.22, .68, 0, 1.04);
+            position: relative;
+        }
+
+        .dock-icon {
+            width: var(--size);
+            height: var(--size);
+            border-radius: 16px;
+            background: linear-gradient(145deg,
+                    rgba(201, 168, 124, 0.12),
+                    rgba(255, 255, 255, 0.04));
+            border: 1.5px solid rgba(201, 168, 124, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: width .25s cubic-bezier(.22, .68, 0, 1.04),
+                height .25s cubic-bezier(.22, .68, 0, 1.04),
+                border-radius .25s,
+                background .3s,
+                border-color .3s,
+                box-shadow .3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(201, 168, 124, 0.05);
+        }
+
+        .dock-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: rgba(255, 255, 255, 0.75);
+            transition: stroke .3s, width .25s, height .25s, filter .3s;
+            flex-shrink: 0;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        /* reflection */
+        .dock-icon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .1), transparent);
+            border-radius: 16px 16px 0 0;
+            pointer-events: none;
+        }
+
+        /* active dot — ENHANCED */
+        .dock-dot {
+            position: absolute;
+            bottom: -4px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #c9a87c;
+            opacity: 0;
+            transition: opacity .3s;
+            box-shadow: 0 0 8px rgba(201, 168, 124, 0.5);
+        }
+
+        .dock-item.is-accent .dock-dot {
+            opacity: 1;
+        }
+
+        /* tooltip — ENHANCED */
+        .dock-label {
+            position: absolute;
+            bottom: calc(100% + 14px);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: #fff;
+            white-space: nowrap;
+            background: rgba(12, 12, 14, 0.95);
+            border: 1px solid rgba(201, 168, 124, 0.3);
+            padding: 8px 16px;
+            border-radius: 10px;
+            opacity: 0;
+            scale: .9;
+            translate: 0 6px;
+            transition: opacity .2s, scale .2s, translate .2s;
+            pointer-events: none;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .dock-label::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            translate: -50% 0;
+            border: 5px solid transparent;
+            border-top-color: rgba(12, 12, 14, 0.95);
+        }
+
+        /* dock item text labels always visible */
+        .dock-item-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 6px;
+            text-align: center;
+            transition: color 0.3s;
+        }
+
+        .dock-item:hover .dock-item-label {
+            color: #c9a87c;
+        }
+
+        /* divider — ENHANCED */
+        .dock-divider {
+            width: 1.5px;
+            height: 36px;
+            margin: 0 6px 14px;
+            background: linear-gradient(180deg, transparent, rgba(201, 168, 124, 0.3), transparent);
+            flex-shrink: 0;
+            align-self: flex-end;
+            transition: height .25s;
+        }
+
+        /* ripple */
+        .dock-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(201, 168, 124, .3);
+            transform: scale(0);
+            animation: dock-rip .5s ease-out forwards;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        @keyframes dock-rip {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* bounce on click */
+        @keyframes dock-click-bounce {
+            0% {
+                translate: 0 0;
+            }
+
+            30% {
+                translate: 0 -16px;
+            }
+
+            50% {
+                translate: 0 -4px;
+            }
+
+            70% {
+                translate: 0 -8px;
+            }
+
+            100% {
+                translate: 0 0;
+            }
+        }
+
+        .dock-item.is-bouncing .dock-icon {
+            animation: dock-click-bounce .45s cubic-bezier(.22, .68, 0, 1.04);
+        }
+
+        /* Subtle pulse glow on the shelf to draw attention */
+        @keyframes dock-glow-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 8px 40px rgba(0, 0, 0, .6), 0 0 40px rgba(201, 168, 124, .06);
+            }
+
+            50% {
+                box-shadow: 0 8px 40px rgba(0, 0, 0, .6), 0 0 60px rgba(201, 168, 124, .15);
+            }
+        }
+
+        .dock-shelf {
+            animation: dock-glow-pulse 3s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        .dock-wrap:hover .dock-shelf {
+            animation: none;
+        }
+
+        @media (max-width: 520px) {
+            .dock-wrap {
+                bottom: 14px !important;
+            }
+
+            .dock-item {
+                --size: 42px;
+            }
+
+            .dock-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .dock-shelf {
+                height: 82px;
+                border-radius: 20px;
+            }
+
+            .dock-wrap:hover .dock-shelf {
+                height: 98px;
+            }
+
+            .dock-item-label {
+                font-size: 8px;
+            }
+
+            .dock-divider {
+                height: 30px;
+                margin-bottom: 14px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- Splash / Welcome Overlay -->
+    <div id="splash" class="splash" aria-live="polite" role="status">
+        <div class="splash__backdrop"></div>
+        <div class="splash__content" role="img" aria-label="Powered by BetterSide">
+            <div class="splash__text">Powered by <strong>BetterSide.in</strong></div>
+        </div>
+    </div>
+
+    <!-- Quick interaction hint (appears for ~2–3s) -->
+    <div id="ui-hint" class="ui-hint" aria-live="polite" role="status">
+        <div class="ui-hint__row ui-hint__desktop">
+            <svg width="18" height="24" viewBox="0 0 18 24" aria-hidden="true">
+                <path d="M9 1c3.9 0 7 3.1 7 7v8c0 3.9-3.1 7-7 7s-7-3.1-7-7V8c0-3.9 3.1-7 7-7z" fill="white"
+                    opacity=".18" />
+                <rect x="8" y="4" width="2" height="5" rx="1" fill="white" />
+                <rect x="5" y="10" width="8" height="9" rx="4" fill="white" opacity=".4" />
+            </svg>
+            <span>Click Tower's to Select Floors</span>
+        </div>
+        <div class="ui-hint__row ui-hint__touch">
+            <svg width="18" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M12 2a4 4 0 014 4v4h1.2a2.8 2.8 0 012.8 2.8V16c0 3.3-2.7 6-6 6H9.5A5.5 5.5 0 014 16.5V11a3 3 0 016 0v3h1V6a4 4 0 011-2.7z"
+                    fill="white" opacity=".28" />
+                <rect x="11" y="5" width="2" height="9" rx="1" fill="white" />
+            </svg>
+            <span>Click on Tower's To Select Floor</span>
+        </div>
+    </div>
+<div id="infoCard" class="info-card">
+  //
+        <!-- <div class="image-placeholder">
+            <img src="images/Thumbnail/Home.webp" alt="Home" />
+        </div> -->
+        <div class="info-details" id="details"></div>
+    </div>
+</div>
+
+    <!-- Info Card Modal -->
+    <div id="floorTip" class="floortip"></div>
+
+    <div class="Front">
+        <div class="image-wrapper">
+            <link rel="preload" as="image" href="images/Home.jpg" />
+            <img id="mainImage" src="images/Thumbnail/Home_Low.webp" data-full="images/Home.jpg" alt="Home"
+                fetchpriority="high" decoding="async" width="3840" height="5830" class="blur-up" />
+            <div class="Cutout">
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 3840 5830">
+                    <path id="Floor_06" data-link="Subpages/1BHK/Lobby_Top.html" data-name="Floor 06"
+                        data-img="images/Thumbnail/Tower_A.jpg"
+                        d="m3401.83 2626.5-143.16 30 3.16 32.17 129.45 40.39 4.89 66.22 2.77.22v14.11l-388.61-110.83 27.67-6.22-108.72-31.23-28.34 6-159-45.22 28-6.78-129.66-37.66-28.34 8-431.05-122.84 26.5-9.5-260.11-75.83-106 44.83-158.11-40.5.92-71.75 16.63-7.69-.5-11.83 16.5-7 .84-10.84-431.95-127.94L813.17 2452l16.94-276.22-15.05-4.17v-12l-16.78-4.94v-5.23l364.39-306 8.11 2.17 5.89-4.55 351.83 124 43.17-32.84 6.33 2.34 23.5-14.5L2095 2103l79.44-39.11L3219.83 2469v4.67l28.23 10.22-.34 5.78-13.44 3.11.22 11-12.67 3 1.23 14.44 27 9.34 2.11 29.88 149.66 52.73z"
+                        class="st0" />
+                    <path id="Floor_05" data-link="Subpages/1BHK/Lobby_Top.html" data-name="Floor 05"
+                        data-img="images/Thumbnail/Tower_A.jpg"
+                        d="M3414.18 2978.69v14.25l-391.03-83.44 27.45-5.11-110.09-23.67-27.66 4.25-159.89-33.86 27.75-5.25-130.5-28.86-29.25 5.67-436.25-92.64 27.83-7.5-264.8-57.67-108 33.33-160.35-28.83-.1-47.44 73.89-26.34-527.58-118.25-198.81 101.42 116.34 23.33-613.09 249.59 14-189.36-10.66-1.73.38-11.83-10.83-.89v-7.5L813.17 2452l472.44-307.22 431.95 127.94-.84 10.84-16.5 7 .5 11.83-16.63 7.69-.92 71.75 158.11 40.5 106-44.83 260.11 75.83-26.5 9.5 431.05 122.84 28.34-8 129.66 37.66-28 6.78 159 45.22 28.34-6 108.72 31.23-27.67 6.22 388.61 110.83-126.54 21.67 4.34 48.83 130.02 30.75 4.34 67.92z"
+                        class="st0" />
+                    <path id="Floor_04" data-link="Subpages/1BHK/Lobby_Top.html" data-name="Floor 04"
+                        data-img="images/Thumbnail/Tower_A.jpg"
+                        d="m3035.9 3124.61 28.67-3.33-110.61-15.45-27.92 2.25-162.33-22.19 28.33-3.67-132.5-19-28.66 4-441.73-62.89 27.34-5.33-268.34-38.67-108.66 22.5-165-12.55.89-38.72 73.33-17.67-537.67-80.11-201.33 68.83 120.33 16.17-621.33 188 21.33-255.11 613.09-249.59-116.34-23.33 198.81-101.42 527.58 118.25-73.89 26.34.1 47.44 160.35 28.83 108-33.33 264.8 57.67-27.83 7.5 436.25 92.64 29.25-5.67 130.5 28.86-27.75 5.25 159.89 33.86 27.66-4.25 110.09 23.67-27.45 5.11 391.03 83.44-127.28 15.56 4.89 67.44 130.64 22.03 4.33 69.34 3.25-.09.84 13.25z"
+                        class="st0" />
+                    <path id="Floor_03" data-link="Subpages/1BHK/Lobby_Top.html" data-name="Floor 03"
+                        data-img="images/Thumbnail/Tower_A.jpg"
+                        d="m3313.96 3362.97.36 9.42-11.33-.5-21.34 1.58-71.66-1.41-.45-12.75-29.78-1.45-26 4.33-60-3.33v-10h-13.66l-22.67 3-88.33-3.33-2.67-10.34-144-8.33h-16.33l-24 4-113-4.33v-11.34l-40.34-3-27.33 1.67-654.33-37.33-113 7.66-136.78-7.55v-15.33l-29.67-1-20.66 2.33-235.56-13v-24.45l-76.67-4.88-25.11 5.55-50.44-3.55 67.55-10.45-130-8.67-204.66 33.12s127.11 7.11 128 6.88c.89-.22-628.34 90.06-628.34 90.06l16.95-229.47 621.33-188-120.33-16.17 201.33-68.83 537.67 80.11-73.33 17.67-.89 38.72 165 12.55 108.66-22.5 268.34 38.67-27.34 5.33 441.73 62.89 28.66-4 132.5 19-28.33 3.67 162.33 22.19 27.92-2.25 110.61 15.45-28.67 3.33 394.95 55.86-130.36 10.67 6.55 84.05 131.09 12.5 4.61 70.53 3.16.11.39 13.45z"
+                        class="st0" />
+                    <path id="Floor_02" data-link="Subpages/1BHK/Lobby_Top.html" data-name="Floor 02"
+                        data-img="images/Thumbnail/Tower_A.jpg"
+                        d="M3465.15 3553.89v13.67l-132.05 1.45-353.06 3.88-341.33 3.78-148.45 1.33-522.19 4.25-6.06 1.28-14.83-.67-4.83 1-250.22 3.11v-6.22h-31.12l-20.88 3.11-239.12 3.11v-18.22l-80-2.67h-24.88l-52.45-3.11-502.89-3.85-266.58-2.04 17.55-220.83s629.23-90.28 628.34-90.06c-.89.23-128-6.88-128-6.88l204.66-33.12 130 8.67-67.55 10.45 50.44 3.55 25.11-5.55 76.67 4.88v24.45l235.56 13 20.66-2.33 29.67 1v15.33l136.78 7.55 113-7.66 654.33 37.33 27.33-1.67 40.34 3v11.34l113 4.33 24-4h16.33l144 8.33 2.67 10.34 88.33 3.33 22.67-3h13.66v10l60 3.33 26-4.33 29.78 1.45.45 12.75 71.66 1.41 21.34-1.58 11.33.5-.36-9.42 132.33 8.81-130.83 5.19 7.22 102.34 130.97 4.36 5.45 70.11z"
+                        class="st0" />
+                    <path id="Floor_01" data-link="Subpages/1BHK/Lobby_Top.html" data-name="Floor 01"
+                        data-img="images/Thumbnail/Tower_A.jpg"
+                        d="m3635.93 3895.79-52.83 5.17-6.17-2.33s5.5-5.34 10.83-8.84c5.34-3.5 7-3.5 10.84-6.83 3.83-3.33 3-3 3-5.67s-1.34-1.5-3-3.66c-1.67-2.17-6.67-7.34-9.34-9.17-2.66-1.83-2 .5-2 1s.84 4.17.84 6.17-3.34 3-4.67 4.33-2.17.5-3-.5-5.17-2.83-6.67-2.5-5.33 1.5-6.5 1.67c-1.16.16-2.83-.67-4.33-.67s-1.17-.5-2.17-2.83c-1-2.34-2.16-2.34-3.5-4.34-1.33-2-3.33-5.16-5.16-6.83-1.84-1.67-3-3.83-4.34-4.83-1.33-1-6-2-6-2s.17 4.5 0 7c-.16 2.5-2.5 6.5-2.5 6.5s-1.33 1.83-3.66 3.66c-2.34 1.84-3.67.5-7.17.84-3.5.33-3.83.5-5.83.83s-2.67 6-3 8c-.34 2-2.34 3.33-2.34 3.33s-6.16 9.34-6.66 9.84-5.67 4.83-5.67 4.83l-3.33.17-1.67-15.5-13.33-1-1.34 5.66 4.5 10.84-8.16 6.33-11.34.5 4-10.83 4.5-8.5s-.22-2.56-.77-5.78c-.56-3.22-1.45-1.11-1.45-1.11s-7.55-22.67-9.33-19.78-2.45 6.33-4.56 7.22-4.89.11-6.66-2.33c-1.78-2.45-1.34-1.89-1.67-5.56-.33-3.66-3.33-12.33-3.67-14.55-.33-2.23-13.77-17-17.11-15.89-3.33 1.11-9.22 4-11 5.22s-2.22 10.67-1.11 14.56c1.11 3.88 3.56 7.11 2.67 10.88-.89 3.78-13.22 2.89-17.11 2.23-3.89-.67-4-3.89-4-3.89s-7.56-12.45-9.34-16.78c-1.77-4.33-2.22-13.22-2.22-15.44s-8.22-11.34-8.22-11.34-14.67 11.34-15.22 11.34-11.56-4.89-11.56-4.89l-9.67 8.55s-22.77 5.45-24.22 5.45 17.11 10 17.11 10l.89 9.44s-16.22-4.89-19.78-5.44c-3.55-.56-8.77 5.77-8.77 6.33s14 7.44 14.89 8.22c.88.78 3.22 22.56 3.22 22.56l-5.56 1.78-8.11-18.12-11.67 2.67s2.89 11 3.23 14.56c.33 3.55-.34 10.89-1.67 14.89s-11.56-10.34-11.67-11.34-7.77-15.33-7.77-15.33 3.77 27.33 3.55 27.89c-.22.55-12-2.78-14.55-3.56-2.56-.78 4.33-9.44 4.33-10.11s-16.22-28.78-16.56-28.78-12.66 12.89-12.66 12.89l-.45 19-5.44 6.67-2.59-14.2c2.72-13.05 1.03-25.25-5.16-36.58.89-11.42-2.9-19.97-13.17-24.58-8.01-15.7-21.05-28.98-50.25-34.5l-122.75-8c-28.03-2.82-55.65 23.46-83.33 45.25-7.9-2.66-20-1.5-27.7 2.75-7.69 4.25-14.37 14.51-20.33 24l-6.33 12 1.16 29.16c.41 12.44 2.74 20.54 10 17.5v5.34l-66.83 5.16-177.92 3.5-85.66 2.25-74 .09-23.84 1.58-404.75 32.89c3.72-5.84 4.92-14.56 4.84-24.75l3.25-42.58-7.89-10.89-.34-27.21c-14.55-14.42-26.91-28.27-33-40.5-46.81-12.07-95.86-17.95-146.83-18.5-26.43-1.96-55.75-1.34-86.83.83-17.99 1.85-33.75 5.23-44.84 11.84l-23.83 8.66c-29.25 15.6-57.27 32.76-83.67 52-37.33 1.67-73.16 20.67-73.16 20.67-7.48 4.62-12.22 9.64-14.67 15l-2.83 4.5-.95 6.05-34.77 2.45h-2.45c-.55 0-3.78-.56-4.22-.67-.45-.11.33-4.22.33-4.55s2.78-10.89 2.78-10.89l.56-3.11-1.12-4.89 2.23-9.89-2.67-11.67s-7-21-7-24-10.67-22-10.67-22-17.33-3.66-18.66-4c-1.34-.33-31.67-11.66-31.67-11.66l-20 1.33 1.39 3.33s-13.33-1.33-14.67-5.16c-1.33-3.84-1.16 0-1.16 0s-9.5 3.83-14.17 6.66c-4.67 2.84-7 5.17-10.33 6.17-3.34 1-.84-1-.17-4.83.67-3.84 3.33-14 1.83-15.84-1.5-1.83-3.83-4.33-5.33-6-1.5-1.66-4-4-7.67-6.5-3.66-2.5-12.33-4.5-14.83-6s-4.5-.5-10.83-.16c-6.34.33-6.17 1.16-10.67 2-4.5.83-2.17-.34-7.5-3.5-5.33-3.17-4 .66-6.67 1.66-2.66 1-2.5 2.17-7 5.34-4.5 3.16-5 8.5-6 12s-6.66-.34-6.16-1.67 3.83-5.67 3.83-5.67l-13-.33s-2.33 11-3.33 12-11.17 1.5-10.84.67c.34-.84 1-20.67 1-21.17s-6.16-2.83-8.33-2.5 1.33 5.17 1.67 6.83c.33 1.67-.84 11-.67 13.67s-6.67.67-6.67.17-2.83-12.34-2.83-12.34l-6 .17.68 6.33s-4.01 3-4.35 3.84c-.33.83 2.5 2.16 3.5 2.16s.84 6.17.84 6.84-4.5 1.5-4.5 1.5l-7.39-7.06-9.34-.89-2.66 8 2.66 11.56-6.22 8.44-7.11-10.22-6.67-6.22s-10.66 6.22-12 7.95c-1.33 1.73-7.11-5.73-7.11-5.73l2.67-8-4.89-5.33h-10.67l-14.22.88-14.67 7.12s-5.33.44-9.33.44h-4s-2.22 2.67-3.11 4.44c-.89 1.78-4.89 4.89-6.22 5.78-1.34.89-5.34 0-5.34 0s-.88-2.22-1.77-11.11-4.45-15.11-4.45-15.11h-6.22c-1.33 0-5.33-5.33-5.33-5.33l-7.11-9.34-7.12.45-16 2.22-8 3.11s-5.77 3.11-6.22 4c-.44.89 0 15.11 0 15.11l-2.66-2.66s-7.56-8-9.78-10.55-10.22-2.79-12.45-3.23c-2.22-.45-12-6.22-12-6.22l-8.89-5.34-9.33-2.66s-3.11 5.33-4.89 8.44-2.66 4.44-2.66 4.44l-7.12-4.88v7.11c0 3.11-7.55 2.22-7.55 2.22l-1.78-4c-1.78-4-.89-1.78-1.33-4.45-.45-2.66-7.11-8.44-9.34-9.33-2.22-.89 0 3.18 0 3.18h-10.66s-3.56-.07-4.89-.07-12.45.45-15.56-.89c-3.11-1.33-7.11-5.77-9.77-8.44-2.67-2.67-3.12-2.22-4.45-4s-6.22-2.67-6.22-2.67-6.67-.44-9.33-.44-9.34-.45-13.78-.45-3.11 1.78-3.11 1.78l-13.78 5.78-2.67-3.56-19.55-9.77-9.78 4-6.67 9.33h-9.78l-3.55-4.45 9.33-10.22-27.11-2.66-14.67 2.22-14.66 4-15.11 6.66h-4.89l-11.56-7.11-19.11-1.33h-5.33l-15.11 5.33h-4.45l-5.33-6.22-5.33-2.22 10.66-195.52 502.89 3.85 52.45 3.11h24.88l80 2.67v18.22l239.12-3.11 20.88-3.11h31.12v6.22l250.22-3.11 4.83-1 14.83.67 6.06-1.28 522.19-4.25 148.45-1.33 341.33-3.78 353.06-3.88 5.16 84.73 35.34.66 160.22 73.5s7.78-1.44 10.11-1.77c2.33-.34 2.33.44 2.33.44l3.67 3.44s3.78 1.12 4.89.78c1.11-.33 4.56-2.33 6.56-3.22s2 1.44 3.11 3.22 2.33 2 2.33 2 10.44 8.34 10.78 8.56c.33.22 5.89-1.67 6.22-1.78s3.44 7.56 3.44 7.56-2.77-.12-3.11 1c-.33 1.11 2.78 5.22 2.89 5.66.11.45 7.11 2.11 7.11 2.11l2.45 1.34 2 7.66s4.33 6.67 5.55 9c1.23 2.34 3.11 6.89 3.11 6.89l7.67 4.34 6.22 3.11 3.23 8.33-1.45 9-.67 10.22-14.55 6.56-3.45 7.22 25.67.56z"
+                        class="st0" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══ SLIDE-IN ENQUIRY PANEL ══ -->
+    <div class="enquiry">
+        <div class="overlay" id="enquiryOverlay" aria-hidden="true">
+            <div class="modal" role="dialog" aria-labelledby="enquiryTitle">
+                <div class="modal-header">
+                    <div id="enquiryTitle" class="title">Request Callback</div>
+                    <button class="close" id="closeBtn" aria-label="Close">✕</button>
+                </div>
+                <div class="modal-body">
+                    <form id="enquiryForm" class="form" novalidate>
+                        <input class="input" name="fullName" placeholder="Full Name" required />
+                        <div class="phone">
+                            <select name="dialCode" aria-label="Country Code">
+                                <option>+91</option>
+                                <option>+971</option>
+                                <option>+44</option>
+                                <option>+1</option>
+                            </select>
+                            <input type="tel" name="phone" placeholder="Phone Number" maxlength="10" pattern="[0-9]{10}"
+                                inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'')" required />
+                        </div>
+                        <input class="input" name="city" placeholder="City" required />
+                        <input class="input" type="email" name="email" placeholder="Email Address"
+                            pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required />
+                        <select class="input select" name="preferredTime" required>
+                            <option value="" disabled selected>Preferred Time to Call</option>
+                            <option value="morning">Morning</option>
+                            <option value="afternoon">Afternoon</option>
+                            <option value="evening">Evening</option>
+                        </select>
+                        <div class="g-recaptcha" data-sitekey="6Le6qZQsAAAAALlNrziohJHHqf43BSZvE1wfoxnl"></div>
+                        <button class="submit" type="submit">Request a Call Back</button>
+                        <a href="tel:+919876543210" class="call-btn">📞 Call Now</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Hotspot overlay -->
+
+    <!-- ═══════════════════════════════════════════════
+         JUMPBAR — macOS Dock Style (ENHANCED)
+         ═══════════════════════════════════════════════ -->
+    <div class="dock-wrap" id="dock">
+        <div class="dock-shelf"></div>
+        <div class="dock-items" id="dockItems">
+
+            <a class="dock-item" href="Subpages/GodEye/Parking_01.html">
+                <span class="dock-label">Parking</span>
+                <div class="dock-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="3" />
+                        <path d="M9 16v-8h4a2.5 2.5 0 010 5H9" />
+                    </svg>
+                </div>
+                <span class="dock-item-label">Parking</span>
+                <span class="dock-dot"></span>
+            </a>
+
+            <div class="dock-divider"></div>
+
+            <a class="dock-item is-accent" href="Subpages/Tower_A.html">
+                <span class="dock-label">Front View</span>
+                <div class="dock-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                </div>
+                <span class="dock-item-label">Front</span>
+                <span class="dock-dot"></span>
+            </a>
+
+            <div class="dock-divider"></div>
+
+            <a class="dock-item" href="Subpages/Tower_B.html">
+                <span class="dock-label">Back View</span>
+                <div class="dock-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 22V12m0 0L5 6m7 6l7-6" />
+                        <rect x="2" y="3" width="20" height="7" rx="2" />
+                    </svg>
+                </div>
+                <span class="dock-item-label">Back</span>
+                <span class="dock-dot"></span>
+            </a>
+
+        </div>
+    </div>
+
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const detailsBox = document.getElementById('details');
+            detailsBox.innerHTML = ``;
+            const paths = document.querySelectorAll('.Cutout path');
+            let selectedPath = null;
+            let currentLink = '';
+
+            paths.forEach(path => {
+                const link = path.getAttribute('data-link');
+                if (link) {
+                    path.addEventListener('click', () => {
+                        path.style.opacity = "0.6";
+                        setTimeout(() => {
+                            window.location.href = `${link}`;
+                        }, 800);
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script>
+        (function () {
+            const img = document.querySelector('.image-wrapper img');
+            const layer = document.getElementById('hsLayer');
+            if (!img || !layer) return;
+
+            function doSync() {
+                const r = img.getBoundingClientRect();
+                layer.style.top = r.top + 'px';
+                layer.style.left = r.left + 'px';
+                layer.style.width = r.width + 'px';
+                layer.style.height = r.height + 'px';
+            }
+
+            function syncAfterLayout() {
+                requestAnimationFrame(() => requestAnimationFrame(doSync));
+            }
+
+            if (img.complete) syncAfterLayout();
+            else img.addEventListener('load', syncAfterLayout, { once: true });
+            window.addEventListener('load', syncAfterLayout, { once: true });
+            window.addEventListener('resize', syncAfterLayout);
+            window.addEventListener('orientationchange', () => {
+                syncAfterLayout();
+                setTimeout(syncAfterLayout, 250);
+            });
+
+            const mqPortrait = window.matchMedia('(max-aspect-ratio: 3840/5830)');
+            const mqLandscape = window.matchMedia('(min-aspect-ratio: 3840/5830)');
+            if (mqPortrait.addEventListener) {
+                mqPortrait.addEventListener('change', syncAfterLayout);
+                mqLandscape.addEventListener('change', syncAfterLayout);
+            } else if (mqPortrait.addListener) {
+                mqPortrait.addListener(syncAfterLayout);
+                mqLandscape.addListener(syncAfterLayout);
+            }
+
+            if ('ResizeObserver' in window) {
+                new ResizeObserver(syncAfterLayout).observe(img);
+            }
+        })();
+    </script>
+
+    <script src="JS/Notification/2ruet93mi4.js"></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const mq = window.matchMedia('(max-width: 600px)');
+            const desktopPositions = {
+                Tower_D: { left: 65, top: 52 },
+                Tower_C: { left: 44, top: 52 },
+                Tower_B: { left: 65, top: 48.5 },
+                Tower_A: { left: 44, top: 48 }
+            };
+            const mobilePositions = {
+                Tower_B: { left: 61, top: 50 },
+                Tower_A: { left: 48.5, top: 48 }
+            };
+
+            function runPins() {
+                initTowerPins({
+                    svgSelector: '.Cutout svg',
+                    layerSelector: '#hsLayer',
+                    viewBox: [3840, 5830],
+                    positions: mq.matches ? mobilePositions : desktopPositions
+                });
+            }
+
+            runPins();
+            mq.addEventListener?.('change', runPins);
+            if (!mq.addEventListener) mq.addListener(runPins);
+            window.addEventListener('resize', () => requestAnimationFrame(runPins));
+            window.addEventListener('orientationchange', () => setTimeout(runPins, 250));
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const splash = document.getElementById("splash");
+            if (!splash) return;
+            document.body.classList.add("splash-active");
+            const SHOW_MS = 2000;
+            const FADE_MS = 600;
+            setTimeout(() => {
+                splash.classList.add("is-hidden");
+                setTimeout(() => {
+                    splash.remove();
+                    document.body.classList.remove("splash-active");
+                }, FADE_MS);
+            }, SHOW_MS);
+        });
+    </script>
+
+
+
+    <!-- ═══ macOS Dock magnification logic (ENHANCED) ═══ -->
+    <script>
+        (function () {
+            const items = document.querySelectorAll('.dock-item');
+            const dockItems = document.getElementById('dockItems');
+            if (!dockItems || !items.length) return;
+
+            const BASE = 52, MAX = 80, RANGE = 140;
+
+            function magnify(e) {
+                items.forEach(item => {
+                    const icon = item.querySelector('.dock-icon');
+                    const svg = item.querySelector('.dock-icon svg');
+                    const label = item.querySelector('.dock-label');
+                    const rect = item.getBoundingClientRect();
+                    const cx = rect.left + rect.width / 2;
+                    const dist = Math.abs(e.clientX - cx);
+
+                    if (dist < RANGE) {
+                        const t = 1 - dist / RANGE;
+                        const sz = BASE + (MAX - BASE) * t;
+                        icon.style.width = sz + 'px';
+                        icon.style.height = sz + 'px';
+                        icon.style.borderRadius = (16 + t * 4) + 'px';
+                        const iSz = 22 + t * 10;
+                        svg.style.width = iSz + 'px';
+                        svg.style.height = iSz + 'px';
+                        item.style.width = sz + 'px';
+
+                        if (t > .7) {
+                            icon.style.background = 'linear-gradient(145deg, rgba(201,168,124,.2), rgba(201,168,124,.08))';
+                            icon.style.borderColor = 'rgba(201,168,124,.4)';
+                            icon.style.boxShadow = '0 4px 24px rgba(201,168,124,.2), 0 0 30px rgba(201,168,124,.1)';
+                            svg.style.stroke = '#c9a87c';
+                            svg.style.filter = 'drop-shadow(0 0 6px rgba(201,168,124,.4))';
+                            label.style.opacity = '1';
+                            label.style.scale = '1';
+                            label.style.translate = '0 0';
+                        } else {
+                            resetIcon(icon, svg, label);
+                        }
+                    } else {
+                        icon.style.width = BASE + 'px';
+                        icon.style.height = BASE + 'px';
+                        icon.style.borderRadius = '16px';
+                        svg.style.width = '22px';
+                        svg.style.height = '22px';
+                        item.style.width = BASE + 'px';
+                        resetIcon(icon, svg, label);
+                    }
+                });
+            }
+
+            function resetIcon(icon, svg, label) {
+                icon.style.background = '';
+                icon.style.borderColor = '';
+                icon.style.boxShadow = '';
+                svg.style.stroke = '';
+                svg.style.filter = '';
+                label.style.opacity = '0';
+                label.style.scale = '.9';
+                label.style.translate = '0 6px';
+            }
+
+            function resetAll() {
+                items.forEach(item => {
+                    const icon = item.querySelector('.dock-icon');
+                    const svg = item.querySelector('.dock-icon svg');
+                    const label = item.querySelector('.dock-label');
+                    icon.style.width = icon.style.height = '';
+                    icon.style.borderRadius = '';
+                    svg.style.width = svg.style.height = '';
+                    item.style.width = '';
+                    resetIcon(icon, svg, label);
+                });
+            }
+
+            dockItems.addEventListener('mousemove', magnify);
+            dockItems.addEventListener('mouseleave', resetAll);
+
+            // click bounce + ripple
+            items.forEach(c => {
+                c.addEventListener('click', e => {
+                    // bounce
+                    c.classList.add('is-bouncing');
+                    c.addEventListener('animationend', () => c.classList.remove('is-bouncing'), { once: true });
+                    // ripple
+                    const r = document.createElement('span');
+                    r.className = 'dock-ripple';
+                    const icon = c.querySelector('.dock-icon');
+                    const b = icon.getBoundingClientRect();
+                    const s = Math.max(b.width, b.height);
+                    r.style.width = r.style.height = s + 'px';
+                    r.style.left = (e.clientX - b.left - s / 2) + 'px';
+                    r.style.top = (e.clientY - b.top - s / 2) + 'px';
+                    icon.appendChild(r);
+                    r.addEventListener('animationend', () => r.remove());
+                });
+            });
+        })();
+    </script>
+
+    <script src="JS/ky0nwmerow.js"></script>
+    <script src="JS/s2dlrxbqxj.js"></script>
+    <script src="JS/5guwuzaijb.js"></script>
+</body>
+
+</html>
