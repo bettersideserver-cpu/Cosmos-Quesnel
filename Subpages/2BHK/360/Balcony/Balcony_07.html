@@ -529,7 +529,7 @@
       <div class="center-dot"></div>
     </div>
   </div>
-  !-- ══ ENQUIRY TRIGGER ══ -->
+ 
   <button class="enquiry-btn" id="enquiryBtn" aria-label="Open Enquiry">Enquiry</button>
 
   <!-- ══ SLIDE-IN ENQUIRY PANEL ══ -->
@@ -576,10 +576,10 @@
     </div>
   </div>
     <div id="jumpBar">
-  <a href="../Bedroom.html">Bedroom</a>
-  <a href="../Bathroom.html">Bathroom</a>
+    <a href="../Bedroom_01.html">Bedroom 1</a>
+    <a href="../Bedroom_02.html">Bedroom 2</a>
+  <a href="../Bathroom.html">Bathroom </a>
   <a href="../Kitchen.html">Kitchen</a>
-  <a href="../Enterance.html">Entrance</a>
   <a href="../Lobby.html">Lobby</a>
   <a href="Balcony_01.html" class="active">Balcony</a>
 </div>
@@ -613,12 +613,24 @@
   <!-- <script>const panoramaImage = new PANOLENS.ImagePanorama("../../../images/Apparments/1BHK/360/Dinning.jpg"); -->
   <script>
     function createArrowSVG() {
-      const svg = `
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-    <polygon points="50,20 75,65 50,55 25,65" fill="white"/>
-  </svg>
-  `;
-      return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+      const size = 256; const canvas = document.createElement("canvas"); canvas.width = size; canvas.height = size;
+      const ctx = canvas.getContext("2d"); const cx = size / 2, cy = size / 2, outerR = 130, innerRingR = 96, dotR = 50;
+      ctx.save(); ctx.shadowColor = "rgba(0, 0, 0, 0.45)"; ctx.shadowBlur = 24; ctx.shadowOffsetY = 6;
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = "rgba(0,0,0,0.001)"; ctx.fill(); ctx.restore();
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = "rgba(255, 255, 255, 0.08)"; ctx.fill();
+      const glassGrad = ctx.createRadialGradient(cx, cy - 20, 10, cx, cy, outerR);
+      glassGrad.addColorStop(0, "rgba(255, 255, 255, 0.28)"); glassGrad.addColorStop(0.55, "rgba(255, 255, 255, 0.10)"); glassGrad.addColorStop(1, "rgba(255, 255, 255, 0.03)");
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = glassGrad; ctx.fill();
+      const gloss = ctx.createLinearGradient(cx, cy - outerR, cx, cy);
+      gloss.addColorStop(0, "rgba(255, 255, 255, 0.35)"); gloss.addColorStop(1, "rgba(255, 255, 255, 0)");
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = gloss; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.strokeStyle = "rgba(255, 255, 255, 0.22)"; ctx.lineWidth = 2; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx, cy, innerRingR, 0, Math.PI * 2); ctx.strokeStyle = "rgba(255, 255, 255, 0.08)"; ctx.lineWidth = 1.5; ctx.stroke();
+      const dotGrad = ctx.createRadialGradient(cx - 2, cy - 3, 1, cx, cy, dotR);
+      dotGrad.addColorStop(0, "#123a8a"); dotGrad.addColorStop(1, "#0A1F44");
+      ctx.beginPath(); ctx.arc(cx, cy, dotR, 0, Math.PI * 2); ctx.fillStyle = dotGrad; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx - 3.5, cy - 4, 3, 0, Math.PI * 2); ctx.fillStyle = "rgba(255, 255, 255, 0.55)"; ctx.fill();
+      return canvas.toDataURL("image/png");
     }
   </script>
 

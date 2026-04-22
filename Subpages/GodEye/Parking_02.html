@@ -342,6 +342,27 @@
 
   <!-- NEW JUMP BAR -->
   <nav id="jumpBar">
+
+       <div class="jb-divider"></div>
+    <a href="Parking_01.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="3" />
+        <path d="M9 16v-8h4a2.5 2.5 0 010 5H9" />
+      </svg>
+      Parking 1
+    </a>
+    <div class="jb-divider"></div>
+    <a href="Parking_02.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="3" />
+        <path d="M9 16v-8h4a2.5 2.5 0 010 5H9" />
+      </svg>
+      Parking 2
+    </a>
+  
+    
     <a href="../../index.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
         stroke-linejoin="round">
@@ -351,7 +372,7 @@
       Home
     </a>
     <div class="jb-divider"></div>
-    <a href="../Tower_A.html" class="active">
+    <a href="../Tower_A.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
         stroke-linejoin="round">
         <path d="M6 22V4a2 2 0 012-2h8a2 2 0 012 2v18z" />
@@ -370,25 +391,8 @@
       </svg>
       Back
     </a>
-    <div class="jb-divider"></div>
-    <a href="Parking_01.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-        stroke-linejoin="round">
-        <rect x="2" y="4" width="20" height="16" rx="3" />
-        <path d="M9 16v-8h4a2.5 2.5 0 010 5H9" />
-      </svg>
-      Parking 1
-    </a>
-    <div class="jb-divider"></div>
-    <a href="Parking_02.html" class="active">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-        stroke-linejoin="round">
-        <rect x="2" y="4" width="20" height="16" rx="3" />
-        <path d="M9 16v-8h4a2.5 2.5 0 010 5H9" />
-      </svg>
-      Parking 2
-    </a>
-  </nav>
+ 
+    
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/panolens@0.12.0/build/panolens.min.js"></script>
@@ -484,15 +488,6 @@
       );
     }
 
-    const ARROW_ICON = createArrowSVG();
-    const spot1 = new PANOLENS.Infospot(650, ARROW_ICON);
-    setFromAngles(spot1, 182, -10);
-    spot1.addHoverText("Lobby");
-    spot1.addEventListener('click', () => {
-      setTimeout(() => { window.location.href = "Lobby.html"; }, 800);
-    });
-
-    [panoLow, panoHigh].forEach(pano => { pano.add(spot1); });
 
     panoLow.addEventListener("load", () => {
       panoHigh.addEventListener("load", () => {
@@ -527,7 +522,7 @@
       const closeCard = document.getElementById("closeCard");
       if (closeCard) {
         closeCard.addEventListener("click", () => {
-          window.location.href = "../../Lobby_top.html";
+          window.location.href = "../../../index.html";
         });
       }
 
