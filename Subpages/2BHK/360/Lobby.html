@@ -715,24 +715,21 @@
     const SIZE = 500, ARROW_ICON = createArrowSVG();
 
     const spot1 = new PANOLENS.Infospot(SIZE, ARROW_ICON);
-    setFromAngles(spot1, -40, -10); spot1.addHoverText("Bedroom 1");
+    setFromAngles(spot1, 410, -10); spot1.addHoverText("Bedroom 1");
     spot1.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bedroom_01.html"; }, 800); });
 
     const spot2 = new PANOLENS.Infospot(SIZE, ARROW_ICON);
-    setFromAngles(spot2, -75, -10); spot2.addHoverText("Kitchen");
+    setFromAngles(spot2, -627, -10); spot2.addHoverText("Kitchen");
     spot2.addEventListener('click', () => { setTimeout(() => { window.location.href = "Kitchen.html"; }, 800); });
 
     const spot3 = new PANOLENS.Infospot(SIZE, ARROW_ICON);
-    setFromAngles(spot3, -80, 0); spot3.addHoverText("Enterance");
-    spot3.addEventListener('click', () => { setTimeout(() => { window.location.href = "Enterance.html"; }, 800); });
+    setFromAngles(spot3, 484, 0); spot3.addHoverText("Bedroom 2");
+    spot3.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bedroom_02.html"; }, 800); });
 
     const spot4 = new PANOLENS.Infospot(SIZE, ARROW_ICON);
-    setFromAngles(spot4, 30, -10); spot4.addHoverText("Balcony");
+    setFromAngles(spot4, -1250, -10); spot4.addHoverText("Balcony");
     spot4.addEventListener('click', () => { setTimeout(() => { window.location.href = "Balcony/Balcony_05.html"; }, 800); });
 
-    const spot5 = new PANOLENS.Infospot(SIZE, ARROW_ICON);
-    setFromAngles(spot5, -110, -10); spot5.addHoverText("Bathroom 2");
-    spot5.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bathroom_02.html"; }, 800); });
 
     [panoLow, panoHigh].forEach(pano => { pano.add(spot1); pano.add(spot2); pano.add(spot3); pano.add(spot4); pano.add(spot5); });
 

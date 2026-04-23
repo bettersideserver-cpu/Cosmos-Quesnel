@@ -630,12 +630,12 @@
     const ARROW_ICON = createArrowSVG();
 
     const spot1 = new PANOLENS.Infospot(500, ARROW_ICON);
-    setFromAngles(spot1, 200, -10); spot1.addHoverText("Lobby");
+    setFromAngles(spot1, -370, -10); spot1.addHoverText("Lobby");
     spot1.addEventListener('click', () => { setTimeout(() => { window.location.href = "Lobby.html"; }, 800); });
 
     const spot2 = new PANOLENS.Infospot(500, ARROW_ICON);
-    setFromAngles(spot2, 210, -10); spot2.addHoverText("Bedroom 1");
-    spot2.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bedroom_02.html"; }, 800); });
+    setFromAngles(spot2, 250, -10); spot2.addHoverText("Bathroom");
+    spot2.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bathroom.html"; }, 800); });
 
     [panoLow, panoHigh].forEach(pano => { pano.add(spot1); pano.add(spot2); });
 
