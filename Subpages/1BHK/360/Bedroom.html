@@ -627,12 +627,12 @@
     const ARROW_ICON = createArrowSVG();
 
     const spot1 = new PANOLENS.Infospot(500, ARROW_ICON);
-    setFromAngles(spot1, 182, -10); spot1.addHoverText("Lobby");
-    spot1.addEventListener('click', () => { setTimeout(() => { window.location.href = "Lobby.html"; }, 800); });
+    setFromAngles(spot1, 179, -10); spot1.addHoverText("Bathroom");
+    spot1.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bathroom.html"; }, 800); });
 
     const spot2 = new PANOLENS.Infospot(500, ARROW_ICON);
-    setFromAngles(spot2, 20, -10); spot2.addHoverText("Bathroom");
-    spot2.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bathroom.html"; }, 800); });
+    setFromAngles(spot2, 20, -10); spot2.addHoverText("Lobby");
+    spot2.addEventListener('click', () => { setTimeout(() => { window.location.href = "Lobby.html"; }, 800); });
 
     [panoLow, panoHigh].forEach(pano => { pano.add(spot1); pano.add(spot2); });
 

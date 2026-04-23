@@ -619,11 +619,11 @@
     spot1.addEventListener('click', () => { setTimeout(() => { window.location.href = "Lobby.html"; }, 800); });
 
     const spot2 = new PANOLENS.Infospot(500, ARROW_ICON);
-    setFromAngles(spot2, 93, -30); spot2.addHoverText("Kitchen");
+    setFromAngles(spot2, 98, -20); spot2.addHoverText("Kitchen");
     spot2.addEventListener('click', () => { setTimeout(() => { window.location.href = "Kitchen.html"; }, 800); });
 
     const spot3 = new PANOLENS.Infospot(500, ARROW_ICON);
-    setFromAngles(spot3, 50, -10); spot3.addHoverText("Bathroom");
+    setFromAngles(spot3, 5, -10); spot3.addHoverText("Bathroom");
     spot3.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bathroom.html"; }, 800); });
 
     [panoLow, panoHigh].forEach(pano => { pano.add(spot1); pano.add(spot2); pano.add(spot3); });

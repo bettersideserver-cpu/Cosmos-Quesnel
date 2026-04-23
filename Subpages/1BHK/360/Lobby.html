@@ -714,11 +714,11 @@
     spot2.addEventListener('click', () => { setTimeout(() => { window.location.href = "Kitchen.html"; }, 800); });
 
     const spot3 = new PANOLENS.Infospot(SIZE, ARROW_ICON);
-    setFromAngles(spot3, -15014, -10); spot3.addHoverText("Enterance");
+    setFromAngles(spot3, -84, -5); spot3.addHoverText("Enterance");
     spot3.addEventListener('click', () => { setTimeout(() => { window.location.href = "Enterance.html"; }, 800); });
 
     const spot4 = new PANOLENS.Infospot(SIZE, ARROW_ICON);
-    setFromAngles(spot4, 38, -10); spot4.addHoverText("Balcony");
+    setFromAngles(spot4, 20, -10); spot4.addHoverText("Balcony");
     spot4.addEventListener('click', () => { setTimeout(() => { window.location.href = "Balcony/Balcony_01.html"; }, 800); });
 
     [panoLow, panoHigh].forEach(pano => { pano.add(spot1); pano.add(spot2); pano.add(spot3); pano.add(spot4); });
