@@ -623,11 +623,6 @@
     setFromAngles(spot1, 75, -10); spot1.addHoverText("Lobby");
     spot1.addEventListener('click', () => { setTimeout(() => { window.location.href = "Lobby.html"; }, 800); });
 
-    // Hotspot 2 — Entrance
-    const spot2 = new PANOLENS.Infospot(550, ARROW_ICON);
-    setFromAngles(spot2, -120, -10); spot2.addHoverText("Enterance");
-    spot2.addEventListener('click', () => { setTimeout(() => { window.location.href = "Enterance.html"; }, 800); });
-
     // Hotspot 3 — Bedroom
     const spot3 = new PANOLENS.Infospot(550, ARROW_ICON);
     setFromAngles(spot3, 52, -10); spot3.addHoverText("Bedroom 1");
@@ -635,15 +630,15 @@
 
     // Hotspot 4 — Bathroom
     const spot4 = new PANOLENS.Infospot(550, ARROW_ICON);
-    setFromAngles(spot4, -210, -10); spot4.addHoverText("Bathroom");
+    setFromAngles(spot4, -200, -10); spot4.addHoverText("Bathroom");
     spot4.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bathroom.html"; }, 800); });
 
-    // Hotspot 5 — Bathroom 2
+    // Hotspot 5 — Bedroom 2
     const spot5 = new PANOLENS.Infospot(550, ARROW_ICON);
-    setFromAngles(spot5, 100, -10); spot5.addHoverText("Bathroom 2");
-    spot5.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bathroom_02.html"; }, 800); });
+    setFromAngles(spot5, 100, -10); spot5.addHoverText("Bedroom 2");
+    spot5.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bedroom_02.html"; }, 800); });
 
-    [panoLow, panoHigh].forEach(pano => { pano.add(spot1); pano.add(spot2); pano.add(spot3); pano.add(spot4); pano.add(spot5); });
+    [panoLow, panoHigh].forEach(pano => { pano.add(spot1); pano.add(spot3); pano.add(spot4); pano.add(spot5); });
 
     panoLow.addEventListener("load", () => {
       panoHigh.addEventListener("load", () => { viewer.setPanorama(panoHigh, 600); });
