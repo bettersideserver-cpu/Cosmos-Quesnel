@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Cosmos Quesnel</title>
+  <link rel="stylesheet" href="./../../../wbn05d6fbh.css" />
+  <link rel="stylesheet" href="./../../../JS/CSS/yp0wlolwzw.css">
+  <style>
+    utton#enquiryBtn.enquiry-btn {
+      position: fixed !important;
+      right: 0 !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      z-index: 10001 !important;
+      writing-mode: vertical-rl !important;
+      text-orientation: mixed !important;
+      padding: 24px 13px !important;
+      background: #111 !important;
+      color: #fff !important;
+      font-family: 'DM Sans', -apple-system, sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 11px !important;
+      letter-spacing: 2.5px !important;
+      text-transform: uppercase !important;
+      border: none !important;
+      border-radius: 12px 0 0 12px !important;
+      cursor: pointer !important;
+      white-space: nowrap !important;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.4) !important;
+      transition: opacity 0.3s ease, background 0.2s ease !important;
+      pointer-events: auto !important;
+      /* Ensure it's not clipped or overflowing */
+      overflow: visible !important;
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      left: auto !important;
+      margin: 0 !important;
+      width: auto !important;
+      height: auto !important;
+    }
+
+    button#enquiryBtn.enquiry-btn::after {
+      content: '' !important;
+      position: absolute !important;
+      inset: -4px !important;
+      border-radius: 14px 0 0 14px !important;
+      border: 2px solid rgba(255,255,255,0.25) !important;
+      animation: eq-ring 2.5s ease-out infinite !important;
+      pointer-events: none !important;
+      background: transparent !important;
+    }
+
+    @keyframes eq-ring {
+      0%   { opacity: 0.7; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.08); }
+    }
+
+    button#enquiryBtn.enquiry-btn.is-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    button#enquiryBtn.enquiry-btn:hover {
+      background: #2a2a2a !important;
+    }
+
+    @media (max-width: 600px) {
+      button#enquiryBtn.enquiry-btn {
+        font-size: 9px !important;
+        padding: 18px 10px !important;
+      }
+    }
+
+    /* ===== ENQUIRY OVERLAY & MODAL ===== */
+    .enquiry .overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-end;
+      background: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      z-index: 99999;
+      pointer-events: none;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease;
+    }
+
+    .enquiry .overlay.is-open {
+      background: rgba(0, 0, 0, 0.52);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      pointer-events: auto;
+    }
+
+    .enquiry .modal {
+      width: min(400px, 100vw);
+      height: 100%;
+      background: rgba(15, 15, 18, 0.75);
+      backdrop-filter: blur(60px) saturate(130%);
+      -webkit-backdrop-filter: blur(60px) saturate(130%);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 0;
+      box-shadow: -12px 0 50px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transform: translateX(100%);
+      transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+      font-family: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    .enquiry .overlay.is-open .modal {
+      transform: translateX(0);
+    }
+
+    .enquiry .modal-header {
+      padding: 20px 20px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .enquiry .modal-header::before {
+      content: '';
+      flex-shrink: 0;
+      width: 2px;
+      height: 18px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+    }
+
+    .enquiry .modal-header .title {
+      flex: 1;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    .enquiry .close {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255,255,255,0.35);
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .enquiry .close:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255,255,255,0.6);
+    }
+
+    .enquiry .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .enquiry .form {
+      display: grid;
+      gap: 12px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .enquiry .input,
+    .enquiry .select,
+    .enquiry .phone {
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .enquiry .input:focus,
+    .enquiry .select:focus,
+    .enquiry .phone:focus-within {
+      outline: none;
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .enquiry .input::placeholder {
+      color: rgba(255,255,255,0.22);
+    }
+
+    .enquiry .select {
+      appearance: none;
+      cursor: pointer;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    .enquiry .phone {
+      display: flex;
+      padding: 0;
+    }
+
+    .enquiry .phone select {
+      appearance: none;
+      border: none;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      padding: 0 10px;
+      min-width: 72px;
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      font-family: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    .enquiry .phone input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 12px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      font-family: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    .enquiry .phone input::placeholder {
+      color: rgba(255,255,255,0.22);
+    }
+
+    .enquiry .agree {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    .enquiry .agree a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: underline;
+    }
+
+    .enquiry .submit {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 13px;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.85);
+      cursor: pointer;
+      margin-top: 4px;
+      transition: all 0.2s ease;
+      font-family: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    .enquiry .submit:hover {
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.95);
+    }
+
+    /* ===== Form button row: Request Callback + Call Now ===== */
+    .enquiry .form-btn-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .enquiry .btn-callback {
+      flex: 1;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.9);
+      cursor: pointer;
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      transition: background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .enquiry .btn-callback:hover {
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+    }
+
+    .enquiry .btn-callnow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 13px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      color: rgba(255,255,255,0.85);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      text-decoration: none;
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .enquiry .btn-callnow:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    .enquiry .btn-callnow svg {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 420px) {
+      .enquiry .form-btn-row {
+        flex-direction: column;
+      }
+      .enquiry .btn-callback,
+      .enquiry .btn-callnow {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+    /* ═══════════════════════════════════════════
+       INFORMATION CARD — Spatial Glass
+    ═══════════════════════════════════════════ */
+   #ciWidget {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      width: 200px;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      z-index: 1000;
+      transition: opacity 0.4s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1);
+    }
+    #ciWidget.collapsed {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px) scale(0.97);
+    }
+#ciCard {
+  border-radius: 16px; overflow: hidden;
+  background: rgba(10, 10, 12, 0.72);
+  backdrop-filter: blur(60px) saturate(130%);
+  -webkit-backdrop-filter: blur(60px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 0.5px rgba(255,255,255,0.06), 0 20px 50px -12px rgba(0,0,0,0.5), 0 0 80px -20px rgba(0,0,0,0.2);
+}
+.ci-header { padding: 16px 16px 12px; }
+.ci-breadcrumb {
+  font-size: 8px; letter-spacing: 2.5px;
+  color: rgba(255,255,255,0.4); text-transform: uppercase; font-weight: 400;
+}
+.ci-title-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-top: 6px; gap: 8px;
+}
+.ci-title {
+  font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.95);
+  line-height: 1.15; letter-spacing: -0.3px;
+}
+.ci-badge {
+  font-size: 7px; letter-spacing: 1px; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.12);
+  padding: 3px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+}
+.ci-divider {
+  height: 1px; margin: 0 16px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.12) 20%, rgba(255,255,255,0.12) 80%, rgba(255,255,255,0) 100%);
+}
+.ci-area {
+  padding: 14px 16px; display: flex; align-items: baseline; gap: 4px;
+}
+.ci-area-num {
+  font-size: 32px; font-weight: 300; color: rgba(255,255,255,0.95);
+  line-height: 1; letter-spacing: -1px;
+}
+.ci-area-label { display: flex; flex-direction: column; gap: 0; margin-left: 2px; }
+.ci-area-unit {
+  font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.5);
+  text-transform: uppercase; letter-spacing: 1.5px; line-height: 1;
+}
+.ci-area-sub { font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.3px; margin-top: 2px; }
+.ci-details { padding: 2px 16px 14px; }
+.ci-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; }
+.ci-row + .ci-row { border-top: 1px solid rgba(255,255,255,0.06); }
+.ci-label {
+  font-size: 9px; color: rgba(255,255,255,0.4); letter-spacing: 1.2px;
+  text-transform: uppercase; font-weight: 400;
+}
+.ci-value { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.3px; }
+.ci-close {
+  position: absolute; top: 10px; right: 10px; width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  border-radius: 50%; background: rgba(255,255,255,0.08); border: none;
+  color: rgba(255,255,255,0.4); font-size: 12px; transition: all 0.2s;
+  z-index: 5; line-height: 1; padding: 0;
+}
+.ci-close:hover { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); }
+/* Toggle button */
+.ci-toggle {
+  position: fixed; top: 24px; right: 24px; width: 36px; height: 36px;
+  border-radius: 12px; background: rgba(10,10,12,0.72);
+  backdrop-filter: blur(60px); -webkit-backdrop-filter: blur(60px);
+  border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.5);
+  display: none; align-items: center; justify-content: center; cursor: pointer;
+  z-index: 1001; transition: all 0.25s; box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.ci-toggle:hover { background: rgba(10,10,12,0.85); color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.15); }
+.ci-toggle.visible { display: flex; }
+.ci-toggle svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ═══════════════════════════════════════════ */
+    .dock-wrap, #dock { display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; height: 0 !important; overflow: hidden !important; position: absolute !important; }
+
+   #jumpBar { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 9999; display: inline-flex; align-items: center; gap: 0; background: rgba(10, 10, 12, 0.75); backdrop-filter: blur(60px) saturate(130%); -webkit-backdrop-filter: blur(60px) saturate(130%); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 4px; box-shadow: 0 0 0 0.5px rgba(255,255,255,0.05), 0 20px 50px -12px rgba(0,0,0,0.5); font-family: 'DM Sans', -apple-system, sans-serif; }
+#jumpBar a { display: flex; align-items: center; justify-content: center; height: 34px; padding: 0 16px; border-radius: 10px; text-decoration: none; color: rgba(255,255,255,0.6); font-size: 11.5px; font-weight: 500; letter-spacing: 0.3px; transition: color 0.25s cubic-bezier(.4,0,.2,1), background 0.25s cubic-bezier(.4,0,.2,1); white-space: nowrap; cursor: pointer; }
+#jumpBar a:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.08); }
+#jumpBar a.active { color: #fff; background: rgba(255,255,255,0.15); font-weight: 600; }
+
+
+    .close-btn { position: fixed !important; top: 24px !important; left: 24px !important; width: 36px !important; height: 36px !important; border-radius: 12px !important; background: rgba(15,15,18,0.42) !important; backdrop-filter: blur(60px) !important; -webkit-backdrop-filter: blur(60px) !important; border: 1px solid rgba(255,255,255,0.07) !important; color: rgba(255,255,255,0.45) !important; font-size: 15px !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; z-index: 9999 !important; box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important; transition: all 0.25s !important; line-height: 1 !important; padding: 0 !important; }
+    .close-btn:hover { background: rgba(15,15,18,0.6) !important; color: rgba(255,255,255,0.8) !important; border-color: rgba(255,255,255,0.1) !important; }
+  </style>
+</head>
+
+<body>
+
+  <div class="main-container">
+    <div class="image-container">
+
+      <div id="ciWidget">
+        <div id="ciCard">
+          <button class="ci-close" id="ciClose">×</button>
+          <div class="ci-header">
+            <div class="ci-breadcrumb">Cosmos Quesnel </div>
+            <div class="ci-title-row">
+              <div class="ci-title">Master Bedroom</div>
+              <div class="ci-badge">2bhk</div>
+            </div>
+          </div>
+          <div class="ci-divider"></div>
+          <div class="ci-area">
+            <div class="ci-area-num">119'9</div>
+            <div class="ci-area-label">
+              <div class="ci-area-unit">sq ft</div>
+              <div class="ci-area-sub">Built-up</div>
+            </div>
+          </div>
+          <div class="ci-divider"></div>
+          <div class="ci-details">
+            <div class="ci-row">
+              <div class="ci-label">Length</div>
+              <div class="ci-value">8.7 ft</div>
+            </div>
+            <div class="ci-row">
+              <div class="ci-label">Width</div>
+              <div class="ci-value">10'3 ft</div>
+            </div>
+            <div class="ci-row">
+              <div class="ci-label">Height</div>
+              <div class="ci-value">9'8 ft</div>
+            </div>
+            <div class="ci-row">
+              <div class="ci-label">Facing</div>
+              <div class="ci-value">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+ <!-- ══ ENQUIRY TRIGGER ══ -->
+  <button class="enquiry-btn" id="enquiryBtn" aria-label="Open Enquiry">Enquiry</button>
+
+  <!-- ══ SLIDE-IN ENQUIRY PANEL ══ -->
+  <div class="enquiry">
+    <div class="overlay" id="enquiryOverlay" aria-hidden="true">
+      <div class="modal" role="dialog" aria-labelledby="enquiryTitle">
+        <div class="modal-header">
+          <div id="enquiryTitle" class="title">Request Callback</div>
+          <button class="close" id="closeBtn" aria-label="Close">&#x2715;</button>
+        </div>
+        <div class="modal-body">
+          <form id="enquiryForm" class="form" novalidate>
+            <input class="input" name="fullName" placeholder="Full Name" required />
+            <div class="phone">
+              <select name="dialCode" aria-label="Country Code">
+                <option>+91</option>
+                <option>+971</option>
+                <option>+44</option>
+                <option>+1</option>
+              </select>
+              <input type="tel" name="phone" placeholder="Phone Number" maxlength="10" pattern="[0-9]{10}"
+                inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'')" required />
+            </div>
+            <input class="input" name="city" placeholder="City" required />
+            <input class="input" type="email" name="email" placeholder="Email Address"
+              pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required />
+            <select class="input select" name="preferredTime" required>
+              <option value="" disabled selected>Preferred Time to Call</option>
+              <option value="morning">Morning</option>
+              <option value="afternoon">Afternoon</option>
+              <option value="evening">Evening</option>
+            </select>
+            <div class="g-recaptcha" data-sitekey="6Le6qZQsAAAAALlNrziohJHHqf43BSZvE1wfoxnl"></div>
+            <div class="form-btn-row">
+              <button class="btn-callback" type="submit">Request a Call Back</button>
+              <a href="tel:+910000000000" class="btn-callnow">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+                Call Now
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="ci-toggle" id="ciToggle" title="Room info">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      </div>
+
+    </div>
+  </div>
+
+  <button class="close-btn" id="closeCard">←</button>
+
+  <div class="main-container">
+    <div class="image-container"></div>
+  </div>
+
+  <!-- NEW JUMP BAR -->
+  <div id="jumpBar">
+  <a href="Bedroom_01.html" class="active">Bedroom 1</a>
+    <a href="Bedroom_02.html">Bedroom 2</a>
+    <a href="Lobby.html">Lobby</a>
+   
+    <a href="Kitchen.html">Kitchen</a>
+   <a href="Bathroom.html">Bathroom</a>
+   
+    <a href="Balcony/Balcony_05.html">Balcony</a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/panolens@0.12.0/build/panolens.min.js"></script>
+
+  <script>
+    function createArrowSVG() {
+      const size = 256;
+      const canvas = document.createElement("canvas");
+      canvas.width = size; canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      const cx = size / 2, cy = size / 2, outerR = 88, innerRingR = 76, dotR = 30;
+
+      ctx.save(); ctx.shadowColor = "rgba(0, 0, 0, 0.45)"; ctx.shadowBlur = 24; ctx.shadowOffsetY = 6;
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = "rgba(0,0,0,0.001)"; ctx.fill(); ctx.restore();
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = "rgba(255, 255, 255, 0.08)"; ctx.fill();
+      const glassGrad = ctx.createRadialGradient(cx, cy - 20, 10, cx, cy, outerR);
+      glassGrad.addColorStop(0, "rgba(255, 255, 255, 0.28)"); glassGrad.addColorStop(0.55, "rgba(255, 255, 255, 0.10)"); glassGrad.addColorStop(1, "rgba(255, 255, 255, 0.03)");
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = glassGrad; ctx.fill();
+      const gloss = ctx.createLinearGradient(cx, cy - outerR, cx, cy);
+      gloss.addColorStop(0, "rgba(255, 255, 255, 0.35)"); gloss.addColorStop(1, "rgba(255, 255, 255, 0)");
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = gloss; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.strokeStyle = "rgba(255, 255, 255, 0.22)"; ctx.lineWidth = 2; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx, cy, innerRingR, 0, Math.PI * 2); ctx.strokeStyle = "rgba(255, 255, 255, 0.08)"; ctx.lineWidth = 1.5; ctx.stroke();
+      const dotGrad = ctx.createRadialGradient(cx - 2, cy - 3, 1, cx, cy, dotR);
+      dotGrad.addColorStop(0, "#123a8a"); dotGrad.addColorStop(1, "#0A1F44");
+      ctx.beginPath(); ctx.arc(cx, cy, dotR, 0, Math.PI * 2); ctx.fillStyle = dotGrad; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx - 3.5, cy - 4, 3, 0, Math.PI * 2); ctx.fillStyle = "rgba(255, 255, 255, 0.55)"; ctx.fill();
+      return canvas.toDataURL("image/png");
+    }
+  </script>
+
+  <script>
+    const LOW_SRC = "./../../../images/Thumbnail/Apartments/2BHK/Bedroom_01-1.webp";
+    const HIGH_SRC = "./../../../images/Apartments/2BHK/Bedroom_01-1.jpg";
+    const imageContainer = document.querySelector(".image-container");
+    const panoLow = new PANOLENS.ImagePanorama(LOW_SRC);
+    const panoHigh = new PANOLENS.ImagePanorama(HIGH_SRC);
+
+    const viewer = new PANOLENS.Viewer({ container: imageContainer, autoRotate: false, autoRotateSpeed: 0.1, controlBar: false, cameraFov: 80 });
+    let didInitView = false;
+    const TEXTURE_YAW = -Math.PI / 2 + 0;
+    panoLow.rotation.y = TEXTURE_YAW; panoHigh.rotation.y = TEXTURE_YAW;
+
+    function setInitialViewAndLockPitch() {
+      if (didInitView) return; didInitView = true;
+      const controls = viewer.getControl(); controls.rotateUp(-(-Math.PI / 40));
+      if ('minPolarAngle' in controls && 'maxPolarAngle' in controls) { controls.minPolarAngle = 0; controls.maxPolarAngle = Math.PI; }
+      if ('enablePan' in controls) controls.enablePan = false;
+    }
+
+    panoLow.addEventListener('enter', setInitialViewAndLockPitch);
+    panoHigh.addEventListener('enter', setInitialViewAndLockPitch);
+    viewer.add(panoLow); viewer.add(panoHigh); viewer.setPanorama(panoLow);
+
+    function degToRad(deg) { return deg * Math.PI / 180; }
+    function setFromAngles(spot, yawDeg, pitchDeg, radius = 5000) {
+      const yaw = degToRad(yawDeg), pitch = degToRad(pitchDeg);
+      spot.position.set(radius * Math.cos(pitch) * Math.sin(yaw), radius * Math.sin(pitch), radius * Math.cos(pitch) * Math.cos(yaw));
+    }
+
+    const ARROW_ICON = createArrowSVG();
+
+    const spot1 = new PANOLENS.Infospot(500, ARROW_ICON);
+    setFromAngles(spot1, 85, -10); spot1.addHoverText("Bedroom 1");
+    spot1.addEventListener('click', () => { setTimeout(() => { window.location.href = "Bedroom_01.html"; }, 800); });
+
+
+    [panoLow, panoHigh].forEach(pano => { pano.add(spot1); });
+
+    panoLow.addEventListener("load", () => {
+      panoHigh.addEventListener("load", () => { viewer.setPanorama(panoHigh, 600); });
+      panoHigh.load();
+    });
+    panoHigh.addEventListener("error", (e) => { console.warn("Failed to load high-res:", e); });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const widget = document.getElementById("ciWidget");
+      const toggle = document.getElementById("ciToggle");
+      const ciClose = document.getElementById("ciClose");
+      if (ciClose) { ciClose.addEventListener("click", (e) => { e.stopPropagation(); widget.classList.add("collapsed"); toggle.classList.add("visible"); }); }
+      if (toggle) { toggle.addEventListener("click", () => { widget.classList.remove("collapsed"); toggle.classList.remove("visible"); }); }
+      const closeCard = document.getElementById("closeCard");
+      if (closeCard) { closeCard.addEventListener("click", () => { window.location.href = "../../Floor_3.html"; }); }
+    });
+  </script>
+
+  <script src="./../../../JS/bz021sxwxo.js"></script>
+  <script src="./../../../JS/3qjueo9nsm.js"></script>
+  <script src="./../../../JS/2a26l58eqz.js"></script>
+  <script src="./../../../JS/5guwuzaijb.js"></script>
+  <script src="./../../../JS/ky0nwmerow.js"></script>
+  <script src="./../../../JS/ekdxgbwr0o.js"></script>
+
+  <div class="dock-wrap" id="dock" style="display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;pointer-events:none!important;position:absolute!important;opacity:0!important;">
+    <div class="dock-shelf"></div>
+    <div class="dock-items" id="dockItems">
+      <a class="dock-item is-accent" href="Bedroom.html"><span class="dock-label">Bedroom</span><div class="dock-icon"></div><span class="dock-item-label">Bedroom</span><span class="dock-dot"></span></a>
+      <a class="dock-item" href="Bathroom.html"><span class="dock-label">Bathroom</span><div class="dock-icon"></div><span class="dock-item-label">Bathroom</span><span class="dock-dot"></span></a>
+      <a class="dock-item" href="Kitchen.html"><span class="dock-label">Kitchen</span><div class="dock-icon"></div><span class="dock-item-label">Kitchen</span><span class="dock-dot"></span></a>
+      <a class="dock-item" href="Enterance.html"><span class="dock-label">Entrance</span><div class="dock-icon"></div><span class="dock-item-label">Entrance</span><span class="dock-dot"></span></a>
+      <a class="dock-item" href="Lobby.html"><span class="dock-label">Lobby</span><div class="dock-icon"></div><span class="dock-item-label">Lobby</span><span class="dock-dot"></span></a>
+      <a class="dock-item" href="Balcony/Balcony_05.html"><span class="dock-label">Balcony</span><div class="dock-icon"></div><span class="dock-item-label">Balcony</span><span class="dock-dot"></span></a>
+    </div>
+  </div>
+
+  <script>
+    (function forceHideDock() {
+      const hide = () => { const d = document.getElementById('dock'); if (d) d.style.cssText = 'display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;pointer-events:none!important;position:absolute!important;opacity:0!important;'; };
+      hide(); setTimeout(hide, 500); setTimeout(hide, 1500);
+    })();
+  </script>
+   <!-- ===== ENQUIRY BUTTON SCRIPT ===== -->
+  <script>
+    (function() {
+      var btn = document.getElementById('enquiryBtn');
+      var overlay = document.getElementById('enquiryOverlay');
+      var closeBtn = document.getElementById('closeBtn');
+      if (!btn || !overlay) return;
+
+      // Stop Panolens from intercepting pointer events on the button
+      btn.addEventListener('pointerdown', function(e) { e.stopPropagation(); });
+      btn.addEventListener('mousedown', function(e) { e.stopPropagation(); });
+      btn.addEventListener('touchstart', function(e) { e.stopPropagation(); });
+
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        btn.classList.add('is-hidden');
+      });
+
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        btn.classList.remove('is-hidden');
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', close);
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+
+      // === FORCE STYLE OVERRIDE after external JS runs ===
+      // Some external JS files may re-apply styles; this ensures the button stays correct
+      setTimeout(function() {
+        btn.style.cssText = 'position:fixed!important;right:0!important;top:50%!important;transform:translateY(-50%)!important;z-index:10001!important;writing-mode:vertical-rl!important;text-orientation:mixed!important;padding:24px 13px!important;background:#111!important;color:#fff!important;font-family:"DM Sans",-apple-system,sans-serif!important;font-weight:700!important;font-size:11px!important;letter-spacing:2.5px!important;text-transform:uppercase!important;border:none!important;border-radius:12px 0 0 12px!important;cursor:pointer!important;white-space:nowrap!important;box-shadow:-4px 0 20px rgba(0,0,0,0.4)!important;pointer-events:auto!important;overflow:visible!important;display:block!important;opacity:1!important;visibility:visible!important;';
+      }, 100);
+    })();
+  </script>
+</body>
+</html>

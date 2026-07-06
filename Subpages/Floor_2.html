@@ -178,7 +178,7 @@
             z-index: 10;
         }
 
-       /* FLOOR PILL BASE */
+        /* FLOOR PILL BASE */
         .floor-pill {
             position: fixed;
             top: 20px;
@@ -270,6 +270,7 @@
             background: rgba(201, 168, 124, 0.25);
             color: #c9a87c;
         }
+
         /* .button1 {
             top: 70%;
             left: 64%;
@@ -350,35 +351,62 @@
             transform: scale(1);
             opacity: 1;
         }
+
         .floor-badge {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 999px;
+            padding: 10px 28px;
+            font-family: sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: #000000;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(201, 168, 124, 0.3);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+
+        
+        .availability-btn{
     position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    top: 21px;
+    right: 180px;   /* adjust according to your Floor button */
+    z-index: 10000;
+
+    padding: 17px 15px;
+    border: none;
     border-radius: 999px;
-    padding: 10px 28px;
-    font-family: sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: #000000;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-    border: 1px solid rgba(201,168,124,0.3);
-    white-space: nowrap;
-    pointer-events: none;
+font-family: sans-serif;
+    background: rgba(255,255,255,.75);
+    backdrop-filter: blur(17px);
+
+    color: #222;
+    font-weight: 500;
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+    transition: .25s;
 }
 
+.availability-btn:hover{
+    background:#fff;
+}
     </style>
 </head>
 
 <body>
-<div class="floor-badge">Floor 2</div>
+    <div class="floor-badge">Floor 2</div>
 
-    
+
 
 
 
@@ -395,6 +423,10 @@
         </svg>
     </button>
     <div id="waLabel" class="wa-label">Chat on WhatsApp</div> -->
+    <button id="toggleAvailability" class="availability-btn">
+    Hide Availability
+</button>
+
     <button class="close-btn2" id="closeCard">←</button>
     <div class="lobby-top">
         <div class="content-wrapper">
@@ -403,113 +435,224 @@
                 data-full="./../images/floor/Floor_2.jpg" alt="Home" fetchpriority="high" decoding="async" width="4096"
                 height="4096" class="blur-up" />
             <div class="Cutout">
-                <!-- <path id="Room_01" data-link="Subpages/1BHK/360/Kitchen.html"
+                <!-- <path id="Room_01" data-link="Subpages/1BHK/Lobby_Top.html"
                         d="M325.83,992.22v815.5h-104.39v362.23h503.11l14.67-12.45v-140h18.67v49.78h246.44v-897.56h-97.67v-177.5H325.83Z" /> -->
                 <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 4096 4096">
-                    <!-- <path id="2 BHK" data-link="2BHK/360/Kitchen.html"
+                    <!-- <path id="2 BHK" data-link="2BHK/Lobby_Top.html"
                         d="M360 2847h428l-3-77 247-1v-760h-95v-69H471v609H360z" class="st0" /> -->
-                    <path id="2 BHK" data-link="2BHK/360/Kitchen.html" d="M475.69 1136.57v805.66h473v-68h91.33v-776.22H799.14v37.33z" class="st0" />
-                    <path id="2 BHK" data-link="2BHK/360/Kitchen.html"
-                        d="M475.69 1942.23v598.56H356.25v312.44h440.89v-212.89h246.44v-635.33h-97.33v-62.78z"
+                    <path id="2 BHK" data-unit="202" data-link="2BHK/Lobby_Top.html" data-balcony="LeftCorner"
+                        d="M475.69 1136.57v805.66h473v-68h91.33v-776.22H799.14v37.33z" class="st0" />
+
+
+                    <path id="2 BHK" data-unit="201" data-link="2BHK/Lobby_Top.html" data-balcony="LeftCorner"
+                        d="M488 1943.67h472.67v58.66H1053v764.78H830.22l-15.55 8.89h-27.56v-23.56H578.83v-11.27H487v-15.5l-9.33 1.66v-64.83l9.16-3z"
                         class="st0" />
-                    <path id="1 BHK" data-link="1BHK/360/Kitchen.html" d="M1247.91 2003.68v398.66h-204.33v392.67h276.33v-25.33h313.34v-766z"
+
+
+
+
+
+                    <path id="1 BHK" data-unit="210" data-link="1BHK/Lobby_Top.html" data-balcony="CENTER"
+                        d="M1634.67 1999.33V2776h9l3.33-8.25h196.17v8.25h58.16v-25.17h202v-9.66h6.67v-741.84z"
                         class="st0" />
-                    <path id="1 BHK" data-link="1BHK/360/Kitchen.html" d="M1633.25 2741.68h259.66v50.66h214v-788.66h-473.66z" class="st0" />
-                    <path id="1 BHK" data-link="1BHK/360/Kitchen.html" d="M2106.91 2774.34h263.45v18h216.33v-787l-479.78-1.66z" class="st0" />
-                    <path id="2 BHK" data-link="2BHK/360/Kitchen.html"
-                        d="M2586.69 2737.68h474.33v21.33h400.67v-186h-24.67v-186.67h-323.33v-382l-527 1z" class="st0" />
-                    <path id="1 BHK" data-link="1BHK/360/Kitchen.html" d="M2950.36 1139.68v733.33h444.66v-409.33h96l32-22v-318.67h-316.66l-16 17.33z"
+
+
+                    <path id="1 BHK" data-unit="209" data-link="1BHK/Lobby_Top.html" data-balcony="CENTER"
+                        d="M2110 1999.33h470v750.89h-206.22V2776h-58.67l-2.22-2.22h-209.33v-22.95l-.23-9.66h6.67z"
                         class="st0" />
-                    <path id="1 BHK" data-link="1BHK/360/Kitchen.html" d="M2471.36 1141.01v732h479v-781h-201l-16 42z" class="st0" />
-                    <path id="1 BHK" data-link="1BHK/360/Kitchen.html" d="M2471.36 1141.01v-49h-204l-14 39h-259v742h477z" class="st0" />
-                    <path id="1 BHK" data-link="1BHK/360/Kitchen.html"d="M1994.36 1131.01h-261l-11-39h-209v781h481z" class="st0" />
-                    <path id="1 BHK" data-link="1BHK/360/Kitchen.html" d="M1513.36 1092.01h-212v43h-261.34v739.22l473.34-1.22z" class="st0" />
-                    <!-- BHK Labels — white pill, black text, centered in row, pointer-events:none -->
+
+
+                    <path id="2 BHK" data-unit="208" data-link="2BHK/Lobby_Top.html" data-balcony="LeftCorner"
+                        d="M2580 1999.33v742.45l859.11 3.55V2386l-12.89-2.33h-112.66v9.16h-210.73v-393.5z"
+                        class="st0" />
+
+
+                    <path id="1 BHK" data-unit="207" data-link="1BHK/Lobby_Top.html" data-balcony="CENTER"
+                        d="M2950.36 1139.68v733.33h444.66v-409.33h96l32-22v-318.67h-316.66l-16 17.33z" class="st0" />
+
+
+                    <path id="1 BHK" data-unit="206" data-link="1BHK/Lobby_Top.html" data-balcony="CENTER"
+                        d="M2471.36 1141.01v732h479v-781h-201l-16 42z" class="st0" />
+
+
+                    <path id="1 BHK" data-unit="205" data-link="1BHK/Lobby_Top.html" data-balcony="CENTER"
+                        d="M2471.36 1141.01v-49h-204l-14 39h-259v742h477z" class="st0" />
+
+                    <path id="1 BHK" data-unit="204" data-link="1BHK/Lobby_Top.html" data-balcony="CENTER"
+                        d="M1994.36 1131.01h-261l-11-39h-209v781h481z" class="st0" />
+
+                    <path id="1 BHK" data-unit="203" data-link="1BHK/Lobby_Top.html" data-balcony="CENTER"
+                        d="M1513.36 1092.01h-212v43h-261.34v739.22l473.34-1.22z" class="st0" />
+
+                    <!-- Reusable info card: BHK tag + Apartment No. -- same UI as Floor 1 -->
                     <defs>
                         <filter id="pillShadow" x="-20%" y="-50%" width="140%" height="220%">
-                            <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="rgba(0,0,0,0.55)"/>
+                            <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="rgba(0,0,0,0.55)" />
                         </filter>
                     </defs>
                     <style>
-                        .bhk-pill-text {
-                            font-family: 'poppins', Arial, sans-serif;
-                            font-size: 30px;
+                        .bhk-card-bhk {
+                            font-family: 'Poppins', Arial, sans-serif;
+                            font-size: 29px;
                             font-weight: 700;
-                            letter-spacing: 4px;
+                            letter-spacing: 2.5px;
                             pointer-events: none;
                             text-transform: uppercase;
                         }
+
+                        .bhk-card-label {
+                            font-family: 'Poppins', Arial, sans-serif;
+                            font-size: 25px;
+                            font-weight: 600;
+                            letter-spacing: 2px;
+                            pointer-events: none;
+                            text-transform: uppercase;
+                            fill: #505050;
+                        }
+
+                        .bhk-card-value {
+                            font-family: 'Poppins', Arial, sans-serif;
+                            font-size: 32px;
+                            font-weight: 700;
+                            letter-spacing: 1px;
+                            pointer-events: none;
+                            fill: #0C0C0C;
+                        }
                     </style>
 
-                    <!-- ═══ ROW 1 (y1092–1873) — centered at y=1482 ═══ -->
+                    <!-- ROW 1 (y1092-1873) -- centered at y=1482 -->
 
-                    <!-- 2 BHK · x=758 -->
-                    <g filter="url(#pillShadow)" pointer-events="none">
-                        <rect x="653" y="1454" width="210" height="56" rx="28" fill="#ffffff"/>
+                    <!-- Card - 2 BHK - x=758 -->
+                    <g pointer-events="none">
+                        <g filter="url(#pillShadow)">
+                            <rect x="608" y="1397" width="300" height="170" rx="26" style="fill:rgba(255,255,255,0.65);stroke:rgba(255,255,255,0.7);stroke-width:1.5px;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);" />
+                        </g>
+                        <rect x="608" y="1397" width="300" height="60" rx="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <rect x="608" y="1431" width="300" height="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <text class="bhk-card-bhk" x="758" y="1445" text-anchor="middle" fill="#FFFFFF">2 BHK</text>
+
+                        <text class="bhk-card-label" x="758" y="1502" text-anchor="middle">Apartment No.</text>
+                        <text class="bhk-card-value" x="758" y="1545" text-anchor="middle">202</text>
                     </g>
-                    <text class="bhk-pill-text" x="758" y="1492" text-anchor="middle" fill="#000000">2 BHK</text>
 
-                    <!-- 1 BHK · x=1277 -->
-                    <g filter="url(#pillShadow)" pointer-events="none">
-                        <rect x="1172" y="1454" width="210" height="56" rx="28" fill="#ffffff"/>
+                    <!-- Card - 1 BHK - x=1277 -->
+                    <g pointer-events="none">
+                        <g filter="url(#pillShadow)">
+                            <rect x="1127" y="1397" width="300" height="170" rx="26" style="fill:rgba(255,255,255,0.65);stroke:rgba(255,255,255,0.7);stroke-width:1.5px;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);" />
+                        </g>
+                        <rect x="1127" y="1397" width="300" height="60" rx="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <rect x="1127" y="1431" width="300" height="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <text class="bhk-card-bhk" x="1277" y="1445" text-anchor="middle" fill="#FFFFFF">1 BHK</text>
+
+                        <text class="bhk-card-label" x="1277" y="1502" text-anchor="middle">Apartment No.</text>
+                        <text class="bhk-card-value" x="1277" y="1545" text-anchor="middle">203</text>
                     </g>
-                    <text class="bhk-pill-text" x="1277" y="1492" text-anchor="middle" fill="#000000">1 BHK</text>
 
-                    <!-- 1 BHK · x=1754 -->
-                    <g filter="url(#pillShadow)" pointer-events="none">
-                        <rect x="1649" y="1454" width="210" height="56" rx="28" fill="#ffffff"/>
+                    <!-- Card - 1 BHK - x=1754 -->
+                    <g pointer-events="none">
+                        <g filter="url(#pillShadow)">
+                            <rect x="1604" y="1397" width="300" height="170" rx="26" style="fill:rgba(255,255,255,0.65);stroke:rgba(255,255,255,0.7);stroke-width:1.5px;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);" />
+                        </g>
+                        <rect x="1604" y="1397" width="300" height="60" rx="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <rect x="1604" y="1431" width="300" height="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <text class="bhk-card-bhk" x="1754" y="1445" text-anchor="middle" fill="#FFFFFF">1 BHK</text>
+
+                        <text class="bhk-card-label" x="1754" y="1502" text-anchor="middle">Apartment No.</text>
+                        <text class="bhk-card-value" x="1754" y="1545" text-anchor="middle">204</text>
                     </g>
-                    <text class="bhk-pill-text" x="1754" y="1492" text-anchor="middle" fill="#000000">1 BHK</text>
 
-                    <!-- 1 BHK · x=2233 -->
-                    <g filter="url(#pillShadow)" pointer-events="none">
-                        <rect x="2128" y="1454" width="210" height="56" rx="28" fill="#ffffff"/>
+                    <!-- Card - 1 BHK - x=2233 -->
+                    <g pointer-events="none">
+                        <g filter="url(#pillShadow)">
+                            <rect x="2083" y="1397" width="300" height="170" rx="26" style="fill:rgba(255,255,255,0.65);stroke:rgba(255,255,255,0.7);stroke-width:1.5px;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);" />
+                        </g>
+                        <rect x="2083" y="1397" width="300" height="60" rx="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <rect x="2083" y="1431" width="300" height="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <text class="bhk-card-bhk" x="2233" y="1445" text-anchor="middle" fill="#FFFFFF">1 BHK</text>
+
+                        <text class="bhk-card-label" x="2233" y="1502" text-anchor="middle">Apartment No.</text>
+                        <text class="bhk-card-value" x="2233" y="1545" text-anchor="middle">205</text>
                     </g>
-                    <text class="bhk-pill-text" x="2233" y="1492" text-anchor="middle" fill="#000000">1 BHK</text>
 
-                    <!-- 1 BHK · x=2711 -->
-                    <g filter="url(#pillShadow)" pointer-events="none">
-                        <rect x="2606" y="1454" width="210" height="56" rx="28" fill="#ffffff"/>
+                    <!-- Card - 1 BHK - x=2711 -->
+                    <g pointer-events="none">
+                        <g filter="url(#pillShadow)">
+                            <rect x="2561" y="1397" width="300" height="170" rx="26" style="fill:rgba(255,255,255,0.65);stroke:rgba(255,255,255,0.7);stroke-width:1.5px;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);" />
+                        </g>
+                        <rect x="2561" y="1397" width="300" height="60" rx="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <rect x="2561" y="1431" width="300" height="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <text class="bhk-card-bhk" x="2711" y="1445" text-anchor="middle" fill="#FFFFFF">1 BHK</text>
+
+                        <text class="bhk-card-label" x="2711" y="1502" text-anchor="middle">Apartment No.</text>
+                        <text class="bhk-card-value" x="2711" y="1545" text-anchor="middle">206</text>
                     </g>
-                    <text class="bhk-pill-text" x="2711" y="1492" text-anchor="middle" fill="#000000">1 BHK</text>
 
-                    <!-- 1 BHK · x=3237 -->
-                    <g filter="url(#pillShadow)" pointer-events="none">
-                        <rect x="3132" y="1454" width="210" height="56" rx="28" fill="#ffffff"/>
+                    <!-- Card - 1 BHK - x=3237 -->
+                    <g pointer-events="none">
+                        <g filter="url(#pillShadow)">
+                            <rect x="3087" y="1397" width="300" height="170" rx="26" style="fill:rgba(255,255,255,0.65);stroke:rgba(255,255,255,0.7);stroke-width:1.5px;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);" />
+                        </g>
+                        <rect x="3087" y="1397" width="300" height="60" rx="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <rect x="3087" y="1431" width="300" height="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <text class="bhk-card-bhk" x="3237" y="1445" text-anchor="middle" fill="#FFFFFF">1 BHK</text>
+
+                        <text class="bhk-card-label" x="3237" y="1502" text-anchor="middle">Apartment No.</text>
+                        <text class="bhk-card-value" x="3237" y="1545" text-anchor="middle">207</text>
                     </g>
-                    <text class="bhk-pill-text" x="3237" y="1492" text-anchor="middle" fill="#000000">1 BHK</text>
 
-                    <!-- ═══ ROW 2 (y2004–2853) — centered at y=2428 ═══ -->
+                    <!-- ROW 2 (y2004-2853) -- centered at y=2428 -->
 
-                    <!-- 2 BHK · x=700 -->
-                    <g filter="url(#pillShadow)" pointer-events="none">
-                        <rect x="595" y="2400" width="210" height="56" rx="28" fill="#ffffff"/>
+                    <!-- Card - 2 BHK - x=700 -->
+                    <g pointer-events="none">
+                        <g filter="url(#pillShadow)">
+                            <rect x="550" y="2343" width="300" height="170" rx="26" style="fill:rgba(255,255,255,0.65);stroke:rgba(255,255,255,0.7);stroke-width:1.5px;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);" />
+                        </g>
+                        <rect x="550" y="2343" width="300" height="60" rx="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <rect x="550" y="2377" width="300" height="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <text class="bhk-card-bhk" x="700" y="2391" text-anchor="middle" fill="#FFFFFF">2 BHK</text>
+
+                        <text class="bhk-card-label" x="700" y="2448" text-anchor="middle">Apartment No.</text>
+                        <text class="bhk-card-value" x="700" y="2491" text-anchor="middle">201</text>
                     </g>
-                    <text class="bhk-pill-text" x="700" y="2438" text-anchor="middle" fill="#000000">2 BHK</text>
 
-                    <!-- 1 BHK · x=1338 -->
-                    <g filter="url(#pillShadow)" pointer-events="none">
-                        <rect x="1233" y="2400" width="210" height="56" rx="28" fill="#ffffff"/>
-                    </g>
-                    <text class="bhk-pill-text" x="1338" y="2438" text-anchor="middle" fill="#000000">1 BHK</text>
+                    <!-- Card - 1 BHK - x=1870 -->
+                    <g pointer-events="none">
+                        <g filter="url(#pillShadow)">
+                            <rect x="1720" y="2343" width="300" height="170" rx="26" style="fill:rgba(255,255,255,0.65);stroke:rgba(255,255,255,0.7);stroke-width:1.5px;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);" />
+                        </g>
+                        <rect x="1720" y="2343" width="300" height="60" rx="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <rect x="1720" y="2377" width="300" height="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <text class="bhk-card-bhk" x="1870" y="2391" text-anchor="middle" fill="#FFFFFF">1 BHK</text>
 
-                    <!-- 1 BHK · x=1870 -->
-                    <g filter="url(#pillShadow)" pointer-events="none">
-                        <rect x="1765" y="2400" width="210" height="56" rx="28" fill="#ffffff"/>
+                        <text class="bhk-card-label" x="1870" y="2448" text-anchor="middle">Apartment No.</text>
+                        <text class="bhk-card-value" x="1870" y="2491" text-anchor="middle">210</text>
                     </g>
-                    <text class="bhk-pill-text" x="1870" y="2438" text-anchor="middle" fill="#000000">1 BHK</text>
 
-                    <!-- 1 BHK · x=2347 -->
-                    <g filter="url(#pillShadow)" pointer-events="none">
-                        <rect x="2242" y="2400" width="210" height="56" rx="28" fill="#ffffff"/>
-                    </g>
-                    <text class="bhk-pill-text" x="2347" y="2438" text-anchor="middle" fill="#000000">1 BHK</text>
+                    <!-- Card - 1 BHK - x=2347 -->
+                    <g pointer-events="none">
+                        <g filter="url(#pillShadow)">
+                            <rect x="2197" y="2343" width="300" height="170" rx="26" style="fill:rgba(255,255,255,0.65);stroke:rgba(255,255,255,0.7);stroke-width:1.5px;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);" />
+                        </g>
+                        <rect x="2197" y="2343" width="300" height="60" rx="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <rect x="2197" y="2377" width="300" height="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <text class="bhk-card-bhk" x="2347" y="2391" text-anchor="middle" fill="#FFFFFF">1 BHK</text>
 
-                    <!-- 2 BHK · x=3024 -->
-                    <g filter="url(#pillShadow)" pointer-events="none">
-                        <rect x="2919" y="2400" width="210" height="56" rx="28" fill="#ffffff"/>
+                        <text class="bhk-card-label" x="2347" y="2448" text-anchor="middle">Apartment No.</text>
+                        <text class="bhk-card-value" x="2347" y="2491" text-anchor="middle">209</text>
                     </g>
-                    <text class="bhk-pill-text" x="3024" y="2438" text-anchor="middle" fill="#000000">2 BHK</text>
+
+                    <!-- Card - 2 BHK - x=3024 -->
+                    <g pointer-events="none">
+                        <g filter="url(#pillShadow)">
+                            <rect x="2874" y="2343" width="300" height="170" rx="26" style="fill:rgba(255,255,255,0.65);stroke:rgba(255,255,255,0.7);stroke-width:1.5px;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);" />
+                        </g>
+                        <rect x="2874" y="2343" width="300" height="60" rx="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <rect x="2874" y="2377" width="300" height="26" style="fill:#0C0C0C !important;stroke:none !important;" />
+                        <text class="bhk-card-bhk" x="3024" y="2391" text-anchor="middle" fill="#FFFFFF">2 BHK</text>
+
+                        <text class="bhk-card-label" x="3024" y="2448" text-anchor="middle">Apartment No.</text>
+                        <text class="bhk-card-value" x="3024" y="2491" text-anchor="middle">208</text>
+                    </g>
 
                 </svg>
             </div>
@@ -576,39 +719,39 @@
         });
     </script>
 
-      <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const widget = document.getElementById("ciWidget");
-      const toggle = document.getElementById("ciToggle");
-      const ciClose = document.getElementById("ciClose");
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const widget = document.getElementById("ciWidget");
+            const toggle = document.getElementById("ciToggle");
+            const ciClose = document.getElementById("ciClose");
 
-      if (ciClose) {
-        ciClose.addEventListener("click", (e) => {
-          e.stopPropagation();
-          widget.classList.add("collapsed");
-          toggle.classList.add("visible");
-        });
-      }
-      if (toggle) {
-        toggle.addEventListener("click", () => {
-          widget.classList.remove("collapsed");
-          toggle.classList.remove("visible");
-        });
-      }
+            if (ciClose) {
+                ciClose.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    widget.classList.add("collapsed");
+                    toggle.classList.add("visible");
+                });
+            }
+            if (toggle) {
+                toggle.addEventListener("click", () => {
+                    widget.classList.remove("collapsed");
+                    toggle.classList.remove("visible");
+                });
+            }
 
-      const closeCard = document.getElementById("closeCard");
-      if (closeCard) {
-        closeCard.addEventListener("click", () => {
-          window.location.href = "../index.html";
-        });
-      }
+            const closeCard = document.getElementById("closeCard");
+            if (closeCard) {
+                closeCard.addEventListener("click", () => {
+                    window.location.href = "../index.html";
+                });
+            }
 
-      // Block pointer events from reaching Panolens canvas
-      ['mousedown', 'mouseup', 'click', 'pointerdown', 'pointerup', 'touchstart', 'touchend'].forEach(evt => {
-        widget.addEventListener(evt, e => e.stopPropagation());
-      });
-    });
-  </script>
+            // Block pointer events from reaching Panolens canvas
+            ['mousedown', 'mouseup', 'click', 'pointerdown', 'pointerup', 'touchstart', 'touchend'].forEach(evt => {
+                widget.addEventListener(evt, e => e.stopPropagation());
+            });
+        });
+    </script>
 
 
     <script src="./../JS/dec7d4pmru.js"></script>
@@ -690,28 +833,40 @@
     </script>
 
     <script>
-       window.addEventListener('DOMContentLoaded', () => {
-    const detailsBox = document.getElementById('details');
-    detailsBox.innerHTML = ``;
-    const paths = document.querySelectorAll('.Cutout path');
+        window.addEventListener('DOMContentLoaded', () => {
 
-    // Get current floor number from the filename (Floor_2.html → "2")
-    const currentFile = window.location.pathname.split('/').pop();
-    const floorMatch = currentFile.match(/Floor_(\d+)/);
-    const currentFloor = floorMatch ? floorMatch[1] : '1';
+            const paths = document.querySelectorAll('.Cutout path');
 
-    paths.forEach(path => {
-        const link = path.getAttribute('data-link');
-        if (link) {
-            path.addEventListener('click', () => {
-                path.style.opacity = "0.6";
-                setTimeout(() => {
-                    window.location.href = `${link}?floor=${currentFloor}`;
-                }, 800);
+            const currentFile = window.location.pathname.split('/').pop();
+            const floorMatch = currentFile.match(/Floor_(\d+)/);
+            const currentFloor = floorMatch ? floorMatch[1] : '1';
+
+            paths.forEach(path => {
+
+                const link = path.dataset.link;
+
+                if (!link) return;
+
+                path.addEventListener('click', () => {
+
+                    sessionStorage.setItem("selectedFloor", currentFloor);
+
+                    sessionStorage.setItem(
+                        "balconyType",
+                        path.dataset.balcony
+                    );
+
+                    path.style.opacity = "0.6";
+
+                    setTimeout(() => {
+                        window.location.href = link;
+                    }, 800);
+
+                });
+
             });
-        }
-    });
-});
+
+        });
     </script>
 
     <script>
@@ -786,11 +941,12 @@
     <div class="floor-pill" id="floorPill">
         <div class="floor-pill__trigger" id="floorTrigger">Select Floors</div>
         <div class="floor-pill__list" id="floorList">
-            <a class="floor-pill__item" href="Floor_1.html">Floor 1</a>
+            <a class="floor-pill__item " href="Floor_1.html">Floor 1</a>
             <a class="floor-pill__item active" href="Floor_2.html">Floor 2</a>
             <a class="floor-pill__item" href="Floor_3.html">Floor 3</a>
             <a class="floor-pill__item" href="Floor_4.html">Floor 4</a>
             <a class="floor-pill__item" href="Floor_5.html">Floor 5</a>
+            <a class="floor-pill__item" href="Floor_6.html">Floor 6</a>
         </div>
     </div>
 
@@ -820,6 +976,88 @@
             });
         })();
     </script>
+
+
+
+
+<script>
+
+
+       // =========================
+       // PASTE YOUR GOOGLE SCRIPT URL HERE
+       // =========================
+
+
+       
+const sheetURL = "https://script.google.com/macros/s/AKfycbzfU-wly0YFeHhAUJtXRevRisOhlAiAHVoj-5HOJlMM6OreJa-LHIyzd9rVTK33QEiNww/exec";
+
+let availabilityVisible = true;
+const unitColors = {};
+
+fetch(sheetURL)
+.then(response => response.json())
+.then(data => {
+
+    data.forEach(unit => {
+
+        const svg = document.querySelector(`[data-unit="${unit.unit}"]`);
+        if (!svg) return;
+
+        let color = "transparent";
+
+        switch(unit.status.toLowerCase().trim()){
+
+            case "sold":
+                color = "rgba(255,0,0,.45)";
+                break;
+
+            case "available":
+                color = "rgba(0,204,68,.45)";
+                break;
+
+            case "hold":
+                color = "rgba(255,153,0,.45)";
+                break;
+
+            case "booked":
+                color = "rgba(0,102,255,.45)";
+                break;
+        }
+
+        unitColors[unit.unit] = color;
+        svg.style.fill = color;
+    });
+
+});
+
+
+
+
+   </script>
+
+   <script>
+    document.getElementById("toggleAvailability").addEventListener("click", function(){
+
+    availabilityVisible = !availabilityVisible;
+
+    document.querySelectorAll("[data-unit]").forEach(svg => {
+
+        if(availabilityVisible){
+            svg.style.fill = unitColors[svg.dataset.unit] || "transparent";
+        }else{
+            svg.style.fill = "transparent";
+        }
+
+    });
+
+    this.textContent = availabilityVisible
+        ? "Hide Availability"
+        : "Show Availability";
+
+});
+
+
+   </script>
 </body>
 
 </html>

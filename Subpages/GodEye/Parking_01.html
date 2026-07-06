@@ -236,25 +236,22 @@
       position: absolute !important;
     }
 
-    /* ═══════════════════════════════════════════
-       NEW JUMP BAR
-    ═══════════════════════════════════════════ */
+    /* JUMP BAR */
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
     #jumpBar {
       position: fixed;
-      bottom: 24px;
+      bottom: 28px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 9999;
+      z-index: 11000;
       display: inline-flex;
       align-items: center;
-      gap: 0;
-      background: rgba(15, 15, 18, 0.42);
-      backdrop-filter: blur(60px) saturate(130%);
-      -webkit-backdrop-filter: blur(60px) saturate(130%);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 14px;
-      padding: 4px;
-      box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.03), 0 20px 50px -12px rgba(0, 0, 0, 0.35);
+      gap: 4px;
+      background: #ffffff;
+      border-radius: 50px;
+      padding: 5px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.18);
       font-family: 'DM Sans', -apple-system, sans-serif;
     }
 
@@ -262,28 +259,135 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 34px;
-      padding: 0 16px;
-      border-radius: 10px;
+      height: 36px;
+      padding: 0 20px;
+      border-radius: 50px;
       text-decoration: none;
-      color: rgba(255, 255, 255, 0.38);
-      font-size: 11.5px;
-      font-weight: 400;
+      color: #555;
+      font-size: 12px;
+      font-weight: 500;
       letter-spacing: 0.3px;
-      transition: color 0.25s cubic-bezier(.4, 0, .2, 1), background 0.25s cubic-bezier(.4, 0, .2, 1);
+      transition: all 0.2s ease;
       white-space: nowrap;
       cursor: pointer;
     }
 
     #jumpBar a:hover {
-      color: rgba(255, 255, 255, 0.75);
-      background: rgba(255, 255, 255, 0.05);
+      color: #111;
+      background: #f0f0f0;
     }
 
     #jumpBar a.active {
-      color: rgba(255, 255, 255, 0.95);
-      background: rgba(255, 255, 255, 0.1);
-      font-weight: 500;
+      color: #fff;
+      background: #111;
+      font-weight: 600;
+    }
+
+    /* ════ FAB CLUSTER ════ */
+    .fab-cluster {
+      position: fixed;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .fab-item {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      transition: width 0.25s cubic-bezier(.4, 0, .2, 1), border-radius 0.25s ease;
+      white-space: nowrap;
+      font-family: 'Poppins', -apple-system, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .fab-item:hover {
+      width: 140px;
+      border-radius: 22px;
+    }
+
+    .fab-whatsapp {
+      background: #25d366;
+    }
+
+    .fab-whatsapp:hover {
+      background: #1ebe5d;
+    }
+
+    .fab-email {
+      background: #1a73e8;
+    }
+
+    .fab-email:hover {
+      background: #1558c0;
+    }
+
+    .fab-location {
+      background: #ea4335;
+    }
+
+    .fab-location:hover {
+      background: #d33426;
+    }
+
+    .fab-icon {
+      min-width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .fab-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+
+    .fab-label {
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity 0.2s ease 0.05s, transform 0.2s ease 0.05s;
+      padding-right: 14px;
+      color: #fff;
+    }
+
+    .fab-item:hover .fab-label {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (max-width: 600px) {
+      .fab-cluster {
+        left: 10px;
+        top: auto;
+        bottom: 90px;
+        transform: none;
+        gap: 8px;
+      }
+
+      .fab-item:hover {
+        width: 44px;
+        border-radius: 50%;
+      }
+
+      .fab-label {
+        display: none;
+      }
     }
 
     /* ═══════════════════════════════════════════
@@ -324,7 +428,34 @@
 <body>
 
 
-
+  <!-- ════ FAB CLUSTER ════ -->
+  <div class="fab-cluster">
+    <a class="fab-item fab-whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener"
+      aria-label="WhatsApp">
+      <div class="fab-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+          <path
+            d="M12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.112 1.529 5.835L.057 23.386a.5.5 0 0 0 .606.63l5.753-1.51A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 0 1-5.003-1.371l-.359-.213-3.714.975.993-3.63-.234-.373A9.818 9.818 0 1 1 12 21.818z" />
+        </svg></div>
+      <span class="fab-label">WhatsApp</span>
+    </a>
+    <a class="fab-item fab-email" href="mailto:info@example.com" aria-label="Email Us">
+      <div class="fab-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+        </svg></div>
+      <span class="fab-label">Email Us</span>
+    </a>
+    <a class="fab-item fab-location" href="https://maps.app.goo.gl/ZgXm51Arpmt4dveE7" target="_blank" rel="noopener"
+      aria-label="Location">
+      <div class="fab-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+        </svg></div>
+      <span class="fab-label">Location</span>
+    </a>
+  </div>
   <!-- Toggle button -->
   <div class="ci-toggle" id="ciToggle" title="Room info">
     <svg viewBox="0 0 24 24">
@@ -340,50 +471,16 @@
 
   <button class="close-btn" id="closeCard">←</button>
 
-  <!-- NEW JUMP BAR -->
-  <nav id="jumpBar">
-      <div class="jb-divider" ></div>
-    <a href="Parking_01.html" class="active">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-        stroke-linejoin="round">
-        <rect x="2" y="4" width="20" height="16" rx="3" />
-        <path d="M9 16v-8h4a2.5 2.5 0 010 5H9" />
-      </svg>
-      Parking
-    </a>
+  <!-- ═══════════════════════════════════════════════
+         JUMPBAR — macOS Dock Style (ENHANCED)
+         ═══════════════════════════════════════════════ -->
 
-       <div class="jb-divider"></div>
-    <a href="LiveView.html" >
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-        stroke-linejoin="round">
-        <rect x="2" y="4" width="20" height="16" rx="3" />
-        <path d="M9 16v-8h4a2.5 2.5 0 010 5H9" />
-      </svg>
-      Live
-    </a>
-    
-    <a href="../../index.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-        stroke-linejoin="round">
-        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-        <polyline points="9 22 9 12 15 12 15 22" />
-      </svg>
-      Home
-    </a>
-    <div class="jb-divider"></div>
-    <a href="../Tower_B.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-        stroke-linejoin="round">
-        <path d="M6 22V4a2 2 0 012-2h8a2 2 0 012 2v18z" />
-        <path d="M6 12H4a2 2 0 00-2 2v8h4" />
-        <path d="M18 12h2a2 2 0 012 2v8h-4" />
-        <path d="M10 7h4M10 12h4M10 17h4" />
-      </svg>
-      Back
-    </a>
-  
- 
-  </nav>
+  <!-- JUMP BAR -->
+  <div id="jumpBar">
+    <a href="../../index.html">Home</a>
+    <a href="../Tower_B.html">Back View</a>
+    <a href="Parking_01.html" class="active">Parking</a>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/panolens@0.12.0/build/panolens.min.js"></script>

@@ -2,226 +2,67 @@
 <html lang="en">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cosmos Quesnel</title>
-    <link rel=" stylesheet" href="wbn05d6fbh.css">
-    <link rel="stylesheet" href="JS/ahrb012icb.css">
-    <link rel="stylesheet" href="JS/Notification/bz0mp28u74.css">
+    <link rel="stylesheet" href="wbn05d6fbh.css">
+    <link rel="stylesheet" href="JS/CSS/Floor-Hint.css">
+    <link rel="stylesheet" href="JS/Notification/UI_Hint-CSS.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <style>
-        .mdb {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* ═══════════════════════════════════════════════
+           DESIGN TOKENS
+           ═══════════════════════════════════════════════ */
+        :root {
+            /* ——— WHITE / EDITORIAL THEME ——— */
+            --bg-0: #F5F2EB;
+            --bg-tint: #EDE8DD;
+
+            --surface-1: rgba(255, 255, 255, 0.72);
+            --surface-2: rgba(255, 255, 255, 0.88);
+            --surface-3: rgba(255, 255, 255, 0.98);
+
+            --ink: #17181D;
+            --ink-soft: rgba(23, 24, 29, 0.62);
+            --ink-mid: rgba(23, 24, 29, 0.62);
+            --ink-dim: rgba(23, 24, 29, 0.40);
+            --ink-faint: rgba(23, 24, 29, 0.22);
+            --ink-trace: rgba(23, 24, 29, 0.09);
+
+            --line: rgba(23, 24, 29, 0.07);
+            --line-hi: rgba(23, 24, 29, 0.12);
+
+            --gold: #A8782A;
+            --gold-light: #C89A3F;
+            --gold-dark: #7A561B;
+            --gold-soft: rgba(168, 120, 42, 0.09);
+            --gold-tint: rgba(168, 120, 42, 0.14);
+
+            --glass: rgba(255, 255, 255, 0.80);
+            --glass-border: rgba(23, 24, 29, 0.08);
+            --glass-border-hover: rgba(168, 120, 42, 0.35);
+
+            --text: #17181D;
+            --text-muted: rgba(23, 24, 29, 0.55);
+
+            --shadow-sm: 0 2px 8px rgba(23, 24, 29, 0.08);
+            --shadow-md: 0 8px 24px rgba(23, 24, 29, 0.10);
+            --shadow-lg: 0 16px 48px rgba(23, 24, 29, 0.13);
+
+            --font-display: 'Cormorant Garamond', serif;
+            --font-ui: 'Outfit', sans-serif;
+            --ease-out: cubic-bezier(0.22, 0.68, 0, 1.04);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --blur: blur(28px) saturate(1.5);
         }
 
-        .pdf-icon {
-            width: 50px;
-            height: auto;
-            object-fit: contain;
-        }
-
-        .fallback-text {
-            margin-left: 6px;
-            font-weight: 600;
-            color: white;
-        }
-
-        .info-card {
-            top: -100px;
-            left: -50px;
-            position: fixed;
-            background-color: transparent;
-            z-index: 8999;
-            pointer-events: none;
-            transform: scale(.9);
-        }
-
-        @media (max-width: 600px) {
-            .Front {
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) scale(1.8);
-            }
-
-            .info-card,
-            .info-content {
-                transform: scale(0.7);
-                top: -50px;
-                left: -30px;
-            }
-        }
-
-        body.splash-active {
-            overflow: hidden;
-            touch-action: none;
-        }
-
-        .call-btn {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 11px 1px;
-            border-radius: 10px;
-            font-weight: 500;
-            font-size: 13px;
-            letter-spacing: 0.3px;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.05);
-            color: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            box-shadow: none;
-            transition: all 0.2s ease;
-            font-family: 'DM Sans', -apple-system, sans-serif;
-        }
-
-        .call-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.85);
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        .splash {
-            position: fixed;
-            inset: 0;
-            z-index: 12000;
-            display: grid;
-            place-items: center;
-            pointer-events: auto;
-            opacity: 1;
-            transition: opacity .6s ease;
-        }
-
-        .splash__backdrop {
-            position: absolute;
-            inset: 0;
-            background: rgba(10, 10, 10, .45);
-            backdrop-filter: blur(14px);
-        }
-
-        .splash__content {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            padding: 0;
-            background: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            transform: translateY(8px);
-            animation: splash-pop .5s ease forwards;
-            pointer-events: none;
-        }
-
-        .splash__logo {
-            width: 300px;
-            height: auto;
-            object-fit: contain;
-            filter: brightness(1.3) drop-shadow(0 4px 10px rgba(0, 0, 0, .15));
-        }
-
-        .splash__text {
-            font: 600 18px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            color: #fff;
-            letter-spacing: .2px;
-            opacity: .95;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
-        }
-
-        @keyframes splash-pop {
-            from {
-                opacity: 0;
-                transform: translateY(16px) scale(.98);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .splash.is-hidden {
-            opacity: 0;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .splash__content {
-                animation: none;
-                transform: none;
-            }
-
-            .splash {
-                transition: opacity .2s linear;
-            }
-        }
-
-        .rera-blueprint {
-            position: fixed;
-            top: 26px;
-            left: 30px;
-            z-index: 1000;
-            padding: 10px 16px;
-            border-left: none;
-            background: rgba(15, 15, 18, 0.42);
-            backdrop-filter: blur(60px) saturate(130%);
-            -webkit-backdrop-filter: blur(60px) saturate(130%);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-            font-family: 'DM Sans', -apple-system, sans-serif;
-        }
-
-        .bp-label {
-            display: block;
-            font-size: 8px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.3);
-            font-weight: 400;
-        }
-
-        .bp-id {
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            color: rgba(255, 255, 255, 0.85);
-            margin-top: 2px;
-        }
-
-        @media (max-width: 600px) {
-            .rera-blueprint {
-                left: 10px;
-                transform: scale(.8);
-                transform-origin: top left;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .top-header {
-                position: fixed !important;
-                top: 10px !important;
-                right: 10px !important;
-                left: auto !important;
-                z-index: 99999 !important;
-                display: flex !important;
-                flex-direction: row !important;
-                gap: 8px !important;
-                width: auto !important;
-            }
-
-            .top-header a,
-            .top-header .top-btn {
-                display: inline-flex !important;
-                flex: 0 0 auto !important;
-                width: auto !important;
-                max-width: none !important;
-                padding: 6px 10px !important;
-                font-size: 12px !important;
-                line-height: 1 !important;
-                white-space: nowrap !important;
-            }
+        /* ═══════════════════════════════════════════════
+           ORIGINAL PAGE STYLES (preserved)
+           ═══════════════════════════════════════════════ */
+        body {
+            background: var(--bg-0);
+            color: var(--ink);
         }
 
         @media (max-width: 600px) {
@@ -230,371 +71,6 @@
                 top: 55%;
                 left: 50%;
             }
-        }
-
-        .enquiry-btn {
-            position: fixed;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10001;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            padding: 24px 13px;
-            background: #111;
-            color: #fff;
-            font-family: 'DM Sans', -apple-system, sans-serif;
-            font-weight: 700;
-            font-size: 11px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 12px 0 0 12px;
-            cursor: pointer;
-            white-space: nowrap;
-            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
-            transition: opacity 0.3s ease, background 0.2s ease;
-        }
-
-        .enquiry-btn::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 14px 0 0 14px;
-            border: 2px solid rgba(255, 255, 255, 0.25);
-            animation: eq-ring 2.5s ease-out infinite;
-            pointer-events: none;
-        }
-
-        @keyframes eq-ring {
-            0% {
-                opacity: 0.7;
-                transform: scale(1);
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(1.08);
-            }
-        }
-
-        .enquiry-btn.is-hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .enquiry-btn:hover {
-            background: #2a2a2a;
-        }
-
-        @media (max-width: 600px) {
-            .enquiry-btn {
-                font-size: 9px;
-                padding: 18px 10px;
-            }
-        }
-
-        .enquiry .overlay {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            align-items: stretch;
-            justify-content: flex-end;
-            background: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
-            -webkit-backdrop-filter: blur(0px);
-            z-index: 99999;
-            pointer-events: none;
-            transition: background 0.35s ease, backdrop-filter 0.35s ease;
-        }
-
-        .enquiry .overlay.is-open {
-            background: rgba(0, 0, 0, 0.52);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            pointer-events: auto;
-        }
-
-        .enquiry .modal {
-            width: min(400px, 100vw);
-            height: 100%;
-            background: rgba(15, 15, 18, 0.75);
-            backdrop-filter: blur(60px) saturate(130%);
-            -webkit-backdrop-filter: blur(60px) saturate(130%);
-            border-left: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 0;
-            box-shadow: -12px 0 50px rgba(0, 0, 0, 0.6);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            transform: translateX(100%);
-            transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
-            font-family: 'DM Sans', -apple-system, sans-serif;
-        }
-
-        .enquiry .overlay.is-open .modal {
-            transform: translateX(0);
-        }
-
-        .enquiry .modal-header {
-            padding: 20px 20px 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .enquiry .modal-header::before {
-            content: '';
-            flex-shrink: 0;
-            width: 2px;
-            height: 18px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-        }
-
-        .enquiry .modal-header .title {
-            flex: 1;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-            font-size: 16px;
-            letter-spacing: 0.3px;
-        }
-
-        .enquiry .close {
-            flex-shrink: 0;
-            width: 30px;
-            height: 30px;
-            display: grid;
-            place-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.04);
-            color: rgba(255, 255, 255, 0.35);
-            cursor: pointer;
-            font-size: 13px;
-            transition: all 0.2s;
-        }
-
-        .enquiry .close:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .enquiry .modal-body {
-            padding: 20px;
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        .enquiry .form {
-            display: grid;
-            gap: 12px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .enquiry .input,
-        .enquiry .select,
-        .enquiry .phone {
-            width: 100%;
-            box-sizing: border-box;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 10px;
-            padding: 12px 14px;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.85);
-            font-family: 'DM Sans', -apple-system, sans-serif;
-            transition: border-color 0.2s, background 0.2s;
-        }
-
-        .enquiry .input:focus,
-        .enquiry .select:focus,
-        .enquiry .phone:focus-within {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.07);
-        }
-
-        .enquiry .input::placeholder {
-            color: rgba(255, 255, 255, 0.22);
-        }
-
-        .enquiry .select {
-            appearance: none;
-            cursor: pointer;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-        }
-
-        .enquiry .phone {
-            display: flex;
-            padding: 0;
-        }
-
-        .enquiry .phone select {
-            appearance: none;
-            border: none;
-            border-right: 1px solid rgba(255, 255, 255, 0.07);
-            padding: 0 10px;
-            min-width: 72px;
-            background: transparent;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 13px;
-            font-family: 'DM Sans', -apple-system, sans-serif;
-        }
-
-        .enquiry .phone input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            padding: 12px;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.85);
-            font-family: 'DM Sans', -apple-system, sans-serif;
-        }
-
-        .enquiry .phone input::placeholder {
-            color: rgba(255, 255, 255, 0.22);
-        }
-
-        .enquiry .agree {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.25);
-        }
-
-        .enquiry .agree a {
-            color: rgba(255, 255, 255, 0.45);
-            text-decoration: underline;
-        }
-
-        .enquiry .submit {
-            width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 13px;
-            font-weight: 500;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            background: rgba(255, 255, 255, 0.08);
-            color: rgba(255, 255, 255, 0.85);
-            cursor: pointer;
-            margin-top: 4px;
-            transition: all 0.2s ease;
-            font-family: 'DM Sans', -apple-system, sans-serif;
-        }
-
-        .enquiry .submit:hover {
-            background: rgba(255, 255, 255, 0.14);
-            border-color: rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.95);
-        }
-
-        .submit[aria-busy="true"] {
-            position: relative;
-            pointer-events: none;
-            opacity: .8;
-        }
-
-        .submit[aria-busy="true"]::after {
-            content: "";
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            border: 2px solid currentColor;
-            border-right-color: transparent;
-            animation: spin .7s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: translateY(-50%) rotate(360deg);
-            }
-        }
-
-        @media (max-width: 560px) {
-            .enquiry .modal {
-                width: 100vw;
-            }
-        }
-
-        .enquiry .modal,
-        .enquiry .form,
-        .enquiry .input,
-        .enquiry .select,
-        .enquiry .phone,
-        .enquiry .title,
-        .enquiry .submit,
-        .enquiry .agree {
-            font-family: 'DM Sans', -apple-system, sans-serif;
-        }
-
-        /* OLD DOCK — HIDDEN */
-        .dock-wrap,
-        #dock {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
-            height: 0 !important;
-            overflow: hidden !important;
-            position: absolute !important;
-        }
-
-        /* JUMP BAR */
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
-
-        #jumpBar {
-            position: fixed;
-            bottom: 28px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 11000;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: #ffffff;
-            border-radius: 50px;
-            padding: 5px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.18);
-            font-family: 'DM Sans', -apple-system, sans-serif;
-        }
-
-        #jumpBar a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 36px;
-            padding: 0 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #555;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-
-        #jumpBar a:hover {
-            color: #111;
-            background: #f0f0f0;
-        }
-
-        #jumpBar a.active {
-            color: #fff;
-            background: #111;
-            font-weight: 600;
         }
 
 
@@ -713,55 +189,161 @@
             }
         }
 
-        /* ── FORM BUTTONS ── */
-        .form-btn-row {
-            display: flex;
-            gap: 8px;
-            margin-top: 8px;
-        }
+        /* JUMP BAR */
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
-        .btn-callback {
-            flex: 1;
-            border: none;
-            border-radius: 8px;
-            padding: 13px;
-            font-weight: 700;
-            font-size: 13px;
-            background: #fff;
-            color: #111;
-            cursor: pointer;
-            transition: background 0.15s;
-            font-family: 'DM Sans', -apple-system, sans-serif;
-        }
-
-        .btn-callback:hover {
-            background: #e8e8e8;
-        }
-
-        .btn-callnow {
+        #jumpBar {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 11000;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 13px 16px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 8px;
-            background: transparent;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 500;
-            text-decoration: none;
+            gap: 4px;
+            background: #ffffff;
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.18);
             font-family: 'DM Sans', -apple-system, sans-serif;
-            transition: background 0.15s;
+        }
+
+        #jumpBar a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            padding: 0 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #555;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
             white-space: nowrap;
+            cursor: pointer;
         }
 
-        .btn-callnow:hover {
-            background: rgba(255, 255, 255, 0.1);
+        #jumpBar a:hover {
+            color: #111;
+            background: #f0f0f0;
         }
 
-        /* ══════════════════════════════════════════
-           LIVE BUTTON — Bottom Left
-           ══════════════════════════════════════════ */
+        #jumpBar a.active {
+            color: #fff;
+            background: #111;
+            font-weight: 600;
+        }
+
+
+
+
+
+        /* ═══════════════════════════════════════════════
+           AMBIENT
+           ═══════════════════════════════════════════════ */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(168, 120, 42, 0.05), transparent 65%);
+            pointer-events: none;
+            z-index: 9999;
+            animation: ambient-pulse 6s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -100px;
+            right: -100px;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(168, 120, 42, 0.04), transparent 65%);
+            pointer-events: none;
+            z-index: 9999;
+            animation: ambient-pulse 8s ease-in-out 2s infinite alternate;
+        }
+
+        @keyframes ambient-pulse {
+            from {
+                opacity: 0.6;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .ambient-particles {
+            position: fixed;
+            inset: 0;
+            z-index: 9998;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .ambient-particles .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particle-float linear infinite;
+        }
+
+        @keyframes particle-float {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+
+            10% {
+                opacity: 0.4;
+            }
+
+            90% {
+                opacity: 0.2;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-10vh) scale(1);
+            }
+        }
+
+        ::selection {
+            background: rgba(168, 120, 42, 0.3);
+            color: var(--ink);
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(168, 120, 42, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(168, 120, 42, 0.5);
+        }
+
+
+
+        /* ═══════════════════════════════════════════════
+           LIVE BUTTON
+           ═══════════════════════════════════════════════ */
         .live-btn-bottom {
             position: fixed;
             left: 20px;
@@ -780,14 +362,16 @@
             font-size: 12px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45), 0 2px 8px rgba(0, 0, 0, 0.18);
-            transition: all 0.2s ease;
+            box-shadow: 0 8px 24px rgba(239, 68, 68, .45),
+                0 2px 8px rgba(0, 0, 0, .18);
+            transition: all .2s ease;
         }
 
         .live-btn-bottom:hover {
             background: #dc2626;
             transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(239, 68, 68, 0.55), 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 12px 28px rgba(239, 68, 68, .55),
+                0 4px 10px rgba(0, 0, 0, .2);
         }
 
         .live-dot {
@@ -800,25 +384,39 @@
         }
 
         .live-dot::after {
-            content: '';
+            content: "";
             position: absolute;
             inset: -4px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.6);
+            border: 2px solid rgba(255, 255, 255, .6);
             animation: live-ring 1.6s ease-out infinite;
         }
 
         @keyframes live-pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.65; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .65;
+            }
         }
 
         @keyframes live-ring {
-            0% { opacity: 0.7; transform: scale(1); }
-            100% { opacity: 0; transform: scale(1.8); }
+            0% {
+                opacity: .7;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.8);
+            }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width:600px) {
             .live-btn-bottom {
                 left: 10px;
                 bottom: 90px;
@@ -827,139 +425,791 @@
             }
         }
 
-        /* ══════════════════════════════════════════
-           AMENITY BAR — Top Center
-           ══════════════════════════════════════════ */
-        .amenity-bar {
+
+
+
+
+
+
+        /* ═══════════════════════════════════════════════
+           GALLERY LIGHTBOX (ADDED)
+           ═══════════════════════════════════════════════ */
+        .gallery-overlay {
             position: fixed;
-            top: 26px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10000;
-            display: inline-flex;
+            inset: 0;
+            z-index: 13000;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 4px;
-            background: #ffffff;
-            border-radius: 50px;
-            padding: 5px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.18);
-            font-family: 'DM Sans', -apple-system, sans-serif;
-            max-width: calc(100vw - 40px);
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            justify-content: center;
         }
 
-        .amenity-bar::-webkit-scrollbar {
+        .gallery-overlay.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .gallery-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--ink);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            z-index: 2;
+        }
+
+        .gallery-close:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(168, 120, 42, 0.4);
+            color: var(--gold);
+        }
+
+        .gallery-counter {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-ui);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--ink-dim);
+            z-index: 2;
+        }
+
+        .gallery-main {
+            position: relative;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 60px 120px;
+            box-sizing: border-box;
+        }
+
+        .gallery-main img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--ink);
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            z-index: 2;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(168, 120, 42, 0.15);
+            border-color: rgba(168, 120, 42, 0.4);
+            color: var(--gold);
+        }
+
+        .gallery-prev {
+            left: 20px;
+        }
+
+        .gallery-next {
+            right: 20px;
+        }
+
+        .gallery-thumbs {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 2;
+            max-width: 90vw;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .gallery-thumbs::-webkit-scrollbar {
             display: none;
         }
 
-        .amenity-bar a {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
+        .gallery-thumb {
+            width: 52px;
             height: 36px;
-            padding: 0 14px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #555;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            transition: all 0.2s ease;
-            white-space: nowrap;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 2px solid transparent;
             cursor: pointer;
             flex-shrink: 0;
+            opacity: 0.5;
+            transition: all 0.25s ease;
         }
 
-        .amenity-bar a:hover {
-            color: #111;
-            background: #f0f0f0;
+        .gallery-thumb.is-active {
+            border-color: var(--gold);
+            opacity: 1;
         }
 
-        .amenity-bar a.active {
-            color: #fff;
-            background: #111;
-            font-weight: 600;
+        .gallery-thumb:hover {
+            opacity: 0.85;
         }
 
-        .amenity-bar a.active svg {
-            stroke: #fff;
-        }
-
-        .amenity-bar svg {
-            width: 14px;
-            height: 14px;
-            stroke: currentColor;
-            flex-shrink: 0;
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         @media (max-width: 600px) {
-            .amenity-bar {
-                top: 75px;
-                left: 50%;
-                padding: 4px;
-                gap: 2px;
-                max-width: calc(100vw - 20px);
+            .gallery-main {
+                padding: 70px 16px 100px;
             }
-            .amenity-bar a {
-                height: 30px;
-                padding: 0 10px;
-                font-size: 10.5px;
-                gap: 5px;
+
+            .gallery-nav {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
             }
-            .amenity-bar svg {
-                width: 12px;
-                height: 12px;
+
+            .gallery-prev {
+                left: 8px;
+            }
+
+            .gallery-next {
+                right: 8px;
+            }
+
+            .gallery-thumb {
+                width: 40px;
+                height: 28px;
             }
         }
-    </style>
 
+        /* ═══════════════════════════════════════════════
+           WALKTHROUGH VIDEO MODAL (ADDED)
+           ═══════════════════════════════════════════════ */
+        .walkthrough-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 13000;
+            background: rgba(0, 0, 0, 0.94);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .walkthrough-overlay.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .walkthrough-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--ink);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            z-index: 2;
+        }
+
+        .walkthrough-close:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(168, 120, 42, 0.4);
+            color: var(--gold);
+        }
+
+        .walkthrough-video-wrap {
+            width: 90vw;
+            max-width: 960px;
+            aspect-ratio: 16/9;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(168, 120, 42, 0.15);
+        }
+
+        .walkthrough-video-wrap video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+        }
+
+        @media (max-width: 600px) {
+            .walkthrough-video-wrap {
+                width: 96vw;
+                border-radius: 8px;
+            }
+        }
+
+
+
+
+        @media (min-width: 769px) {
+
+
+
+
+            /* ══════════════════════════════════════════
+           AMENITY BAR — Top Center
+           ══════════════════════════════════════════ */
+            .amenity-bar {
+                position: fixed;
+                top: 26px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 10000;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                background: #ffffff;
+                border-radius: 50px;
+                padding: 5px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.18);
+                font-family: 'DM Sans', -apple-system, sans-serif;
+                max-width: calc(100vw - 40px);
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .amenity-bar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .amenity-bar a {
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                height: 36px;
+                padding: 0 14px;
+                border-radius: 50px;
+                text-decoration: none;
+                color: #555;
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: 0.3px;
+                transition: all 0.2s ease;
+                white-space: nowrap;
+                cursor: pointer;
+                flex-shrink: 0;
+            }
+
+            .amenity-bar a:hover {
+                color: #111;
+                background: #f0f0f0;
+            }
+
+            .amenity-bar a.active {
+                color: #fff;
+                background: #111;
+                font-weight: 600;
+            }
+
+            .amenity-bar a.active svg {
+                stroke: #fff;
+            }
+
+            .amenity-bar svg {
+                width: 14px;
+                height: 14px;
+                stroke: currentColor;
+                flex-shrink: 0;
+            }
+
+            @media (max-width: 600px) {
+                .amenity-bar {
+                    top: 75px;
+                    left: 50%;
+                    padding: 4px;
+                    gap: 2px;
+                    max-width: calc(100vw - 20px);
+                }
+
+                .amenity-bar a {
+                    height: 30px;
+                    padding: 0 10px;
+                    font-size: 10.5px;
+                    gap: 5px;
+                }
+
+                .amenity-bar svg {
+                    width: 12px;
+                    height: 12px;
+                }
+
+            }
+
+
+            .enquiry-btn {
+                position: fixed;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 10001;
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+                padding: 24px 13px;
+                background: #111;
+                color: #fff;
+                font-family: 'DM Sans', -apple-system, sans-serif;
+                font-weight: 700;
+                font-size: 11px;
+                letter-spacing: 2.5px;
+                text-transform: uppercase;
+                border: none;
+                border-radius: 12px 0 0 12px;
+                cursor: pointer;
+                white-space: nowrap;
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
+                transition: opacity 0.3s ease, background 0.2s ease;
+            }
+
+            .enquiry-btn::after {
+                content: '';
+                position: absolute;
+                inset: -4px;
+                border-radius: 14px 0 0 14px;
+                border: 2px solid rgba(255, 255, 255, 0.25);
+                animation: eq-ring 2.5s ease-out infinite;
+                pointer-events: none;
+            }
+
+            @keyframes eq-ring {
+                0% {
+                    opacity: 0.7;
+                    transform: scale(1);
+                }
+
+                100% {
+                    opacity: 0;
+                    transform: scale(1.08);
+                }
+            }
+
+            .enquiry-btn.is-hidden {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .enquiry-btn:hover {
+                background: #2a2a2a;
+            }
+
+            @media (max-width: 600px) {
+                .enquiry-btn {
+                    font-size: 9px;
+                    padding: 18px 10px;
+                }
+            }
+
+            .enquiry .overlay {
+                position: fixed;
+                inset: 0;
+                display: flex;
+                align-items: stretch;
+                justify-content: flex-end;
+                background: rgba(0, 0, 0, 0);
+                backdrop-filter: blur(0px);
+                -webkit-backdrop-filter: blur(0px);
+                z-index: 99999;
+                pointer-events: none;
+                transition: background 0.35s ease, backdrop-filter 0.35s ease;
+            }
+
+            .enquiry .overlay.is-open {
+                background: rgba(0, 0, 0, 0.52);
+                backdrop-filter: blur(6px);
+                -webkit-backdrop-filter: blur(6px);
+                pointer-events: auto;
+            }
+
+            .enquiry .modal {
+                width: min(400px, 100vw);
+                height: 100%;
+                background: rgba(15, 15, 18, 0.75);
+                backdrop-filter: blur(60px) saturate(130%);
+                -webkit-backdrop-filter: blur(60px) saturate(130%);
+                border-left: 1px solid rgba(255, 255, 255, 0.07);
+                border-radius: 0;
+                box-shadow: -12px 0 50px rgba(0, 0, 0, 0.6);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                transform: translateX(100%);
+                transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+                font-family: 'DM Sans', -apple-system, sans-serif;
+            }
+
+            .enquiry .overlay.is-open .modal {
+                transform: translateX(0);
+            }
+
+            .enquiry .modal-header {
+                padding: 20px 20px 12px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .enquiry .modal-header::before {
+                content: '';
+                flex-shrink: 0;
+                width: 2px;
+                height: 18px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 2px;
+            }
+
+            .enquiry .modal-header .title {
+                flex: 1;
+                color: rgba(255, 255, 255, 0.9);
+                font-weight: 500;
+                font-size: 16px;
+                letter-spacing: 0.3px;
+            }
+
+            .enquiry .close {
+                flex-shrink: 0;
+                width: 30px;
+                height: 30px;
+                display: grid;
+                place-items: center;
+                border: 1px solid rgba(255, 255, 255, 0.07);
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0.04);
+                color: rgba(255, 255, 255, 0.35);
+                cursor: pointer;
+                font-size: 13px;
+                transition: all 0.2s;
+            }
+
+            .enquiry .close:hover {
+                background: rgba(255, 255, 255, 0.08);
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            .enquiry .modal-body {
+                padding: 20px;
+                overflow-y: auto;
+                flex: 1;
+            }
+
+            .enquiry .form {
+                display: grid;
+                gap: 12px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .enquiry .input,
+            .enquiry .select,
+            .enquiry .phone {
+                width: 100%;
+                box-sizing: border-box;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.07);
+                border-radius: 10px;
+                padding: 12px 14px;
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.85);
+                font-family: 'DM Sans', -apple-system, sans-serif;
+                transition: border-color 0.2s, background 0.2s;
+            }
+
+            .enquiry .input:focus,
+            .enquiry .select:focus,
+            .enquiry .phone:focus-within {
+                outline: none;
+                border-color: rgba(255, 255, 255, 0.15);
+                background: rgba(255, 255, 255, 0.07);
+            }
+
+            .enquiry .input::placeholder {
+                color: rgba(255, 255, 255, 0.22);
+            }
+
+            .enquiry .select {
+                appearance: none;
+                cursor: pointer;
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+                background-repeat: no-repeat;
+                background-position: right 12px center;
+            }
+
+            .enquiry .phone {
+                display: flex;
+                padding: 0;
+            }
+
+            .enquiry .phone select {
+                appearance: none;
+                border: none;
+                border-right: 1px solid rgba(255, 255, 255, 0.07);
+                padding: 0 10px;
+                min-width: 72px;
+                background: transparent;
+                color: rgba(255, 255, 255, 0.6);
+                font-size: 13px;
+                font-family: 'DM Sans', -apple-system, sans-serif;
+            }
+
+            .enquiry .phone input {
+                flex: 1;
+                border: none;
+                background: transparent;
+                padding: 12px;
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.85);
+                font-family: 'DM Sans', -apple-system, sans-serif;
+            }
+
+            .enquiry .phone input::placeholder {
+                color: rgba(255, 255, 255, 0.22);
+            }
+
+            .enquiry .agree {
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+                font-size: 11px;
+                color: rgba(255, 255, 255, 0.25);
+            }
+
+            .enquiry .agree a {
+                color: rgba(255, 255, 255, 0.45);
+                text-decoration: underline;
+            }
+
+            .enquiry .submit {
+                width: 100%;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+                padding: 13px;
+                font-weight: 500;
+                font-size: 13px;
+                letter-spacing: 0.5px;
+                background: rgba(255, 255, 255, 0.08);
+                color: rgba(255, 255, 255, 0.85);
+                cursor: pointer;
+                margin-top: 4px;
+                transition: all 0.2s ease;
+                font-family: 'DM Sans', -apple-system, sans-serif;
+            }
+
+            .enquiry .submit:hover {
+                background: rgba(255, 255, 255, 0.14);
+                border-color: rgba(255, 255, 255, 0.15);
+                color: rgba(255, 255, 255, 0.95);
+            }
+
+            .submit[aria-busy="true"] {
+                position: relative;
+                pointer-events: none;
+                opacity: .8;
+            }
+
+            .submit[aria-busy="true"]::after {
+                content: "";
+                position: absolute;
+                right: 14px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                border: 2px solid currentColor;
+                border-right-color: transparent;
+                animation: spin .7s linear infinite;
+            }
+
+            @keyframes spin {
+                to {
+                    transform: translateY(-50%) rotate(360deg);
+                }
+            }
+
+            @media (max-width: 560px) {
+                .enquiry .modal {
+                    width: 100vw;
+                }
+            }
+
+            .enquiry .modal,
+            .enquiry .form,
+            .enquiry .input,
+            .enquiry .select,
+            .enquiry .phone,
+            .enquiry .title,
+            .enquiry .submit,
+            .enquiry .agree {
+                font-family: 'DM Sans', -apple-system, sans-serif;
+            }
+
+            /* ── FORM BUTTONS ── */
+
+            .form-btn-row {
+                display: flex;
+                gap: 8px;
+                margin-top: 8px;
+            }
+
+            .btn-callback {
+                flex: 1;
+                border: none;
+                border-radius: 8px;
+                padding: 13px;
+                font-weight: 700;
+                font-size: 13px;
+                background: #fff;
+                color: #111;
+                cursor: pointer;
+                transition: background 0.15s;
+                font-family: 'DM Sans', -apple-system, sans-serif;
+            }
+
+            .btn-callback:hover {
+                background: #e8e8e8;
+            }
+
+            .btn-callnow {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                padding: 13px 16px;
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                border-radius: 8px;
+                background: transparent;
+                color: #fff;
+                font-size: 13px;
+                font-weight: 500;
+                text-decoration: none;
+                font-family: 'DM Sans', -apple-system, sans-serif;
+                transition: background 0.15s;
+                white-space: nowrap;
+            }
+
+            .btn-callnow:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+        }
+    </style>
 </head>
 
 <body>
+    <script>
+        sessionStorage.setItem('lastTower', 'A');
+    </script>
+
+    <script>sessionStorage.setItem("selectedFloor", floorNumber);</script>
 
 
-    <!-- Splash / Welcome Overlay -->
-    <div id="splash" class="splash" aria-live="polite" role="status">
-        <div class="splash__backdrop"></div>
-        <div class="splash__content" role="img" aria-label="Powered by BetterSide">
-            <div class="splash__text">Powered by <strong>BetterSide.in</strong></div>
-        </div>
+    <div id="floorTip" class="floortip" aria-hidden="true"></div>
+
+
+    <!-- ── FLOATING ACTION BUTTONS ── -->
+    <div class="fab-cluster">
+        <a class="fab-item fab-whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener"
+            aria-label="WhatsApp">
+            <div class="fab-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path
+                        d="M12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.112 1.529 5.835L.057 23.386a.5.5 0 0 0 .606.63l5.753-1.51A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 0 1-5.003-1.371l-.359-.213-3.714.975.993-3.63-.234-.373A9.818 9.818 0 1 1 12 21.818z" />
+                </svg>
+            </div>
+            <span class="fab-label">WhatsApp</span>
+        </a>
+        <a class="fab-item fab-email" href="mailto:info@example.com" aria-label="Email Us">
+            <div class="fab-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+            </div>
+            <span class="fab-label">Email Us</span>
+        </a>
+        <a class="fab-item fab-location" href="https://maps.app.goo.gl/ZgXm51Arpmt4dveE7" target="_blank" rel="noopener"
+            aria-label="Live Location">
+            <div class="fab-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+            </div>
+            <span class="fab-label">Map</span>
+        </a>
     </div>
 
-    <!-- Quick interaction hint (appears for ~2–3s) -->
-    <div id="ui-hint" class="ui-hint" aria-live="polite" role="status">
-        <div class="ui-hint__row ui-hint__desktop">
-            <svg width="18" height="24" viewBox="0 0 18 24" aria-hidden="true">
-                <path d="M9 1c3.9 0 7 3.1 7 7v8c0 3.9-3.1 7-7 7s-7-3.1-7-7V8c0-3.9 3.1-7 7-7z" fill="white"
-                    opacity=".18" />
-                <rect x="8" y="4" width="2" height="5" rx="1" fill="white" />
-                <rect x="5" y="10" width="8" height="9" rx="4" fill="white" opacity=".4" />
-            </svg>
-            <span>Click Tower's to Select Floors</span>
-        </div>
-        <div class="ui-hint__row ui-hint__touch">
-            <svg width="18" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M12 2a4 4 0 014 4v4h1.2a2.8 2.8 0 012.8 2.8V16c0 3.3-2.7 6-6 6H9.5A5.5 5.5 0 014 16.5V11a3 3 0 016 0v3h1V6a4 4 0 011-2.7z"
-                    fill="white" opacity=".28" />
-                <rect x="11" y="5" width="2" height="9" rx="1" fill="white" />
-            </svg>
-            <span>Click on Floor's To Select Apparmentsr</span>
-        </div>
-    </div>
-    <div id="infoCard" class="info-card">
-        //
-        <!-- <div class="image-placeholder">
-            <img src="images/Thumbnail/Home.webp" alt="Home" />
-        </div> -->
-        <div class="info-details" id="details"></div>
-    </div>
-    </div>
 
-    <!-- Info Card Modal -->
-    <div id="floorTip" class="floortip"></div>
+
+    <!-- ══════════════════════════════════════════
+         LIVE BUTTON — BOTTOM LEFT
+         ══════════════════════════════════════════ -->
+    <a href="Subpages/GodEye/LiveView.html" class="live-btn-bottom" aria-label="Live View">
+        <span class="live-dot"></span>
+        <span>Live</span>
+    </a>
+
+
+
+
+
+
+    <!-- ═══ MAIN IMAGE + TOWERS (preserved) ═══ -->
 
     <div class="Front">
         <div class="image-wrapper">
@@ -975,25 +1225,36 @@
                             }
                         </style>
                     </defs>
-                    <path id="Floor_x5F_05" data-link="Subpages/Floor_5.html" data-name="Floor 05"
+                    <path id="Floor_x5F_05" data-link="Subpages/Floor_6.html" data-name="Floor 06"
                         d="m2976.46 654.6-2.83 81.16 80.33 1.17-.77 13.61-2.65 47.22-38.58 11.84-35.25-.67-34.17-1.25-66.83 45-50.28-5-73.78 19.33-319.11-12.44-363.78-13.56-11.55 2.45-305.56-15.78-14 2.89-111.77-4.89h-13.34l-313.33-13.78-14.89 1.78-149.78-5.33-50.89-2.22.48-13.89 3.91-2 .25-8.75 3.09-.92v-4.89H975.82v-8.75l-1.45-41.16-4.56-129.35h-10.85v-10.67h-10.49v-4.5h20.97v-11.58l105.38-1.82 218.17-4.17 1143.83-11 29.17 1.83 210.52-2.55 153.81 9.11h57.81l105.83 6.94v12.42h17.42v4.58h-9.59v11h-8.75l-1.91 44.67 91.16-.25v11.17l-43.16 2.16z"
                         class="st0" />
-                    <path id="Floor_x5F_04" data-link="Subpages/Floor_4.html" data-name="Floor 04"
+                    <path id="Floor_x5F_04" data-link="Subpages/Floor_5.html" data-name="Floor 05"
                         d="M3046.21 884.01v2.92l-1.08.92-1.5 45.91v12l-39.17 17.5-41-1.25-28.47-2.11-8.9 9.77-58.66 64.46-49.78-3.34-75.33 35.56-313.78-21.56-362.72-23.39-10.56 1.56-139.72-9.33-163.33-13.5-12.83 1.33-124.5-8.5-310.12-22.72-15.5 1.83-148.11-10.94-51.66-4-47.67-5.17-42.83 5.17-110.17-7.12-84.67-6.11-1.37-23.16-2.07-35.06-2.11-.89v-2.66l87.11-6.89-3.89-86.89h-8.83v-9.34h-8.09v-5.58l110.92-6.5v8.75h115.56v4.89l-3.09.92-.25 8.75-3.91 2-.48 13.89 50.89 2.22 149.78 5.33 14.89-1.78 313.33 13.78h13.34l111.77 4.89 14-2.89 305.56 15.78 11.55-2.45 363.78 13.56 319.11 12.44 73.78-19.33 50.28 5 66.83-45 34.17 1.25-1.5 73.08z"
                         class="st0" />
-                    <path id="Floor_x5F_03" data-link="Subpages/Floor_3.html" data-name="Floor 03"
+                    <path id="Floor_x5F_03" data-link="Subpages/Floor_4.html" data-name="Floor 04"
                         d="m3039.88 1030.1-1.25 1.33-2.66 54.16-.09 1.87-37.75 28.5-42.67-3.08-27.2-1.59-75 105.34-42.44-4.45-75.11 49.78-314.67-30.45-354.89-34.66-11.11 3.55-138.03-13.55-163.08-20.45-12.67 4.67-123.77-12.67-309.78-35.77-15.33 4-146.45-13.78-52.89-10-45.33-4.78-42.67 8.11-108.55-10.05-84.89-8.78-3.6-58.92-.18-2.97 83.33-11.89-2.33-63.56 110.17 7.12 42.83-5.17 47.67 5.17 51.66 4 148.11 10.94 15.5-1.83 310.12 22.72 124.5 8.5 12.83-1.33 163.33 13.5 139.72 9.33 10.56-1.56 362.72 23.39 313.78 21.56 75.33-35.56 49.78 3.34 58.66-64.46 36.46 6.49-3.17 49.02 79.33 2.75z"
                         class="st0" />
-                    <path id="Floor_x5F_02" data-link="Subpages/Floor_2.html" data-name="Floor 02"
+                    <path id="Floor_x5F_02" data-link="Subpages/Floor_3.html" data-name="Floor 03"
                         d="m3032.38 1173.38-2.09 2.33-1.28 55.28-38.66 34-41.92-3.09-26.17-2.25-71.33 132.89-48.22-1-74.45 63.11-309.83-40.05-10-5.34-20.33-3.16v-11.34l-143.17-19.16-7.67 9.83-41.5-4.83v-7.84l-112.5-13.16-10.66 5.16-17.5-.66-.67-6.17-128.83-14.83-9.17 4.33-39-4.5.67-6.67-106.5-13.16-12.17 5.5-17-1.34v-5l-113.33-12.66-10.84 6.83-33.33-4.33v-4.75l-484-59.34-49.22-17.22-13.67 6.5-13.16-1.16v-7.34l-83.84-7.66-11.33 7.66-27.45-4.28-42.83 9.34-40.17-4.5-2.83-58.84 82.33-16.5-2.27-57.88 108.55 10.05 42.67-8.11 45.33 4.78 52.89 10 146.45 13.78 15.33-4 309.78 35.77 123.77 12.67 12.67-4.67 163.08 20.45 138.03 13.55 11.11-3.55 354.89 34.66 314.67 30.45 75.11-49.78 42.44 4.45 75-105.34 27.2 1.59-2.42 53.58 78.84 5.5z"
                         class="st0" />
-                    <path id="Floor_x5F_01" data-link="Subpages/Floor_1.html" data-name="Floor 01"
+                    <path id="Floor_x5F_01" data-link="Subpages/Floor_2.html" data-name="Floor 02"
                         d="m3023.38 1317.4-1.67 45.09.5 9.36-32 33.83-95-11.67-44.83 41.17 22.83.33-59.58 57.53-1.34 29.59 8.92 1.66-66.17 67.84v10.72l-40.33 41.33-300.72-47.72-9.34-2.67-19.83-1.33v-3.33l-140.33-20.17-10.34 3.67-40.5-5.17v-4.17l-111.5-17.83-10.83 2.5-17.5-1.83v-2.34l-127.67-19.16-9.5 3.5-37.83-4.34v-3l-114.33-17.66-4.17-3.67-16.5-1.33 1.33-4.84-113.5-15-10.5 5.17-34.39-6.39v-3.11l-109.88-16.83h-5l-316.78-50.62-106.67-16.16-4.67 1.66h-12.16l1.33-10.66-80.17-12-16.83 5.83-26.67-4.33-7-146.34 27.45 4.28 11.33-7.66 83.84 7.66v7.34l13.16 1.16 13.67-6.5 49.22 17.22 484 59.34v4.75l33.33 4.33 10.84-6.83 113.33 12.66v5l17 1.34 12.17-5.5 106.5 13.16-.67 6.67 39 4.5 9.17-4.33 128.83 14.83.67 6.17 17.5.66 10.66-5.16 112.5 13.16v7.84l41.5 4.83 7.67-9.83 143.17 19.16v11.34l20.33 3.16 10 5.34 309.83 40.05 74.45-63.11 48.22 1 71.33-132.89 26.17 2.25-1.05 43.17 77.16 6.92 1 2.66z"
                         class="st0" />
+                    <path id="Floor_x5F_01" data-link="Subpages/Floor_1.html" data-name="Floor 01"
+                        d="m2821.21 1524.29-4.71 164.38L2745 1774l-95.75-17.33-13.08 15.75-37.5-5.42-.84-1.11.61-2.56-2.33-1.89-2.55 1.84s-2.5.28-2.67.28h-3.39l-15.06-2.67-41.66 41.11-.56 4.33-2.89 2-.66 4.11-1 2.23s-5.11 3.77-5.56 4.44c-.44.67-1.55.78-1.55.78s-7.45 1.89-8.45 1.89-5.33 1.44-6.67 2c-1.33.55-3.77-.78-4-1.22-.22-.45-2.22-2.34-2.22-2.34l-3.22-.22h-2.78l-1.66 2.78s-3.45 1-3.78 1-1.45-2.78-1.45-2.78l3.23-2.56s-.98-4.94-1.23-5.86c-.25-.91-1.5-3.66-1.5-4s-1.5-2.5-3-4.08-1.58.83-2.16 1.25c-.59.42-2.75 4-2.92 4.25s-2.42 3.42-2.42 3.42-2-3.09-2-3.5 1.09-1.67 1.09-2.34-.67-1.5-1.17-2.08-1.75-.83-3.75-1.92c-2-1.08-1.25-1-1.5-1.5s-2.08-.91-2.92-1.58c-.83-.67-2.66-1.5-3.25-2.25-.58-.75-1.33-3.25-1.25-4.83.09-1.59-1.91-3.75-1.91-3.75s-1.25 1.66-1.34 2.25c-.08.58-2.16 3.75-2.16 3.75s-2.17-3-2.5-3.84c-.34-.83-3.09-2.83-3.34-3-.25-.16-3.25-.33-3.25-.33l-1.41-.28-1.67-2.55-2.89-.11-1.22 1.22-.89.11s-3.33.44-3.67.67c-.33.22-1.11 1-1.11 1s-1.55 4.11-2.33 5c-.78.88-1.22 2.66-1.22 2.66l-1.45 1.89-3.44.11-3.11 3.67-1.11 1.67-2.78.44-1.56 2.89s2 4.55 2.11 4.89c.11.33-2.44 3.33-2.44 3.33l-2.33-.55s-3.56-2.56-4-3c-.45-.45-4.56-1-4.56-1v-1.34l-2-5.33-3.44.11-1.67 2.89-2.45 1-1.22-2.78h-1.11l-2 3.45-6.89-.56-1.44 2.22-1.67 3.67s-1.55-1.89-1.78-2.56c-.22-.66-2.66-.66-2.66-.66l-1.89 4.44-16.22-1v-10.78s-1.78-.66-2.23-1.22c-.44-.55-2.44-1.33-2.89-1.78-.44-.44-1.66-1.11-2-1.55-.33-.45-2-2.22-2-2.22l-1.22-2.78h-1.78l-2.88-1.56s-.89-2.44-1-2.89c-.12-.44-3.23-3.33-3.67-3.66-.45-.34-2.45-1.34-2.78-1.67s-2.78 2.33-2.78 2.33l-1.44-1.89V1782c0-1.11-1.45-.44-2.11-.89-.67-.44-4.11-1-4.11-1l-1.23 2.56s-1.44-1.67-1.77-2c-.34-.34-3.45-.45-3.45-.45l-2 1.22s2 3.23 2 3.67-3.11 1-4.22 1.33c-1.11.34-1.22-1-1.22-1.55s-3.11-.56-3.45-.56-1.89-.55-1.89-.55v-4.56l-1.77-1.55s-3.34-2.67-3.34-3-1.55-4.56-1.55-4.56l-3.67-1.22-4.22 2v1.78l-2.11 2.11-1.67-2.22-1.22-3.89-3.56-1.89-4.11-1s-5.22 2.33-5.66 2.66c-.45.34-1.56.89-1.56.89v3.67l-1.89 1.67-3.22 1.77-3.89-1.11-2.78 2.67-1.44 2.78-1.67 2.22-1.44 2.44s-3.11-.11-3.78-.11-.78 2.45-.78 2.45l4.56 1.78-4.45 2.66-11.89-.89-2-2.22.67-3.78s.89-3.33.89-3.66-.56-1.45-.56-1.78-1.33-1.67-1.44-2 .11-1.11 0-2.33c-.11-1.23-2.11-.78-2.11-.78l-2.78-.89s-2.33-2.45-3.22-3.33c-.89-.89-1.78-2.23-1.78-3s.67-2.34.67-2.67-2.78-2.56-2.78-2.56l-3.67.34-4.55 3.22-14.89-2.67s.33 3.56 2.66 5.34c2.34 1.77 0 2.33 0 2.33l-1.55 1.67-1.11 6.55-3.78-.44-2.44-2-3.45-1.11-2.67 3.11-.66-32.11s-6.45 2.55-7 2.77c-.56.23-5.45 2-5.45 2l-5.77-.89 3.66-3.44 2.89-5.11v-2.33l-4.55-3 2.66-3.78.89-2.56-1.11-1-2.25-1.78v-4.86l-2.17-4.25-.5-3.66s-1.91-1.84-2.5-2.34c-.58-.5-2.58-2.08-2.58-2.08l-2.33 2.17-1.17 2.08-3.17 2.67v-2.09c0-.25-.33-2.08-.33-2.08l-4.17-2.08-2-.75-2.25.66s-.66 2.75-1 2.75-1.83-1.5-1.83-1.5-.5-2.58-.58-2.83c-.09-.25-2.84-1.67-2.84-1.67s-2.33-1.66-3.16-2.58c-.84-.92-4.42-.33-4.42-.33s-4.17 2.33-4.42 2.58-.91 2.42-.91 2.42h-3.17l-3.17-2.42 1.84-6.17-2.5 2.59s-4 1.08-4.34.91c-.33-.16-4.16-2.33-4.41-2.33s-4.09-1.92-4.5-2.17c-.42-.25-2.59-1.91-3-2.33-.42-.42-2.42 0-2.42 0l-.92 2.83 2.75 2.92-3.41-.17-4.25.59-3.67 3.41-2.67-.33-3.33-1.08-2.17 1.58-.66 4.08-1.75.67-2.42 3.58-.58 2.75s-3.09.09-3.84.09-1.75.75-1.75.75v3.25s-3-.09-3.91-.09-2.25 1-2.25 1-.42 2.67-.67 3.17-1.25 2.67-1.75 3.17-1.25 2.33-2.08 3c-.84.66-.67 1.75-1.34 3-.66 1.25-1.33 2-1.33 2s-1.08-.59-2.58-1.42-2.59-.42-3.25-.5c-.67-.08-2.59-.42-2.59-.67s-3.58-1.08-3.58-1.08l.42-6.5-31.34-5.58 2.84-3.84s.33-1.66-1.84-3.33c-2.16-1.67-1.66-1.5-2.83-3.5s-2-3.33-2.33-4.17c-.34-.83-2-1.5-2.34-2.33-.33-.83 0-1 .17-2.17.17-1.16.83-2.16 1-3.5.17-1.33-1-2-1.5-2s-1.67 0-2.33-.16c-.67-.17-3.67-1-3.67-1l-1.33-1.34s-2.5-3.66-3.5-5.16-3.34 0-5.67.5-1.49 1.5-1.49 1.5-.18 1-.01 1.66c.17.67-2.33 2.67-2.33 2.67l-2.34-.33s-1.33-4.17-2-6.67c-.66-2.5-2-4.5-2-4.5s-5.5 2.67-6 3.5-1.16 5.67-1.16 5.67l-5 3.83s-.67-.67-1.17-1.33c-.5-.67-5-2.84-5.83-2.84s-3.34 3.5-3.34 3.5-3 4.67-3.5 4.84c-.5.16-4.16 2.66-4.16 2.66l4.83 2.34-.67 4.16-16-3-1-1.5 1-2.33v-3c0-.67-1.16-1-1.16-1l-1.34-1.75-.83-3.92-2-1.16-1.67-2.34v-3c0-.5-2.16-3.5-2.16-3.5l-2.34.17s-2.5-1.67-2.83-2.5-.83-4-.83-4.83-4.34.66-4.34.66l-2.83 3.34-3-1.34-4.58-2.33-3.5-1.25-1.75 1.33v2.25l-2.34 1.92h-1.33l-1.08-.33-3.25-1-1 2.66-1.84 2.25-2 .5-1.5 3.17v3.58s-2.33 4.09-2.41 4.34c-.09.25-3.84 1.33-3.84 1.33v-13.58h-2.69l-9.11 5.55 1.33-50.89-79.11-14-26 15.56v-7.33l-5.11-1.56-5.78-1.33v2.22s-1.33 4.89-1.33 6.67-1.78 3.11-1.78 3.11l-4.44 1.51-.89-4.4h-4.89s-.67-4.22-1.56-5.11 0-6 0-6l-5.33 2-2.89 1.77-4.44 5.34v-6.67s-3.56-.44-3.78-.44 0 1.33 0 1.33v6.67l-9.56-4.45-2.66 1.11-10 3.34-3.12-4.89h-2l-1.55-1.56-6.22 1.56-2.45-2.22v-6l-4.44-4.23-5.34-.44h-5.55l-4.67 3.33-2.89 6.45-1.55.44-4.45 2.67-3.55-2.89v-5.11l-2-1.78v-6l-2.89-3.56-4.67-1.33-1.55 6.22-4.89 4.67h-4.67s-.89-7.11-.89-8-4.22-2.67-4.22-2.67V1610h-4l-3.78 1.11h-3.33l-7.33.45-3.56 2.66-3.78 4.67-4.89 5.11h-5.11l-11.55-2v-33.78l-60.89-11.78-53.11 24.89-160.23-30.66s-2.66-4.89-2.88-5.78c-.23-.89-5.34-5.78-5.34-5.78l-5.11-1.11-6.89-1.33-9.78-3.11-5.33 2.88-9.11 6.45h-6.89l-2.44-4.22-2.89-9.78-7.56-5.33-7.33-8.23-7.78-2-3.55 2.89-6.45 7.11-6.67-1.55-2.88 4.44-6.67 5.34s-3.11-3.34-3.78-3.56-9.33-3.33-10.22-4-1.78-3.78-1.78-3.78-6.44-5.11-8-6.22c-1.55-1.11-6.89 1.33-6.89 1.33l-6.44 3.34-4.89 1.55h-8.56l-13.44-6 13.44-5.78v-14.88l-48.66-9.45-60.78 18.78-12.11-1.45v-6L954.44 1500l-12.44 3.56-18.89 6.66-7.11-2-6.74-137.37 26.67 4.33 16.83-5.83 80.17 12-1.33 10.66h12.16l4.67-1.66 106.67 16.16 316.78 50.62h5l109.88 16.83v3.11l34.39 6.39 10.5-5.17 113.5 15-1.33 4.84 16.5 1.33 4.17 3.67 114.33 17.66v3l37.83 4.34 9.5-3.5 127.67 19.16v2.34l17.5 1.83 10.83-2.5 111.5 17.83v4.17l40.5 5.17 10.34-3.67 140.33 20.17v3.33l19.83 1.33 9.34 2.67 300.72 47.72 40.33-41.33v-10.72z"
+                        />
                 </svg>
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
 
 
     <!-- ══ SLIDE-IN ENQUIRY PANEL ══ -->
@@ -1042,87 +1303,70 @@
             </div>
         </div>
     </div>
-
-
     <!-- ══ ENQUIRY TRIGGER ══ -->
     <button class="enquiry-btn" id="enquiryBtn" aria-label="Open Enquiry">Enquiry</button>
 
-    <!-- ── FLOATING ACTION BUTTONS ── -->
-    <div class="fab-cluster">
-        <a class="fab-item fab-whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener"
-            aria-label="WhatsApp">
-            <div class="fab-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-                    <path
-                        d="M12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.112 1.529 5.835L.057 23.386a.5.5 0 0 0 .606.63l5.753-1.51A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 0 1-5.003-1.371l-.359-.213-3.714.975.993-3.63-.234-.373A9.818 9.818 0 1 1 12 21.818z" />
-                </svg>
-            </div>
-            <span class="fab-label">WhatsApp</span>
-        </a>
-        <a class="fab-item fab-email" href="mailto:info@example.com" aria-label="Email Us">
-            <div class="fab-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                </svg>
-            </div>
-            <span class="fab-label">Email Us</span>
-        </a>
-        <a class="fab-item fab-location" href="https://maps.app.goo.gl/ZgXm51Arpmt4dveE7" target="_blank" rel="noopener"
-            aria-label="Live Location">
-            <div class="fab-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                </svg>
-            </div>
-            <span class="fab-label">Map</span>
-        </a>
-    </div>
+
+
+
+
+
+
+
+
 
     <!-- ══════════════════════════════════════════
          AMENITY BAR — TOP CENTER
          ══════════════════════════════════════════ -->
     <div class="amenity-bar" id="amenityBar">
-        <a href="https://www.google.com/maps/search/Restaurants/@52.9799575,-122.4942054,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" data-amenity="restaurants" aria-label="Restaurants">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <a href="https://www.google.com/maps/search/Restaurants/@52.9799575,-122.4942054,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" data-amenity="restaurants" aria-label="Restaurants">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
                 <path d="M3 2v7c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2V2" />
                 <line x1="6" y1="2" x2="6" y2="22" />
                 <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7" />
             </svg>
             Restaurants
         </a>
-        <a href="https://www.google.com/maps/search/Transit+stations/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" data-amenity="transit" aria-label="Transit">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <a href="https://www.google.com/maps/search/Transit+stations/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" data-amenity="transit" aria-label="Transit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
                 <path d="M8 6v6" />
                 <path d="M16 6v6" />
                 <path d="M2 12h20" />
-                <path d="M18 18h3a1 1 0 0 0 1-1v-3.4a2 2 0 0 0-.1-.7l-1.5-5.2A2 2 0 0 0 18.5 6H4a2 2 0 0 0-2 2v9a1 1 0 0 0 1 1h3" />
+                <path
+                    d="M18 18h3a1 1 0 0 0 1-1v-3.4a2 2 0 0 0-.1-.7l-1.5-5.2A2 2 0 0 0 18.5 6H4a2 2 0 0 0-2 2v9a1 1 0 0 0 1 1h3" />
                 <circle cx="7" cy="18" r="2" />
                 <path d="M9 18h6" />
                 <circle cx="17" cy="18" r="2" />
             </svg>
             Transit
         </a>
-        <a href="https://www.google.com/maps/search/Pharmacies/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" data-amenity="pharmacies" aria-label="Pharmacies">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <a href="https://www.google.com/maps/search/Pharmacies/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" data-amenity="pharmacies" aria-label="Pharmacies">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
                 <path d="M10.5 20.5 20 11a4.95 4.95 0 0 0-7-7l-9.5 9.5a4.95 4.95 0 0 0 7 7Z" />
                 <path d="m8.5 8.5 7 7" />
             </svg>
             Pharmacies
         </a>
-        <a href="https://www.google.com/maps/search/ATMs/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" data-amenity="atm" aria-label="ATM">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <a href="https://www.google.com/maps/search/ATMs/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" data-amenity="atm" aria-label="ATM">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
                 <rect x="2" y="5" width="20" height="14" rx="2" />
                 <line x1="2" y1="10" x2="22" y2="10" />
                 <line x1="6" y1="15" x2="9" y2="15" />
             </svg>
             ATM
         </a>
-        <a href="https://www.google.com/maps/search/grocery+store/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" data-amenity="grocery" aria-label="Grocery Store">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <a href="https://www.google.com/maps/search/grocery+store/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" data-amenity="grocery" aria-label="Grocery Store">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
                 <circle cx="9" cy="21" r="1" />
                 <circle cx="20" cy="21" r="1" />
                 <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" />
@@ -1131,15 +1375,16 @@
         </a>
     </div>
 
-    <!-- ══════════════════════════════════════════
-         LIVE BUTTON — BOTTOM LEFT
-         ══════════════════════════════════════════ -->
-    <a href="Subpages/GodEye/LiveView.html" class="live-btn-bottom" aria-label="Live View">
-        <span class="live-dot"></span>
-        <span>Live</span>
-    </a>
 
-    <!-- Hotspot overlay -->
+
+
+
+
+
+
+
+
+
 
     <!-- ═══════════════════════════════════════════════
          JUMPBAR — macOS Dock Style (ENHANCED)
@@ -1155,120 +1400,45 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ═══ AMBIENT PARTICLES ═══ -->
+    <div class="ambient-particles" id="ambientParticles" aria-hidden="true"></div>
+
+    <!-- ═══ SCRIPTS ═══ -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const detailsBox = document.getElementById('details');
-            detailsBox.innerHTML = ``;
-            const paths = document.querySelectorAll('.Cutout path');
-            let selectedPath = null;
-            let currentLink = '';
-
-            paths.forEach(path => {
-                const link = path.getAttribute('data-link');
-                if (link) {
-                    path.addEventListener('click', () => {
-                        path.style.opacity = "0.6";
-                        setTimeout(() => {
-                            window.location.href = `${link}`;
-                        }, 800);
-                    });
-                }
-            });
+            if (detailsBox) detailsBox.innerHTML = `<div><span>1BHK</span><span>: 48</span></div>`;
         });
     </script>
 
-    <script>
-        (function () {
-            const img = document.querySelector('.image-wrapper img');
-            const layer = document.getElementById('hsLayer');
-            if (!img || !layer) return;
+    <script src="JS/CutoutPath.js"></script>
+    <script src="JS/Notification/UI_Hint.js"></script>
+    <!-- <script src="./../JS/BackButton.js"></script> -->
+    <script src="JS/FloorTIP.js"></script>
+    <!-- <script src="JS/InspectDisable.js"></script> -->
+    <script src="JS/imageloader.js"></script>
 
-            function doSync() {
-                const r = img.getBoundingClientRect();
-                layer.style.top = r.top + 'px';
-                layer.style.left = r.left + 'px';
-                layer.style.width = r.width + 'px';
-                layer.style.height = r.height + 'px';
-            }
-
-            function syncAfterLayout() {
-                requestAnimationFrame(() => requestAnimationFrame(doSync));
-            }
-
-            if (img.complete) syncAfterLayout();
-            else img.addEventListener('load', syncAfterLayout, { once: true });
-            window.addEventListener('load', syncAfterLayout, { once: true });
-            window.addEventListener('resize', syncAfterLayout);
-            window.addEventListener('orientationchange', () => {
-                syncAfterLayout();
-                setTimeout(syncAfterLayout, 250);
-            });
-
-            const mqPortrait = window.matchMedia('(max-aspect-ratio: 3840/5830)');
-            const mqLandscape = window.matchMedia('(min-aspect-ratio: 3840/5830)');
-            if (mqPortrait.addEventListener) {
-                mqPortrait.addEventListener('change', syncAfterLayout);
-                mqLandscape.addEventListener('change', syncAfterLayout);
-            } else if (mqPortrait.addListener) {
-                mqPortrait.addListener(syncAfterLayout);
-                mqLandscape.addListener(syncAfterLayout);
-            }
-
-            if ('ResizeObserver' in window) {
-                new ResizeObserver(syncAfterLayout).observe(img);
-            }
-        })();
-    </script>
-
-    <script src="JS/Notification/2ruet93mi4.js"></script>
-
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const mq = window.matchMedia('(max-width: 600px)');
-            const desktopPositions = {
-                Tower_D: { left: 65, top: 52 },
-                Tower_C: { left: 44, top: 52 },
-                Tower_B: { left: 65, top: 48.5 },
-                Tower_A: { left: 44, top: 48 }
-            };
-            const mobilePositions = {
-                Tower_B: { left: 61, top: 50 },
-                Tower_A: { left: 48.5, top: 48 }
-            };
-
-            function runPins() {
-                initTowerPins({
-                    svgSelector: '.Cutout svg',
-                    layerSelector: '#hsLayer',
-                    viewBox: [3840, 5830],
-                    positions: mq.matches ? mobilePositions : desktopPositions
-                });
-            }
-
-            runPins();
-            mq.addEventListener?.('change', runPins);
-            if (!mq.addEventListener) mq.addListener(runPins);
-            window.addEventListener('resize', () => requestAnimationFrame(runPins));
-            window.addEventListener('orientationchange', () => setTimeout(runPins, 250));
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const splash = document.getElementById("splash");
-            if (!splash) return;
-            document.body.classList.add("splash-active");
-            const SHOW_MS = 2000;
-            const FADE_MS = 600;
-            setTimeout(() => {
-                splash.classList.add("is-hidden");
-                setTimeout(() => {
-                    splash.remove();
-                    document.body.classList.remove("splash-active");
-                }, FADE_MS);
-            }, SHOW_MS);
-        });
-    </script>
 
     <!-- ══ AMENITY BAR — Active state toggle ══ -->
     <script>
@@ -1293,117 +1463,164 @@
     </script>
 
 
-    <!-- ═══ macOS Dock magnification logic (ENHANCED) ═══ -->
+
+
+
+
+
+
     <script>
+        // Floating gold particles
         (function () {
-            const items = document.querySelectorAll('.dock-item');
-            const dockItems = document.getElementById('dockItems');
-            if (!dockItems || !items.length) return;
-
-            const BASE = 52, MAX = 80, RANGE = 140;
-
-            function magnify(e) {
-                items.forEach(item => {
-                    const icon = item.querySelector('.dock-icon');
-                    const svg = item.querySelector('.dock-icon svg');
-                    const label = item.querySelector('.dock-label');
-                    const rect = item.getBoundingClientRect();
-                    const cx = rect.left + rect.width / 2;
-                    const dist = Math.abs(e.clientX - cx);
-
-                    if (dist < RANGE) {
-                        const t = 1 - dist / RANGE;
-                        const sz = BASE + (MAX - BASE) * t;
-                        icon.style.width = sz + 'px';
-                        icon.style.height = sz + 'px';
-                        icon.style.borderRadius = (16 + t * 4) + 'px';
-                        const iSz = 22 + t * 10;
-                        svg.style.width = iSz + 'px';
-                        svg.style.height = iSz + 'px';
-                        item.style.width = sz + 'px';
-
-                        if (t > .7) {
-                            icon.style.background = 'linear-gradient(145deg, rgba(201,168,124,.2), rgba(201,168,124,.08))';
-                            icon.style.borderColor = 'rgba(201,168,124,.4)';
-                            icon.style.boxShadow = '0 4px 24px rgba(201,168,124,.2), 0 0 30px rgba(201,168,124,.1)';
-                            svg.style.stroke = '#c9a87c';
-                            svg.style.filter = 'drop-shadow(0 0 6px rgba(201,168,124,.4))';
-                            label.style.opacity = '1';
-                            label.style.scale = '1';
-                            label.style.translate = '0 0';
-                        } else {
-                            resetIcon(icon, svg, label);
-                        }
-                    } else {
-                        icon.style.width = BASE + 'px';
-                        icon.style.height = BASE + 'px';
-                        icon.style.borderRadius = '16px';
-                        svg.style.width = '22px';
-                        svg.style.height = '22px';
-                        item.style.width = BASE + 'px';
-                        resetIcon(icon, svg, label);
-                    }
-                });
+            const container = document.getElementById('ambientParticles');
+            if (!container) return;
+            for (let i = 0; i < 12; i++) {
+                const p = document.createElement('span');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (12 + Math.random() * 18) + 's';
+                p.style.animationDelay = (Math.random() * 15) + 's';
+                p.style.width = p.style.height = (1.5 + Math.random() * 1.5) + 'px';
+                container.appendChild(p);
             }
+        })();
+    </script>
+    <!-- ═══ GALLERY LIGHTBOX (ADDED) ═══ -->
+    <div class="gallery-overlay" id="galleryOverlay">
+        <button class="gallery-close" id="galleryClose">&#x2715;</button>
+        <div class="gallery-counter"><span id="galleryCurrent">1</span> / <span id="galleryTotal">6</span></div>
+        <div class="gallery-main">
+            <button class="gallery-nav gallery-prev" id="galleryPrev">&#8249;</button>
+            <img id="galleryImage" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80"
+                alt="Gallery" />
+            <button class="gallery-nav gallery-next" id="galleryNext">&#8250;</button>
+        </div>
+        <div class="gallery-thumbs" id="galleryThumbs"></div>
+    </div>
 
-            function resetIcon(icon, svg, label) {
-                icon.style.background = '';
-                icon.style.borderColor = '';
-                icon.style.boxShadow = '';
-                svg.style.stroke = '';
-                svg.style.filter = '';
-                label.style.opacity = '0';
-                label.style.scale = '.9';
-                label.style.translate = '0 6px';
+    <!-- ═══ WALKTHROUGH VIDEO MODAL (ADDED) ═══ -->
+    <div class="walkthrough-overlay" id="walkthroughOverlay">
+        <button class="walkthrough-close" id="walkthroughClose">&#x2715;</button>
+        <div class="walkthrough-video-wrap">
+            <video id="walkthroughModalVideo" controls preload="none"
+                poster="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=960&q=80">
+                <source src="../Video/MDB_The_Lutyens_Walkthrough.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- ═══ GALLERY + WALKTHROUGH SCRIPTS (ADDED) ═══ -->
+    <script>
+        // Gallery Lightbox
+        (function () {
+            const images = [
+                'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80',
+                'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80',
+                'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
+                'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80',
+                'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80',
+                'https://images.unsplash.com/photo-1600566753376-12c8ab7a5a1e?w=1200&q=80'
+            ];
+            let idx = 0;
+            const overlay = document.getElementById('galleryOverlay');
+            const img = document.getElementById('galleryImage');
+            const counter = document.getElementById('galleryCurrent');
+            const total = document.getElementById('galleryTotal');
+            const thumbsWrap = document.getElementById('galleryThumbs');
+            if (!overlay || !img) return;
+            total.textContent = images.length;
+
+            // Build thumbs
+            images.forEach((src, i) => {
+                const t = document.createElement('div');
+                t.className = 'gallery-thumb' + (i === 0 ? ' is-active' : '');
+                t.innerHTML = '<img src="' + src.replace('w=1200', 'w=120') + '" alt="">';
+                t.addEventListener('click', () => goTo(i));
+                thumbsWrap.appendChild(t);
+            });
+
+            function goTo(i) {
+                idx = i; img.src = images[idx]; counter.textContent = idx + 1;
+                thumbsWrap.querySelectorAll('.gallery-thumb').forEach((t, j) => t.classList.toggle('is-active', j === idx));
             }
+            function open() { overlay.classList.add('is-open'); goTo(idx); }
+            function close() { overlay.classList.remove('is-open'); }
 
-            function resetAll() {
-                items.forEach(item => {
-                    const icon = item.querySelector('.dock-icon');
-                    const svg = item.querySelector('.dock-icon svg');
-                    const label = item.querySelector('.dock-label');
-                    icon.style.width = icon.style.height = '';
-                    icon.style.borderRadius = '';
-                    svg.style.width = svg.style.height = '';
-                    item.style.width = '';
-                    resetIcon(icon, svg, label);
-                });
-            }
+            document.getElementById('galleryPrev').addEventListener('click', () => goTo((idx - 1 + images.length) % images.length));
+            document.getElementById('galleryNext').addEventListener('click', () => goTo((idx + 1) % images.length));
+            document.getElementById('galleryClose').addEventListener('click', close);
+            overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
 
-            dockItems.addEventListener('mousemove', magnify);
-            dockItems.addEventListener('mouseleave', resetAll);
-
-            // click bounce + ripple
-            items.forEach(c => {
-                c.addEventListener('click', e => {
-                    // bounce
-                    c.classList.add('is-bouncing');
-                    c.addEventListener('animationend', () => c.classList.remove('is-bouncing'), { once: true });
-                    // ripple
-                    const r = document.createElement('span');
-                    r.className = 'dock-ripple';
-                    const icon = c.querySelector('.dock-icon');
-                    const b = icon.getBoundingClientRect();
-                    const s = Math.max(b.width, b.height);
-                    r.style.width = r.style.height = s + 'px';
-                    r.style.left = (e.clientX - b.left - s / 2) + 'px';
-                    r.style.top = (e.clientY - b.top - s / 2) + 'px';
-                    icon.appendChild(r);
-                    r.addEventListener('animationend', () => r.remove());
-                });
+            // Wire all gallery buttons
+            document.querySelectorAll('[data-open-gallery]').forEach(btn => {
+                btn.addEventListener('click', e => { e.preventDefault(); open(); });
+            });
+            // Keyboard
+            document.addEventListener('keydown', e => {
+                if (!overlay.classList.contains('is-open')) return;
+                if (e.key === 'Escape') close();
+                if (e.key === 'ArrowLeft') goTo((idx - 1 + images.length) % images.length);
+                if (e.key === 'ArrowRight') goTo((idx + 1) % images.length);
             });
         })();
     </script>
-
-    <script src="JS/ky0nwmerow.js"></script>
-    <script src="JS/s2dlrxbqxj.js"></script>
-    <script src="JS/5guwuzaijb.js"></script>
-
     <script>
-        (function forceHideDock() {
-            const hide = () => { const d = document.getElementById('dock'); if (d) d.style.cssText = 'display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;pointer-events:none!important;position:absolute!important;opacity:0!important;'; };
-            hide(); setTimeout(hide, 500); setTimeout(hide, 1500);
+        // Walkthrough Video Modal
+        (function () {
+            const overlay = document.getElementById('walkthroughOverlay');
+            const video = document.getElementById('walkthroughModalVideo');
+            if (!overlay || !video) return;
+            function open() { overlay.classList.add('is-open'); video.play().catch(() => { }); }
+            function close() { overlay.classList.remove('is-open'); video.pause(); video.currentTime = 0; }
+            document.getElementById('walkthroughClose').addEventListener('click', close);
+            overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+            document.querySelectorAll('[data-open-walkthrough]').forEach(btn => {
+                btn.addEventListener('click', e => { e.preventDefault(); open(); });
+            });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('is-open')) close(); });
         })();
+    </script>
+
+
+
+    <script>console.log(
+            "Selected Floor:",
+            sessionStorage.getItem("selectedFloor")
+        );
+        console.log("selectedFloor =", selectedFloor);
+        alert("selectedFloor = " + selectedFloor);
+    </script>
+    <script>
+        function onFloorClick(floorNumber) {
+
+            sessionStorage.setItem("selectedFloor", floorNumber);
+
+            window.location.href = "A-Typical/Typical.html";
+        }
+    </script>
+
+
+    <script>function openSkyvilla() {
+
+            const floor = window.currentFloor; // selected floor
+
+            sessionStorage.setItem("selectedFloor", floor);
+
+            window.location.href =
+                "A-skyvilla/360/SkyVilla_Tour.html";
+        }</script>
+    <script>
+
+        function openSkyvilla() {
+
+            const floor = sessionStorage.getItem("selectedFloor");
+
+            alert("Floor = " + floor);
+
+            window.location.href =
+                "A-skyvilla/360/SkyVilla_Tour.html";
+        }
+
     </script>
 
     <script>
@@ -1427,6 +1644,7 @@
             document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
         })();
     </script>
+
 </body>
 
 </html>

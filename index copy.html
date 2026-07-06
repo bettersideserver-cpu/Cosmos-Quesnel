@@ -6,6 +6,9 @@
     <link rel=" stylesheet" href="wbn05d6fbh.css">
     <link rel="stylesheet" href="JS/ahrb012icb.css">
     <link rel="stylesheet" href="JS/Notification/bz0mp28u74.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         .mdb {
             display: flex;
@@ -15,7 +18,6 @@
 
         .pdf-icon {
             width: 50px;
-            /* adjust size as needed */
             height: auto;
             object-fit: contain;
         }
@@ -31,11 +33,8 @@
             left: -50px;
             position: fixed;
             background-color: transparent;
-            /* No blocking layer */
-            /* display: none; */
             z-index: 8999;
             pointer-events: none;
-            /* ❗️ This makes whole container non-interactive except children */
             transform: scale(.9);
         }
 
@@ -63,34 +62,26 @@
             display: block;
             width: 100%;
             text-align: center;
-
-            /* reduced gap */
             padding: 11px 1px;
-            /* smaller height */
-
-            border-radius: 8px;
-            /* slightly tighter */
-            font-weight: 600;
-            font-size: 14px;
-            /* smaller text */
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 13px;
+            letter-spacing: 0.3px;
             text-decoration: none;
-
-            background: #C9A87C;
-            color: #111;
-
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: none;
             transition: all 0.2s ease;
+            font-family: 'DM Sans', -apple-system, sans-serif;
         }
 
-        /* hover */
         .call-btn:hover {
-            background: #0078be;
-            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.85);
+            border-color: rgba(255, 255, 255, 0.12);
         }
 
-        /* Splash */
         .splash {
             position: fixed;
             inset: 0;
@@ -100,19 +91,15 @@
             pointer-events: auto;
             opacity: 1;
             transition: opacity .6s ease;
-            /* smoother fade */
         }
 
         .splash__backdrop {
             position: absolute;
             inset: 0;
             background: rgba(10, 10, 10, .45);
-            /* keep slight tint so blur is visible */
             backdrop-filter: blur(14px);
-            /* -webkit-backdrop-filter: blur(14px); */
         }
 
-        /* CONTENT: no box, no background */
         .splash__content {
             position: relative;
             display: flex;
@@ -120,13 +107,9 @@
             align-items: center;
             gap: 12px;
             padding: 0;
-            /* no padding box */
             background: transparent;
-            /* no box */
             border-radius: 0;
-            /* no rounded box */
             box-shadow: none;
-            /* no shadow box */
             transform: translateY(8px);
             animation: splash-pop .5s ease forwards;
             pointer-events: none;
@@ -134,14 +117,9 @@
 
         .splash__logo {
             width: 300px;
-            /* bigger logo */
             height: auto;
-            /* keep aspect */
             object-fit: contain;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .15));
             filter: brightness(1.3) drop-shadow(0 4px 10px rgba(0, 0, 0, .15));
-            /* filter:
-                brightness(1.3) contrast(1.1) drop-shadow(0 0 3px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.25)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.15)); */
         }
 
         .splash__text {
@@ -164,7 +142,6 @@
             }
         }
 
-        /* Fades whole overlay out */
         .splash.is-hidden {
             opacity: 0;
         }
@@ -185,67 +162,67 @@
             top: 26px;
             left: 30px;
             z-index: 1000;
-
-            padding-left: 14px;
-            border-left: 2px solid rgba(255, 255, 255, 0.35);
+            padding: 10px 16px;
+            border-left: none;
+            background: rgba(15, 15, 18, 0.42);
+            backdrop-filter: blur(60px) saturate(130%);
+            -webkit-backdrop-filter: blur(60px) saturate(130%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            font-family: 'DM Sans', -apple-system, sans-serif;
         }
 
         .bp-label {
             display: block;
-            font-size: 10px;
-            letter-spacing: 1.2px;
+            font-size: 8px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: rgba(0, 0, 0, 0.55);
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 400;
         }
 
         .bp-id {
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #000000;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 2px;
         }
 
         @media (max-width: 600px) {
             .rera-blueprint {
-
                 left: 10px;
-                transform: scale(.7);
+                transform: scale(.8);
+                transform-origin: top left;
             }
         }
 
         @media (max-width: 600px) {
-
             .top-header {
                 position: fixed !important;
                 top: 10px !important;
                 right: 10px !important;
                 left: auto !important;
                 z-index: 99999 !important;
-
                 display: flex !important;
                 flex-direction: row !important;
                 gap: 8px !important;
-
                 width: auto !important;
             }
 
             .top-header a,
             .top-header .top-btn {
                 display: inline-flex !important;
-                /* ✅ this is the key */
                 flex: 0 0 auto !important;
                 width: auto !important;
                 max-width: none !important;
-
                 padding: 6px 10px !important;
                 font-size: 12px !important;
                 line-height: 1 !important;
-
                 white-space: nowrap !important;
             }
         }
-
-
 
         @media (max-width: 600px) {
             .Front {
@@ -255,37 +232,50 @@
             }
         }
 
-        /* ══════════════════════════════════════
-           REQUEST CALL BACK — vertical side tab
-           ══════════════════════════════════════ */
         .enquiry-btn {
             position: fixed;
             right: 0;
             top: 50%;
             transform: translateY(-50%);
             z-index: 10001;
-
-            /* Vertical text without rotation — stays fully on screen */
             writing-mode: vertical-rl;
             text-orientation: mixed;
-
-            padding: 22px 11px;
-            background: #0078be;
+            padding: 24px 13px;
+            background: #111;
             color: #fff;
+            font-family: 'DM Sans', -apple-system, sans-serif;
             font-weight: 700;
-            font-size: 13px;
-            letter-spacing: 0.7px;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
             border: none;
-            border-radius: 8px 0 0 8px;
-            /* rounded left corners only */
+            border-radius: 12px 0 0 12px;
             cursor: pointer;
             white-space: nowrap;
-            box-shadow: -4px 0 16px rgba(0, 0, 0, 0.22);
-            transition: background 0.2s ease, padding 0.2s ease;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
+            transition: opacity 0.3s ease, background 0.2s ease;
         }
 
-        .enquiry-btn {
-            transition: opacity 0.3s ease, background 0.2s ease, padding 0.2s ease;
+        .enquiry-btn::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 14px 0 0 14px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            animation: eq-ring 2.5s ease-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes eq-ring {
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.08);
+            }
         }
 
         .enquiry-btn.is-hidden {
@@ -294,32 +284,26 @@
         }
 
         .enquiry-btn:hover {
-            background: #b8936a;
-            padding: 22px 14px;
+            background: #2a2a2a;
         }
 
         @media (max-width: 600px) {
             .enquiry-btn {
-                font-size: 11px;
-                padding: 16px 9px;
+                font-size: 9px;
+                padding: 18px 10px;
             }
         }
 
-        /* ══════════════════════════════════════
-           SLIDE-IN PANEL — overlay backdrop
-           ══════════════════════════════════════ */
         .enquiry .overlay {
             position: fixed;
             inset: 0;
             display: flex;
             align-items: stretch;
             justify-content: flex-end;
-            /* invisible + non-interactive by default */
             background: rgba(0, 0, 0, 0);
             backdrop-filter: blur(0px);
             -webkit-backdrop-filter: blur(0px);
             z-index: 99999;
-            /* higher than navbar */
             pointer-events: none;
             transition: background 0.35s ease, backdrop-filter 0.35s ease;
         }
@@ -331,84 +315,78 @@
             pointer-events: auto;
         }
 
-        /* ══════════════════════════════════════
-           SLIDE PANEL — the actual form drawer
-           ══════════════════════════════════════ */
         .enquiry .modal {
             width: min(400px, 100vw);
             height: 100%;
-            background: rgba(16, 17, 20, 0.1);
-            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(15, 15, 18, 0.75);
+            backdrop-filter: blur(60px) saturate(130%);
+            -webkit-backdrop-filter: blur(60px) saturate(130%);
+            border-left: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 0;
-            box-shadow: -12px 0 40px rgba(0, 0, 0, 0.5);
+            box-shadow: -12px 0 50px rgba(0, 0, 0, 0.6);
             display: flex;
             flex-direction: column;
             justify-content: center;
-
-            /* Starts hidden off to the right */
             transform: translateX(100%);
             transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+            font-family: 'DM Sans', -apple-system, sans-serif;
         }
 
-        /* Slides in when overlay gets .is-open */
         .enquiry .overlay.is-open .modal {
             transform: translateX(0);
         }
 
-        /* Header row */
         .enquiry .modal-header {
             padding: 20px 20px 12px;
             display: flex;
             align-items: center;
             gap: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Gold accent bar */
         .enquiry .modal-header::before {
             content: '';
             flex-shrink: 0;
-            width: 3px;
-            height: 22px;
-            background: #C9A87C;
+            width: 2px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 2px;
         }
 
         .enquiry .modal-header .title {
             flex: 1;
-            color: #fff;
-            font-weight: 700;
-            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-size: 16px;
             letter-spacing: 0.3px;
         }
 
         .enquiry .close {
             flex-shrink: 0;
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             display: grid;
             place-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.06);
-            color: #d7d7db;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.35);
             cursor: pointer;
-            font-size: 15px;
-            transition: background 0.2s;
+            font-size: 13px;
+            transition: all 0.2s;
         }
 
         .enquiry .close:hover {
-            background: rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        /* Scrollable body */
         .enquiry .modal-body {
             padding: 20px;
             overflow-y: auto;
             flex: 1;
         }
 
-        /* Form grid */
         .enquiry .form {
             display: grid;
             gap: 12px;
@@ -416,28 +394,37 @@
             box-sizing: border-box;
         }
 
-        /* Shared input style */
         .enquiry .input,
         .enquiry .select,
         .enquiry .phone {
             width: 100%;
             box-sizing: border-box;
-            background: #e9eaed;
-            border: 1px solid #cfd2d8;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 10px;
             padding: 12px 14px;
-            font-size: 14px;
-            color: #0f0f11;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .enquiry .input:focus,
+        .enquiry .select:focus,
+        .enquiry .phone:focus-within {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.07);
         }
 
         .enquiry .input::placeholder {
-            color: #b9bcc4;
+            color: rgba(255, 255, 255, 0.22);
         }
 
         .enquiry .select {
             appearance: none;
             cursor: pointer;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5" fill="none" stroke="%23555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
             background-repeat: no-repeat;
             background-position: right 12px center;
         }
@@ -450,12 +437,13 @@
         .enquiry .phone select {
             appearance: none;
             border: none;
-            border-right: 1px solid #cfd2d8;
+            border-right: 1px solid rgba(255, 255, 255, 0.07);
             padding: 0 10px;
             min-width: 72px;
             background: transparent;
-            color: #3a3a3f;
-            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            font-family: 'DM Sans', -apple-system, sans-serif;
         }
 
         .enquiry .phone input {
@@ -463,41 +451,50 @@
             border: none;
             background: transparent;
             padding: 12px;
-            font-size: 14px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        .enquiry .phone input::placeholder {
+            color: rgba(255, 255, 255, 0.22);
         }
 
         .enquiry .agree {
             display: flex;
             align-items: flex-start;
             gap: 8px;
-            font-size: 12px;
-            color: #a0a0a8;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.25);
         }
 
         .enquiry .agree a {
-            color: #C9A87C;
+            color: rgba(255, 255, 255, 0.45);
             text-decoration: underline;
         }
 
         .enquiry .submit {
             width: 100%;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 13px;
-            font-weight: 700;
-            font-size: 15px;
-            background: #0078be;
-            color: #111;
+            font-weight: 500;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.85);
             cursor: pointer;
             margin-top: 4px;
-            transition: background 0.2s ease;
+            transition: all 0.2s ease;
+            font-family: 'DM Sans', -apple-system, sans-serif;
         }
 
         .enquiry .submit:hover {
-            background: #b8936a;
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.95);
         }
 
-        /* Spinner on busy */
         .submit[aria-busy="true"] {
             position: relative;
             pointer-events: none;
@@ -530,7 +527,6 @@
             }
         }
 
-        /* Poppins font for enquiry panel */
         .enquiry .modal,
         .enquiry .form,
         .enquiry .input,
@@ -539,7 +535,405 @@
         .enquiry .title,
         .enquiry .submit,
         .enquiry .agree {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        /* OLD DOCK — HIDDEN */
+        .dock-wrap,
+        #dock {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            position: absolute !important;
+        }
+
+        /* JUMP BAR */
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+        #jumpBar {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 11000;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #ffffff;
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.18);
+            font-family: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        #jumpBar a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            padding: 0 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #555;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        #jumpBar a:hover {
+            color: #111;
+            background: #f0f0f0;
+        }
+
+        #jumpBar a.active {
+            color: #fff;
+            background: #111;
+            font-weight: 600;
+        }
+
+
+
+
+
+
+
+       
+        /* ── FAB CLUSTER ── */
+        .fab-cluster {
+            position: fixed;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .fab-item {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+            transition: width 0.25s cubic-bezier(.4, 0, .2, 1), border-radius 0.25s ease;
+            white-space: nowrap;
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .fab-item:hover {
+            width: 140px;
+            border-radius: 22px;
+        }
+
+        .fab-whatsapp {
+            background: #25d366;
+            color: #fff;
+        }
+
+        .fab-whatsapp:hover {
+            background: #1ebe5d;
+        }
+
+        .fab-email {
+            background: #1a73e8;
+            color: #fff;
+        }
+
+        .fab-email:hover {
+            background: #1558c0;
+        }
+
+        .fab-location {
+            background: #ea4335;
+            color: #fff;
+        }
+
+        .fab-location:hover {
+            background: #d33426;
+        }
+
+        .fab-icon {
+            min-width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .fab-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+
+        .fab-label {
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: opacity 0.2s ease 0.05s, transform 0.2s ease 0.05s;
+            padding-right: 14px;
+            color: #fff;
+        }
+
+        .fab-item:hover .fab-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 600px) {
+            .fab-cluster {
+                left: 10px;
+                top: auto;
+                bottom: 150px;
+                transform: none;
+                gap: 8px;
+            }
+
+            .fab-item {
+                width: 40px;
+                height: 40px;
+            }
+
+            .fab-item:hover {
+                width: 40px;
+                border-radius: 50%;
+            }
+
+            .fab-label {
+                display: none;
+            }
+        }
+
+        /* ── FORM BUTTONS ── */
+        .form-btn-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .btn-callback {
+            flex: 1;
+            border: none;
+            border-radius: 8px;
+            padding: 13px;
+            font-weight: 700;
+            font-size: 13px;
+            background: #fff;
+            color: #111;
+            cursor: pointer;
+            transition: background 0.15s;
+            font-family: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        .btn-callback:hover {
+            background: #e8e8e8;
+        }
+
+        .btn-callnow {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 13px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 8px;
+            background: transparent;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            transition: background 0.15s;
+            white-space: nowrap;
+        }
+
+        .btn-callnow:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ══════════════════════════════════════════
+           LIVE BUTTON — Bottom Left
+           ══════════════════════════════════════════ */
+        .live-btn-bottom {
+            position: fixed;
+            left: 20px;
+            bottom: 28px;
+            z-index: 11000;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            background: #ef4444;
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45), 0 2px 8px rgba(0, 0, 0, 0.18);
+            transition: all 0.2s ease;
+        }
+
+        .live-btn-bottom:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(239, 68, 68, 0.55), 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            position: relative;
+            animation: live-pulse 1.5s ease-in-out infinite;
+        }
+
+        .live-dot::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            animation: live-ring 1.6s ease-out infinite;
+        }
+
+        @keyframes live-pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.65;
+            }
+        }
+
+        @keyframes live-ring {
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.8);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .live-btn-bottom {
+                left: 10px;
+                bottom: 90px;
+                padding: 10px 16px;
+                font-size: 11px;
+            }
+        }
+
+        /* ══════════════════════════════════════════
+           AMENITY BAR — Top Center
+           ══════════════════════════════════════════ */
+        .amenity-bar {
+            position: fixed;
+            top: 26px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10000;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #ffffff;
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.18);
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            max-width: calc(100vw - 40px);
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .amenity-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .amenity-bar a {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            height: 36px;
+            padding: 0 14px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #555;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .amenity-bar a:hover {
+            color: #111;
+            background: #f0f0f0;
+        }
+
+        .amenity-bar a.active {
+            color: #fff;
+            background: #111;
+            font-weight: 600;
+        }
+
+        .amenity-bar a.active svg {
+            stroke: #fff;
+        }
+
+        .amenity-bar svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 600px) {
+            .amenity-bar {
+                top: 75px;
+                left: 50%;
+                padding: 4px;
+                gap: 2px;
+                max-width: calc(100vw - 20px);
+            }
+
+            .amenity-bar a {
+                height: 30px;
+                padding: 0 10px;
+                font-size: 10.5px;
+                gap: 5px;
+            }
+
+            .amenity-bar svg {
+                width: 12px;
+                height: 12px;
+            }
         }
     </style>
 
@@ -558,65 +952,58 @@
 
     <!-- Quick interaction hint (appears for ~2–3s) -->
     <div id="ui-hint" class="ui-hint" aria-live="polite" role="status">
-        <!-- shown on mouse/trackpad devices -->
-        <div class="ui-hint__row ui-hint__desktop">
-            <!-- mouse icon (inline SVG) -->
-            <svg width="18" height="24" viewBox="0 0 18 24" aria-hidden="true">
-                <path d="M9 1c3.9 0 7 3.1 7 7v8c0 3.9-3.1 7-7 7s-7-3.1-7-7V8c0-3.9 3.1-7 7-7z" fill="white"
-                    opacity=".18" />
-                <rect x="8" y="4" width="2" height="5" rx="1" fill="white" />
-                <rect x="5" y="10" width="8" height="9" rx="4" fill="white" opacity=".4" />
-            </svg>
-            <span>Click Tower's to Select Floors</span>
-        </div>
 
-        <!-- shown on touch devices -->
         <div class="ui-hint__row ui-hint__touch">
-            <!-- finger icon (inline SVG) -->
             <svg width="18" height="24" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                     d="M12 2a4 4 0 014 4v4h1.2a2.8 2.8 0 012.8 2.8V16c0 3.3-2.7 6-6 6H9.5A5.5 5.5 0 014 16.5V11a3 3 0 016 0v3h1V6a4 4 0 011-2.7z"
                     fill="white" opacity=".28" />
                 <rect x="11" y="5" width="2" height="9" rx="1" fill="white" />
             </svg>
-            <span>Click on Tower's To Select Floor</span>
+            <span>Click on Floor's To Select Apparmentsr</span>
         </div>
     </div>
-
-
-
-
-
-
+    <div id="infoCard" class="info-card">
+        //
+        <!-- <div class="image-placeholder">
+            <img src="images/Thumbnail/Home.webp" alt="Home" />
+        </div> -->
+        <div class="info-details" id="details"></div>
+    </div>
+    </div>
 
     <!-- Info Card Modal -->
-    <div id="infoCard" class="info-card">
-        <div class="info-content">
-
-            <h2 id="modalTitle">Cosmos Quesnel</h2>
-
-            <div class="image-placeholder">
-                <img src="images/Thumbnail/Home.webp" alt="Home" />
-            </div>
-            <div class="info-details" id="details"></div>
-        </div>
-    </div>
-
+    <div id="floorTip" class="floortip"></div>
 
     <div class="Front">
         <div class="image-wrapper">
             <link rel="preload" as="image" href="images/Home.jpg" />
-
             <img id="mainImage" src="images/Thumbnail/Home_Low.webp" data-full="images/Home.jpg" alt="Home"
                 fetchpriority="high" decoding="async" width="3840" height="5830" class="blur-up" />
             <div class="Cutout">
-                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 3840 5830">
-                    <path id="Tower_B" data-link="Tower_B.html" data-name="Tower_B"
-                        data-img="images/Thumbnail/Tower_B.jpg"
-                        d="m3209.21 2788.05-9.13 177.36v.67l-2.72-3.67s-1.02-4.25-1.27-5-3.64-2.5-3.64-2.5l-1.19-8.67-5.79-2.03s-.79-2.77-.79-3.77-2.49-4.89-3.62-8.11c-1.13-3.23-3.39-2.56-4.18-3.12-.79-.55-2.04-4.11-2.15-5.11s1.02-3.33 1.7-5.44c.67-2.11 3.85-4.33 3.85-4.33s-4.42-4.34-5.43-5.89c-.5-.77-.65-.94-.67-.97.01.01.04.01 0-.14-.12-.45-1.14-2-.91-3 .22-1-.68-5.67-.68-5.67l-1.35-3.11 2.04-7-5.2-1s-4.86 2.89-5.55 1.44c-.68-1.44-1.7-1.78-1.7-1.78l.79-3.66 4.75-9.34-4.53-2.77-2.59-4.89-3.73 6.66s-1.69 2.45-2.04 2.89c-.34.45-1.58 5.34-1.58 5.34s-1.25-.78-1.81-1.11c-.57-.34-2.37.33-2.37.33l-2.49 5-4.18 3.55-4.86 3-.11 7.45 3.28 6.11-3.16 5.78-4.07 1.22 3.05 5.67-1.13 2.22s-4.07 4.78-4.41 5.55c-.35.78 6.78.12 7.57 0l-1.58 6-5.77 2.78-1.7 7.22-9.16 3.34h-1.8s-7.8-3.11-8.14-3.11-7.12-1.11-7.12-1.11l-2.72 4.55 10.86 1.89-1.81 8.56-.68 6.55 8.6 2.78 8.92 5.11-2.48 6.22s-2.49-.11-2.83-.11-5.65 1.33-5.65 1.33l-5.99 2.89-8.03-3.66-4.29 4.66-5.21 2.67-21.93 17.89s3.16.11 4.98.11 8.48 3.67 8.48 3.67 10.63 3.89 12.32 4.11c1.7.22 8.71 1.66 11.19 1.66s6.22 1.89 6.22 1.89l10.75 10.56.79 7.33-1.81 3.89-2.94.78s-3.39-1.56-3.96-2.78c-.56-1.22.34-3 .68-3.55.34-.56-1.92-5.23-1.92-5.23l-2.49.78-.11-3.67s-2.26-3.11-2.59-3.11-4.18-.44-4.18-.44l-1.02 4.33s-3.4 5.11-3.62 5.45c-.22.33-.91 7.44-.91 7.44s2.61 2.45 4.18 2.45 5.55.88 5.99 1c.46.11 6.22 3.44 6.56 3.44s8.7 1.22 8.7 1.22l2.49 5.89-5.09 3.67s-5.99-2.67-8.71-4.34c-2.72-1.66-2.59.78-2.59.78l-2.27 2.78s-2.48 2.56-2.94 2.78c-.45.22 0 4.66 0 5.44s-2.26 5.22-2.26 5.22l-8.59 6.34-44.1 22.72s-1.53-.5-3.05-1.83c-1.53-1.34-4.92 2.16-5.42 2.5-.51.33-1.19 7.83-1.19 7.83s-4.74-2.17-8.48-4.33c-3.73-2.17 0-4.5 0-4.5l1.86-3.84s-1.35-5.33-4.58-6.66c-3.22-1.34-1.86-1.17-5.6-4-3.72-2.84-1.02-3.34-1.02-3.34s3.56-.33 6.28-.83 1.86-4.83 1.86-5.5-3.56-1.83-3.56-1.83-1.53-2-1.18-4.67c.34-2.67.34-1.83 1.02-2.5.67-.67 6.95-.33 7.97-.67 1.02-.33 2.37-7.33 2.37-7.33l-4.07-4s-.51-1-.67-1.5c-.17-.5-4.93-2.67-6.28-4s-4.58.83-5.93 1.5c-1.36.67-2.38 2-3.73 3.17-1.35 1.16-2.64 3-2.64 3s-4.15-.17-4.82-.34c-.68-.16-1.87-.66-1.87-.66s-3.72-4.34-2.71-5.34-.51-.83-.51-.83l.34-2s.34-2.5.68-3 2.54-2.67 2.88-4-5.24-9.56-5.24-12.22 1.02-2.84 1.36-4.17 1.02-3 1.35-3.83c.34-.84.84-2.84.84-2.84l1.19-5.83.34-6.67s.35-2.16.35-3.33v-8.5c0-1.67.16-1.5.16-2.83s.68-5.84 1.02-7c.35-1.17 0-1 .35-2.17.34-1.17 0-3 .16-4.17.17-1.16 0-2.33 0-4.33s-5.25-6.17-7.29-7.67-1.7-.16-2.54-.83c-.85-.67.16-2 .16-3.33s.85-7.34.85-10.67-3.4-9-3.4-9-1.53 4.83-1.69 6.33c-.17 1.5-2.21 8-2.21 8l-1.7 3.67-.84 3.17-3.23 2.66-3.05.84s-3.39 2.83-4.41 3.5c-1.02.66-2.37 2.16-3.73 3.16-1.35 1-4.92 2-5.42 2.5s1.53.17 1.53.17l2.21 1.83s.84 4.5.84 5.17-3.39 3-4.24 3.5c-.84.5-1.53 1.83-2.54 3.67-1.02 1.83-2.2 4.5-2.54 5.83s0 2 0 2l.17 3.83 1.02 6.34v3.66l-1.19 1.5-1.02 4.17-5.76 3.67-1.02 2.33-1.36 4.83.16 5.39-2.54-4v-3.83l-5.26-.33s-5.09-4.34-5.76-4.34 0 2.84 0 2.84l1.02 6.5v7l-10.06 5.94s-4.07-3.55-5.2-3.78c-1.13-.22-5.66 6.67-5.66 6.67l-.22 3.78 3.16 9.11s-2.04.22-3.16.22-3.16 5.56-3.16 5.56l6.33 2v4l-6.55 2v7.55h-.68c-.68 0-4.75.67-5.2.89-.46.22-3.62 6.22-3.62 6.22l3.62 1.56s-2.26 2.67-3.39 4c-1.14 1.33.22 1.55 0 2.67-.23 1.11-1.59.88-1.59.88l-3.62-1.11-2.93 4-3.17 1.56 1.81 2.89v4.66l-3.61-1.11-3.12 2.45-2.08 1.33s1.58 4.22 2.04 5.33c.45 1.12-2.32.67-2.32.67l-1.3 3.33s0 1.34.91 1.78c.91.45 0 2.22 0 2.22l-1.59.89s-2.26 2.67-2.26 3.34.91.89 1.13 2-3.39 1.55-4.74 1.77c-1.36.23-3.62.23-3.62.23l-1.59 1.33s-1.35 2.44-2.04 3.33c-.67.89-4.74 1.56-4.74 1.56l-4.07 3.11h-4.98l-2.04-1.11s-1.59-1.56-2.04-3.11c-.46-1.56-1.35-3.56-1.35-6s-3.62-6.89-4.07-9.34c-.46-2.44-6.56-5.11-8.37-5.11s-5.65 2.67-6.78 3.56-6.56 9.78-6.56 9.78l-4.29 2.66-4.29-.44s-6.56-3.33-7.01-5.11c-.46-1.78.68-7.34.68-7.34l4.07-3.77s.67-6.23 0-6.89-8.37.89-8.37.89l-4.29-7.56-1.35-2.22 1.13-8.89-2.04-.67.68-6.89 2.71-3.77s-3.39-4.67-3.85-6.45c-.45-1.78 2.94-2.44 2.94-2.44l6.11-4.22s-7.24-3.34-7.91-3.34-7.47-1.55-7.47-1.55-.45-4.67 0-5.34c.46-.66 2.49-2.44 2.49-2.44s1.58-3.78 2.26-4.67 2.94 0 2.94 0l3.16-2.89 2.26-7.11-4.75-1.78-3.39-2.44-5.65-3.56 2.48-3.33 6.55-3.11-4.29-5.78-2.71 1.78s-2.04-.67-2.94-.67-4.98-2.22-7.47-3.11c-2.48-.89-2.71-.44-3.39-.44s-1.59-.45-1.59-.45l-3.66-3.55s-1.3-2-1.3-3.11 0-5.78.9-7.34c.91-1.55 0-3.77 0-3.77l-7.46-5.78-4.52 4.89s-1.81 4.66-1.59 5.33 0 1.11 0 3.33-1.35 5.34-1.35 5.34l-2.49 5.55-8.14-2-2.71 1.56v5.11l-1.81 1.78-7.24-2-2.94 2.89s6.11 3.33 7.46 3.33h3.62l2.04 6.89-2.72 3.78s-6.33-1.78-7.46-2.23c-1.13-.44-7.24-.66-8.46-.66s-1.94-.23-3.53-.23-3.85 2-3.85 2l-.45 5.56s.22 8.44.45 11.11.68 5.33.68 6v14c0 2 0 5.33-.22 7.11-.23 1.78-7.24 4.56-7.24 4.89s2.26 7.22 2.26 7.22.67 5.11 2.04 6.34c1.35 1.22 9.49 4.77 9.83 5 .35.22-3.28 2.77-3.28 2.77l-2.94.45-6.33-5.67-5.09 1.89-4.75.78-1.35 3.89-.79 2.55-1.58 4.34-1.24 2.22 1.24 6.89v4l-111.64-29.52 2.54-5.67-11.96-4.33-.68 1-6.27-.25v-5l-11.96-4.08v-1.84l-46.22-15.83-7.89-1.75-2.8-.83-7.46-1.34v-2.16l-41.3-14.59-5.51.17-14.42-5.08-.76 1.25-2.04 1.41-4.83-.91v-2.5l-14.25-5.42-9.59 5.17-9.24-1.84-72.65-26.5s-16.62-6.26-21.8-8.4l1.44-4.26-2.59-.67-2.49.33s-1.58-1-1.81-1.44c-.22-.45-2.26-2.78-2.26-2.78s-2.48-2.22-3.72-2.78c-1.25-.55-4.53-2.11-4.53-2.11s-2.26-1-2.94-.89c-.67.11-2.37.22-2.37.22l-2.26.89-13.34-4-2.27-1.55.11-1.45 2.67-2.39s3.56-3.16 3.56-3.33-.23-3.11-.23-3.11-.91-.44-1.07-.67c-.17-.22-1.24-1.83-1.41-2.5-.17-.66-2.77-3.77-2.77-3.77l2.63-2.59s-1.53-1.91-2.63-2.41c-1.11-.5-1.62-.17-1.62-.17l-.51-.67v-1.33c0-.33.25-1.42.25-1.42l.51-.58c.51-.58 1.53-1.25 2.46-2s.51-.67.68-1.92c.16-1.25-.25-1.41-.35-1.91-.08-.5-.93-.59-1.86-1.17s-1.61-.67-1.86-.83c-.25-.17-1.44-1.5-1.44-2.92s0-.92.17-1.5c.16-.58.34-3.25.67-3.67 0 0 1.36-.5 2.64-1.33s1.94-.58 2.88-1.17c.94-.58 1.53-.75 2.21-1.08.67-.33 1.35-1.17 1.35-1.17v-.91c0-.92-.76-1.59-1.35-2.42-.6-.83-1.62-.92-2.38-1.75s-1.35-2.17-1.43-2.5c-.09-.33-4.75-4.25-4.75-4.25l-.25-.5s.08-1 .51-1.75.43-.58.68-.92c.25-.33.76-1 1.1-1.41.34-.42.43-.5.76-1.42s0-1.25 0-2-.17-1.5-.34-3.92c-.17-2.41-.94-2-1.11-2.58-.16-.58-2.54-1.42-3.72-1.92-1.19-.5-.85 0-1.19 0s-2.21 1-3.73 1.59c-1.53.58-1.94.58-2.71.58s-2.89.08-4.07-.08c-1.19-.17 0-1.09.08-1.67s2.88-4.42 3.13-4.58c.25-.17 1.78-.84 2.54-1.25.76-.42 2.04-.67 3.48-1.67s1.53-2 1.95-3.17c.42-1.16.59-2.83.59-3.16s-.84-.67-1.27-1c-.43-.34-1.27-.17-1.27-.17l-1.27-.17s-.94-1.08-2.12-2.91c-1.19-1.84-1.19-.67-1.19-.67s-1.53 1.42-1.86 1.58c-.35.17-2.13.5-2.64.5s-1.53-1-1.53-1 .09-.83.09-1.16.34-2 .93-3.67c.6-1.67.35-1.08.6-1.42.25-.33.67-.66.67-.66s1.78-.25 2.46-.67l.68-.42s-.76-2.25-.85-2.58c-.08-.33-.42-.42-1.18-.92s-1.19-.75-1.44-.91c-.25-.17-.94-.92-1.1-1.25-.17-.34-.35-.92-.85-2.17s.25-.33 0-.75-1.18-1.25-1.18-1.25l-1.11-.83-2.12-.25s-1.1-.5-1.44-.75-1.78 1.16-2.37 1.5c-.59.33-1.86.66-2.63.66s-.43-.25-.6-.83c-.16-.58 0 0-.84-3.5s.08-1.58.08-1.58 1.95-1.67 2.38-2.17c.42-.5 0-.58.59-2s.59-.42 1.95-1.67c1.35-1.25-1.87-2.75-2.29-2.75s-1.11.5-1.53.67c-.43.17-2.46 1.25-3.23 1.75s-2.21-.08-2.21-.08h-1.27s0-1.17.09-1.75c.08-.59.67-1.5.67-1.5s.35-.92 1.27-2.5c.94-1.59 1.11-2.09 1.11-2.59s-2.04-1.83-2.38-2c-.34-.16-1.86.17-1.86.17l-1.19-1.83v-5l-4.07.66-.67 4s-1.87 3-2.04 3.42-1.62 2.42-1.62 2.42l-2.37.75-1.19-1-3.64-.42-.94 2.75-.65 2.56 2.27-98.81 7.93-363.01.37-.12 965.91 232.18-.22 5.11-4.29 2.77-2.83 22.78h14.69l-1.69 31.45-15.61 6.66-2.59 39.56h6.55l-.34 23-9.16 4.44-3.05 43.78 32.23-16.33 4.63 2Z" />
-                    <path id="Tower_A" data-link="Tower_A.html" data-name="Tower_A"
-                        data-img="images/Thumbnail/Tower_A.jpg"
-                        d="M2212.26 2856.37c-.25.17-1.02 2.09-1.02 2.09l1.19 1 1.77 1.86.52.55v4.09s-.26.06-.63.14c-.7.15-1.81.39-2.25.44-.68.08-2.04 1.08-2.38 1.17-.34.08-2.37 1.08-2.37 1.08s-1.7.58-2.97.92c-1.27.33-2.54 1.91-2.88 2.16s-.25 3.92-.25 3.92l1.35 2.08 1.19 3.92 1.19 5.5 1.29 2.83s-1.47.78-2.37 1-3.96 1.67-3.96 1.67-.96.5-1.3 1.11-.62 2-.62 2-1.53 2.17-1.69 2.44c-.17.28-2.49 1.12-3.23 1.28-.73.17-1.02 1.11-1.02 1.11l3.62 2.84 1.13 1.55-2.15 2.5-.17 3.5 1.86 2.56 1.19 1.66s.73 3.17 1.07 4c.35.84 1.81 2.12 1.98 2.23s6.44 4.05 6.44 4.05l.79 1.89-1.24 2.72-4.93-1.22-1.4-.5-4.02-6.44-1.24-2.06-4.64 1.06-5.76-3.39-3.62.72s.57 4.67.46 4.94c-.12.28-1.14 1.84-1.14 1.84l-.05 3 4.8 2.11 3.05 2.42-.08 1.66-.6 2.92s-3.13 0-3.72.08c-.6.09-1.11 1.5-1.11 1.5v3.34c0 .25 1.36 1.66 1.36 1.66s2.37.67 3.39.92 1.78 2.75 1.78 2.75l1.53 2.08h2.63c1.44 0 2.54.42 3.14.5.59.09 1.69.17 1.69.17s2.38-.5 2.97-.83c.59-.34 2.12-.25 2.12-.25l1.44 1.08 1.95 2s.51 0 2.37-.67c1.86-.66 1.7-.5 2.04-.5.2 0 .82 1.58 1.3 2.85.31.85.56 1.57.56 1.57s-.24.02-.6.04c-.44.02-1.04.04-1.6.04-1.02 0-4.93-.16-6.2-.16s-3.72-.75-4.41-.75-2.46.41-4.41 1.33-3.48 1.25-3.48 1.25l-1.95 1.17-.16 1.75h-1.53c-.25 0-1.62 0-2.29.16-.68.17 0 .67 0 .67l-.51 1.75-2.13.42s-1.69-1.17-2.2-1.17-1.44 1.92-1.44 2.33 1.61 2.84 1.61 2.84 1.78-.59 2.72-1c.94-.42 2.72-.59 2.72-.59s3.05-1.75 3.47-1.83c.43-.08.85.08.85.08l1.18 1.92-3.31 1.75.51 2.25 1.27 2.25 1.02 1.58 1.87.92h3.56v1.42s-3.65.83-4.5.75c-.84-.09-3.64 1.33-4.5 1.33s-3.64.92-3.64.92l-4.5.16-1.02 1.25-2.54 3.09-4.41 2.76-82.68 31.48-3.05.27-4.07.12s-4.75 1.27-4.92 1.33c-.17.05-7.69 1.94-7.69 1.94l-10.35 7.28-3.72 4.75-291.39 118.22-8.03-4.22-10.35 3.72.46 4-4.86.12-3.34-1.95-12.94 5.06-1.02 2.5-4.07-.34-.91-1.61-39.63 13.94.4 3.28-15.49 7.61-4.44-1.23-38.76 16-.59 4.84-2.8-.34-34.81 17.38-9.6 4.8c-12.83-6.52-23.17-4.34-31.62 4.44-2.53 2.62-3.55 6.36-2.85 9.93l.51 2.59-25.98 12.98-156.51 68.5-6.61-1.92-2.38-.83s-2.37-3.25-2.71-4.83c-.35-1.59.42-4.67.42-4.67s.94-4.75.51-5.58c-.42-.84-1.69-.67-5.42-2.67-3.61-1.93-.24-.52-.01-.43-.05-.15-.51-1.3-.58-2.24-.09-1-.43-1.5-.43-2.33s-2.04-2.83-4.58-4.75c-2.23-1.68-2.12-.41-2.06-.08-.15-.42-.82-2.53-.74-3.5.08-1.09 1.1-1.84 2.46-2.5 1.35-.67 2.63-.59 2.96-.75.35-.17-.59-2.59-.67-3.34-.09-.75-3.65-3.75-2.89-4.16.76-.42 2.38-1 2.38-1l.51-3-.92-1.59-1.29-.33-.08-4.58s-2.8-1.09-3.05-1.09-1.87-2.08-1.87-2.08l-2.63-.08-3.39.08-.25-1.75.51-.58s3.39-1.17 3.98-1.5c.6-.34 5.01-2.09 5.01-2.09s-.84-1.41-1.19-1.58c-.34-.17-3.82-1.08-4.58-1.17-.76-.08-1.78-.16-1.78-.16l.09-2.34s4.74-2.5 5.6-2.91c.84-.42 2.96-2.67 4.07-3.17 1.1-.5.84-3 .84-3l-2.46-.92-6.78-.5-2.13-.41-2.54-2.34.25-1.41s.76-1.75 1.11-2.25c.34-.5.84-1.09.84-1.09s-.94-3.41-1.02-4.16-.51-1.09-.68-1.34c-.16-.25-.84-1.91-.84-1.91s-3.39.66-3.64.41-1.62-2.25-1.62-2.25.25-1.5.43-2 .08-2.58.08-2.58v-1.42c0-.5-1.1-3.75-1.18-4-.09-.25-1.19 1.59-1.19 1.59l-1.95 1.83-1.53-2.83-.93-2.67-1.11-1-2.29-.83-2.88 3.83-2.46 2.5s.09-1.42 0-1.92c-.08-.5-1.43-.75-1.43-.75l-2.97.59v-3.09c0-1.75-1.27-2.5-1.27-2.5s-2.97 3.59-3.13 3.84c-.17.25-2.38 1.66-2.38 1.66l-.67-.83v-3.58c0-.92-3.99-2.5-3.99-2.5l-3.23-.84 1.7 6-.84 3.34v2.5l-3.48 1.08-1.1 2.83-3.56 1.34-3.56.5-1.02 1.66-1.78 3.42-.25 4.17 4.74 4.16s-.42 4-.42 4.42-3.05 2.17-3.05 2.17l-.17 4.58-2.72 3.5 1.95 4.33 2.29 6.59-6.95 3.25-4.5 3.5-2.46-.59.68-5.08.08-2.33.17-1.84 2.97-.33.76-3.92-1.62-3.66-1.86-2.67-1.19-.08-1.1 2.91-1.19 2.5-2.12.75-4.44-.25-4.64-4.86s.28-1.17.62-1.61c.35-.44 2.43-3.11 2.43-3.11s1.64-4.06 1.59-4.61c-.06-.56-1.92.55-1.92.55s-1.19-4.27-1.13-5.11c.05-.83 2.15-4.05 2.37-4.55s-.28-4.39-.28-4.39-3.79 3.44-3.95 3.78c-.17.33-.57 4.94-.57 4.94s-8.76-6-9.95-6.94c-1.18-.95.28 4.38.28 4.38l-6.11-1.66v-4.84l-3.45-3.55-1.53-3.08-2.37 3.41-2.89 2.59-2.04-2.67.76-1.58v-5.25s-2.63-2-3.22-2.25c-.6-.25-3.05 1.25-3.48 1.33s-3.13-.25-3.13-.25l-2.54-5.42-3.48-3.33-2.37 1.08-3.05 3.25-1.02 4.75-2.29 4.59-2.13 1-.93 1.08-.85 2.83v7.67l-.67 1.17-.17 4.5.84 5.41-.76 2.34-1.69 4.16-3.56.67-3.48-4.25-3.9 1.83-.94 3.92-.76 4.92-1.53.08s-5.26 4.08-5.26 3.75-.93-3.75-.93-4.08-.51-1.67-.51-1.67-2.97-3.92-2.97-4.17 2.12-5.16 2.12-5.5-9.75-3.5-9.75-3.5v-2.5l-4.07-3.75s-3.64 1.59-4.32 1.67-2.63 1.92-2.63 1.92l-1.19 2.5-1.53 1.08-4.5 3.58-.42 1.84-5.52-1.09-2.29-3.16-1.61.75-3.31 2.66-4.83 1.5-.94-.16s-.84-1.92-1.02-2.59c-.17-.66-2.54-.25-2.54-.25l.08 3-.76 5-.51 1.84s1.78 3.08 2.13 3.25c.34.16.67.5.67.5l-.67 3.08-.68.33v6l-1.61 3.17-1.95-2.75-2.46 2.92v6.58l-5.17-.92.68 3.59.51 2.41-2.29-.83-4.67 1.67-422.78-58.11-18.84-163.26-3.61-53.41 78-23.67-8.11-96.11-31.61-4.44-.91-9.84 30.48-10.77-2.83-41.61-7.97-1.62.27-5.94 1277.64-384.57-.51-5.95 1.02-3.16 59.3-16.63 21.88 6.09 88.83-27.33 46 11.33.83-5.17 21.5-3.83-7.93 363.01-2.27 98.83-.37 1.42s-1.53 2.17-1.78 2.33" />
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" xml:space="preserve" viewBox="0 0 3840 2160">
+                    <defs>
+                        <style>
+                            .st0 {
+                                fill: #fff
+                            }
+                        </style>
+                    </defs>
+                    <path id="Floor_x5F_05" data-link="Subpages/Floor_5.html" data-name="Floor 05"
+                        d="m2976.46 654.6-2.83 81.16 80.33 1.17-.77 13.61-2.65 47.22-38.58 11.84-35.25-.67-34.17-1.25-66.83 45-50.28-5-73.78 19.33-319.11-12.44-363.78-13.56-11.55 2.45-305.56-15.78-14 2.89-111.77-4.89h-13.34l-313.33-13.78-14.89 1.78-149.78-5.33-50.89-2.22.48-13.89 3.91-2 .25-8.75 3.09-.92v-4.89H975.82v-8.75l-1.45-41.16-4.56-129.35h-10.85v-10.67h-10.49v-4.5h20.97v-11.58l105.38-1.82 218.17-4.17 1143.83-11 29.17 1.83 210.52-2.55 153.81 9.11h57.81l105.83 6.94v12.42h17.42v4.58h-9.59v11h-8.75l-1.91 44.67 91.16-.25v11.17l-43.16 2.16z"
+                        class="st0" />
+                    <path id="Floor_x5F_04" data-link="Subpages/Floor_4.html" data-name="Floor 04"
+                        d="M3046.21 884.01v2.92l-1.08.92-1.5 45.91v12l-39.17 17.5-41-1.25-28.47-2.11-8.9 9.77-58.66 64.46-49.78-3.34-75.33 35.56-313.78-21.56-362.72-23.39-10.56 1.56-139.72-9.33-163.33-13.5-12.83 1.33-124.5-8.5-310.12-22.72-15.5 1.83-148.11-10.94-51.66-4-47.67-5.17-42.83 5.17-110.17-7.12-84.67-6.11-1.37-23.16-2.07-35.06-2.11-.89v-2.66l87.11-6.89-3.89-86.89h-8.83v-9.34h-8.09v-5.58l110.92-6.5v8.75h115.56v4.89l-3.09.92-.25 8.75-3.91 2-.48 13.89 50.89 2.22 149.78 5.33 14.89-1.78 313.33 13.78h13.34l111.77 4.89 14-2.89 305.56 15.78 11.55-2.45 363.78 13.56 319.11 12.44 73.78-19.33 50.28 5 66.83-45 34.17 1.25-1.5 73.08z"
+                        class="st0" />
+                    <path id="Floor_x5F_03" data-link="Subpages/Floor_3.html" data-name="Floor 03"
+                        d="m3039.88 1030.1-1.25 1.33-2.66 54.16-.09 1.87-37.75 28.5-42.67-3.08-27.2-1.59-75 105.34-42.44-4.45-75.11 49.78-314.67-30.45-354.89-34.66-11.11 3.55-138.03-13.55-163.08-20.45-12.67 4.67-123.77-12.67-309.78-35.77-15.33 4-146.45-13.78-52.89-10-45.33-4.78-42.67 8.11-108.55-10.05-84.89-8.78-3.6-58.92-.18-2.97 83.33-11.89-2.33-63.56 110.17 7.12 42.83-5.17 47.67 5.17 51.66 4 148.11 10.94 15.5-1.83 310.12 22.72 124.5 8.5 12.83-1.33 163.33 13.5 139.72 9.33 10.56-1.56 362.72 23.39 313.78 21.56 75.33-35.56 49.78 3.34 58.66-64.46 36.46 6.49-3.17 49.02 79.33 2.75z"
+                        class="st0" />
+                    <path id="Floor_x5F_02" data-link="Subpages/Floor_2.html" data-name="Floor 02"
+                        d="m3032.38 1173.38-2.09 2.33-1.28 55.28-38.66 34-41.92-3.09-26.17-2.25-71.33 132.89-48.22-1-74.45 63.11-309.83-40.05-10-5.34-20.33-3.16v-11.34l-143.17-19.16-7.67 9.83-41.5-4.83v-7.84l-112.5-13.16-10.66 5.16-17.5-.66-.67-6.17-128.83-14.83-9.17 4.33-39-4.5.67-6.67-106.5-13.16-12.17 5.5-17-1.34v-5l-113.33-12.66-10.84 6.83-33.33-4.33v-4.75l-484-59.34-49.22-17.22-13.67 6.5-13.16-1.16v-7.34l-83.84-7.66-11.33 7.66-27.45-4.28-42.83 9.34-40.17-4.5-2.83-58.84 82.33-16.5-2.27-57.88 108.55 10.05 42.67-8.11 45.33 4.78 52.89 10 146.45 13.78 15.33-4 309.78 35.77 123.77 12.67 12.67-4.67 163.08 20.45 138.03 13.55 11.11-3.55 354.89 34.66 314.67 30.45 75.11-49.78 42.44 4.45 75-105.34 27.2 1.59-2.42 53.58 78.84 5.5z"
+                        class="st0" />
+                    <path id="Floor_x5F_01" data-link="Subpages/Floor_1.html" data-name="Floor 01"
+                        d="m3023.38 1317.4-1.67 45.09.5 9.36-32 33.83-95-11.67-44.83 41.17 22.83.33-59.58 57.53-1.34 29.59 8.92 1.66-66.17 67.84v10.72l-40.33 41.33-300.72-47.72-9.34-2.67-19.83-1.33v-3.33l-140.33-20.17-10.34 3.67-40.5-5.17v-4.17l-111.5-17.83-10.83 2.5-17.5-1.83v-2.34l-127.67-19.16-9.5 3.5-37.83-4.34v-3l-114.33-17.66-4.17-3.67-16.5-1.33 1.33-4.84-113.5-15-10.5 5.17-34.39-6.39v-3.11l-109.88-16.83h-5l-316.78-50.62-106.67-16.16-4.67 1.66h-12.16l1.33-10.66-80.17-12-16.83 5.83-26.67-4.33-7-146.34 27.45 4.28 11.33-7.66 83.84 7.66v7.34l13.16 1.16 13.67-6.5 49.22 17.22 484 59.34v4.75l33.33 4.33 10.84-6.83 113.33 12.66v5l17 1.34 12.17-5.5 106.5 13.16-.67 6.67 39 4.5 9.17-4.33 128.83 14.83.67 6.17 17.5.66 10.66-5.16 112.5 13.16v7.84l41.5 4.83 7.67-9.83 143.17 19.16v11.34l20.33 3.16 10 5.34 309.83 40.05 74.45-63.11 48.22 1 71.33-132.89 26.17 2.25-1.05 43.17 77.16 6.92 1 2.66z"
+                        class="st0" />
                 </svg>
             </div>
         </div>
@@ -633,9 +1020,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="enquiryForm" class="form" novalidate>
-
                         <input class="input" name="fullName" placeholder="Full Name" required />
-
                         <div class="phone">
                             <select name="dialCode" aria-label="Country Code">
                                 <option>+91</option>
@@ -646,92 +1031,176 @@
                             <input type="tel" name="phone" placeholder="Phone Number" maxlength="10" pattern="[0-9]{10}"
                                 inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'')" required />
                         </div>
-
                         <input class="input" name="city" placeholder="City" required />
-
                         <input class="input" type="email" name="email" placeholder="Email Address"
                             pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required />
-
                         <select class="input select" name="preferredTime" required>
                             <option value="" disabled selected>Preferred Time to Call</option>
                             <option value="morning">Morning</option>
                             <option value="afternoon">Afternoon</option>
                             <option value="evening">Evening</option>
                         </select>
-
-                        <!-- Google reCAPTCHA — replace YOUR_SITE_KEY -->
                         <div class="g-recaptcha" data-sitekey="6Le6qZQsAAAAALlNrziohJHHqf43BSZvE1wfoxnl"></div>
-
-                        <button class="submit" type="submit">Request a Call Back</button>
-                        <a href="tel:+919876543210" class="call-btn">
-                            📞 Call Now
-                        </a>
-
+                        <div class="form-btn-row">
+                            <button class="btn-callback" type="submit">Request a Call Back</button>
+                            <a href="tel:+910000000000" class="btn-callnow">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                    <path
+                                        d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z" />
+                                </svg>
+                                Call Now
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- <button class="enquiry-btn" id="openEnquiry">Request Call Back</button> -->
 
+    <!-- ══ ENQUIRY TRIGGER ══ -->
+    <button class="enquiry-btn" id="enquiryBtn" aria-label="Open Enquiry">Enquiry</button>
 
-    <!-- Hotspot overlay (empty container, JS will size/position it) -->
-    <div class="hs-layer" id="hsLayer">
-        <!-- Example hotspots: use % relative to the image -->
-
-        <button class="hs-dot" style="top:62%; left:53%;" onclick="location.href='Subpages/GodEye/Parking_01.html'">
-            <img src="images/360_img.png" alt="Parking_01">
-        </button>
-
-        <button class="hs-dot" style="top:60%; left:45%;" onclick="location.href='Subpages/GodEye/Parking_02.html'">
-            <img src="images/360_img.png" alt="Parking_02">
-        </button>
-
+    <!-- ── FLOATING ACTION BUTTONS ── -->
+    <div class="fab-cluster">
+        <a class="fab-item fab-whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener"
+            aria-label="WhatsApp">
+            <div class="fab-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path
+                        d="M12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.112 1.529 5.835L.057 23.386a.5.5 0 0 0 .606.63l5.753-1.51A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 0 1-5.003-1.371l-.359-.213-3.714.975.993-3.63-.234-.373A9.818 9.818 0 1 1 12 21.818z" />
+                </svg>
+            </div>
+            <span class="fab-label">WhatsApp</span>
+        </a>
+        <a class="fab-item fab-email" href="mailto:info@example.com" aria-label="Email Us">
+            <div class="fab-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+            </div>
+            <span class="fab-label">Email Us</span>
+        </a>
+        <a class="fab-item fab-location" href="https://maps.app.goo.gl/ZgXm51Arpmt4dveE7" target="_blank" rel="noopener"
+            aria-label="Live Location">
+            <div class="fab-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+            </div>
+            <span class="fab-label">Map</span>
+        </a>
     </div>
 
-    <script src="JS/b0htmwbcmz.js"></script>
+    <!-- ══════════════════════════════════════════
+         AMENITY BAR — TOP CENTER
+         ══════════════════════════════════════════ -->
+    <div class="amenity-bar" id="amenityBar">
+        <a href="https://www.google.com/maps/search/Restaurants/@52.9799575,-122.4942054,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" data-amenity="restaurants" aria-label="Restaurants">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 2v7c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2V2" />
+                <line x1="6" y1="2" x2="6" y2="22" />
+                <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7" />
+            </svg>
+            Restaurants
+        </a>
+        <a href="https://www.google.com/maps/search/Transit+stations/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" data-amenity="transit" aria-label="Transit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M8 6v6" />
+                <path d="M16 6v6" />
+                <path d="M2 12h20" />
+                <path
+                    d="M18 18h3a1 1 0 0 0 1-1v-3.4a2 2 0 0 0-.1-.7l-1.5-5.2A2 2 0 0 0 18.5 6H4a2 2 0 0 0-2 2v9a1 1 0 0 0 1 1h3" />
+                <circle cx="7" cy="18" r="2" />
+                <path d="M9 18h6" />
+                <circle cx="17" cy="18" r="2" />
+            </svg>
+            Transit
+        </a>
+        <a href="https://www.google.com/maps/search/Pharmacies/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" data-amenity="pharmacies" aria-label="Pharmacies">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M10.5 20.5 20 11a4.95 4.95 0 0 0-7-7l-9.5 9.5a4.95 4.95 0 0 0 7 7Z" />
+                <path d="m8.5 8.5 7 7" />
+            </svg>
+            Pharmacies
+        </a>
+        <a href="https://www.google.com/maps/search/ATMs/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" data-amenity="atm" aria-label="ATM">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="5" width="20" height="14" rx="2" />
+                <line x1="2" y1="10" x2="22" y2="10" />
+                <line x1="6" y1="15" x2="9" y2="15" />
+            </svg>
+            ATM
+        </a>
+        <a href="https://www.google.com/maps/search/grocery+store/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" data-amenity="grocery" aria-label="Grocery Store">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" />
+            </svg>
+            Grocery Store
+        </a>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         LIVE BUTTON — BOTTOM LEFT
+         ══════════════════════════════════════════ -->
+    <a href="Subpages/GodEye/LiveView.html" class="live-btn-bottom" aria-label="Live View">
+        <span class="live-dot"></span>
+        <span>Live</span>
+    </a>
+
+    <!-- Hotspot overlay -->
+
+    <!-- ═══════════════════════════════════════════════
+         JUMPBAR — macOS Dock Style (ENHANCED)
+         ═══════════════════════════════════════════════ -->
+
+    <!-- JUMP BAR -->
+    <div id="jumpBar">
+        <a href="index.html" class="active">Home</a>
+        <a href="Subpages/Tower_B.html">Back View</a>
+        <a href="Subpages/GodEye/Parking_01.html">Parking</a>
+    </div>
+
+
+
+
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const detailsBox = document.getElementById('details');
-
-            detailsBox.innerHTML = `
-    <div><span>Commercial</span><span>: 48</span></div>
-    <div><span>Residential</span><span>: 48</span></div>
-`;
+            detailsBox.innerHTML = ``;
             const paths = document.querySelectorAll('.Cutout path');
-            const modal = document.getElementById('infoCard');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalButton = document.getElementById('navigateButton');
-            const imagePlaceholder = document.querySelector('.image-placeholder img');
-
             let selectedPath = null;
             let currentLink = '';
 
-            // Handle path clicks
             paths.forEach(path => {
                 const link = path.getAttribute('data-link');
-
                 if (link) {
                     path.addEventListener('click', () => {
-
-                        // Optional: visual feedback
                         path.style.opacity = "0.6";
-
-                        // ⏳ Delay before navigation
                         setTimeout(() => {
-                            window.location.href = `Subpages/${link}`;
+                            window.location.href = `${link}`;
                         }, 800);
-
                     });
                 }
             });
-
-
         });
     </script>
-
-
 
     <script>
         (function () {
@@ -739,7 +1208,6 @@
             const layer = document.getElementById('hsLayer');
             if (!img || !layer) return;
 
-            // Read the actual on-screen rectangle of the image and pin the overlay to it
             function doSync() {
                 const r = img.getBoundingClientRect();
                 layer.style.top = r.top + 'px';
@@ -748,52 +1216,45 @@
                 layer.style.height = r.height + 'px';
             }
 
-            // Run the sync AFTER layout has fully settled
             function syncAfterLayout() {
                 requestAnimationFrame(() => requestAnimationFrame(doSync));
             }
 
-            // Initial syncs
             if (img.complete) syncAfterLayout();
             else img.addEventListener('load', syncAfterLayout, { once: true });
             window.addEventListener('load', syncAfterLayout, { once: true });
-
-            // On resize / orientation
             window.addEventListener('resize', syncAfterLayout);
             window.addEventListener('orientationchange', () => {
                 syncAfterLayout();
-                // extra pass for mobile browsers that "settle" a moment later
                 setTimeout(syncAfterLayout, 250);
             });
 
-            // On aspect-ratio media query flips
             const mqPortrait = window.matchMedia('(max-aspect-ratio: 3840/5830)');
             const mqLandscape = window.matchMedia('(min-aspect-ratio: 3840/5830)');
             if (mqPortrait.addEventListener) {
                 mqPortrait.addEventListener('change', syncAfterLayout);
                 mqLandscape.addEventListener('change', syncAfterLayout);
-            } else if (mqPortrait.addListener) { // Safari <14
+            } else if (mqPortrait.addListener) {
                 mqPortrait.addListener(syncAfterLayout);
                 mqLandscape.addListener(syncAfterLayout);
             }
 
-            // Watch the image box itself
             if ('ResizeObserver' in window) {
                 new ResizeObserver(syncAfterLayout).observe(img);
             }
         })();
     </script>
+
     <script src="JS/Notification/2ruet93mi4.js"></script>
-
-
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const mq = window.matchMedia('(max-width: 600px)');
-
             const desktopPositions = {
-                Tower_B: { left: 65, top: 50 },
-                Tower_A: { left: 44, top: 52 }
+                Tower_D: { left: 65, top: 52 },
+                Tower_C: { left: 44, top: 52 },
+                Tower_B: { left: 65, top: 48.5 },
+                Tower_A: { left: 44, top: 48 }
             };
             const mobilePositions = {
                 Tower_B: { left: 61, top: 50 },
@@ -809,38 +1270,23 @@
                 });
             }
 
-            runPins();                   // initial
+            runPins();
             mq.addEventListener?.('change', runPins);
-            // Safari fallback:
             if (!mq.addEventListener) mq.addListener(runPins);
-
-            // Also re-run after your image/layer sync settles (optional but safer)
             window.addEventListener('resize', () => requestAnimationFrame(runPins));
             window.addEventListener('orientationchange', () => setTimeout(runPins, 250));
         });
     </script>
-    <!-- ══ Panel open / close logic ══ -->
-
-
-
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const splash = document.getElementById("splash");
             if (!splash) return;
-
-            // lock scroll while splash is visible
             document.body.classList.add("splash-active");
-
-            // how long splash shows (ms)
             const SHOW_MS = 2000;
-            const FADE_MS = 600; // must match CSS transition
-
+            const FADE_MS = 600;
             setTimeout(() => {
-                // start fade-out
                 splash.classList.add("is-hidden");
-
-                // after fade, remove overlay and unlock scroll
                 setTimeout(() => {
                     splash.remove();
                     document.body.classList.remove("splash-active");
@@ -849,14 +1295,163 @@
         });
     </script>
 
+    <!-- ══ AMENITY BAR — Active state toggle ══ -->
+    <script>
+        (function () {
+            const bar = document.getElementById('amenityBar');
+            if (!bar) return;
+            const links = bar.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Toggle active state — placeholder for future filter logic
+                    if (link.classList.contains('active')) {
+                        link.classList.remove('active');
+                    } else {
+                        links.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                    // If href is just "#", prevent navigation
+                    if (link.getAttribute('href') === '#') e.preventDefault();
+                });
+            });
+        })();
+    </script>
 
 
+    <!-- ═══ macOS Dock magnification logic (ENHANCED) ═══ -->
+    <script>
+        (function () {
+            const items = document.querySelectorAll('.dock-item');
+            const dockItems = document.getElementById('dockItems');
+            if (!dockItems || !items.length) return;
+
+            const BASE = 52, MAX = 80, RANGE = 140;
+
+            function magnify(e) {
+                items.forEach(item => {
+                    const icon = item.querySelector('.dock-icon');
+                    const svg = item.querySelector('.dock-icon svg');
+                    const label = item.querySelector('.dock-label');
+                    const rect = item.getBoundingClientRect();
+                    const cx = rect.left + rect.width / 2;
+                    const dist = Math.abs(e.clientX - cx);
+
+                    if (dist < RANGE) {
+                        const t = 1 - dist / RANGE;
+                        const sz = BASE + (MAX - BASE) * t;
+                        icon.style.width = sz + 'px';
+                        icon.style.height = sz + 'px';
+                        icon.style.borderRadius = (16 + t * 4) + 'px';
+                        const iSz = 22 + t * 10;
+                        svg.style.width = iSz + 'px';
+                        svg.style.height = iSz + 'px';
+                        item.style.width = sz + 'px';
+
+                        if (t > .7) {
+                            icon.style.background = 'linear-gradient(145deg, rgba(201,168,124,.2), rgba(201,168,124,.08))';
+                            icon.style.borderColor = 'rgba(201,168,124,.4)';
+                            icon.style.boxShadow = '0 4px 24px rgba(201,168,124,.2), 0 0 30px rgba(201,168,124,.1)';
+                            svg.style.stroke = '#c9a87c';
+                            svg.style.filter = 'drop-shadow(0 0 6px rgba(201,168,124,.4))';
+                            label.style.opacity = '1';
+                            label.style.scale = '1';
+                            label.style.translate = '0 0';
+                        } else {
+                            resetIcon(icon, svg, label);
+                        }
+                    } else {
+                        icon.style.width = BASE + 'px';
+                        icon.style.height = BASE + 'px';
+                        icon.style.borderRadius = '16px';
+                        svg.style.width = '22px';
+                        svg.style.height = '22px';
+                        item.style.width = BASE + 'px';
+                        resetIcon(icon, svg, label);
+                    }
+                });
+            }
+
+            function resetIcon(icon, svg, label) {
+                icon.style.background = '';
+                icon.style.borderColor = '';
+                icon.style.boxShadow = '';
+                svg.style.stroke = '';
+                svg.style.filter = '';
+                label.style.opacity = '0';
+                label.style.scale = '.9';
+                label.style.translate = '0 6px';
+            }
+
+            function resetAll() {
+                items.forEach(item => {
+                    const icon = item.querySelector('.dock-icon');
+                    const svg = item.querySelector('.dock-icon svg');
+                    const label = item.querySelector('.dock-label');
+                    icon.style.width = icon.style.height = '';
+                    icon.style.borderRadius = '';
+                    svg.style.width = svg.style.height = '';
+                    item.style.width = '';
+                    resetIcon(icon, svg, label);
+                });
+            }
+
+            dockItems.addEventListener('mousemove', magnify);
+            dockItems.addEventListener('mouseleave', resetAll);
+
+            // click bounce + ripple
+            items.forEach(c => {
+                c.addEventListener('click', e => {
+                    // bounce
+                    c.classList.add('is-bouncing');
+                    c.addEventListener('animationend', () => c.classList.remove('is-bouncing'), { once: true });
+                    // ripple
+                    const r = document.createElement('span');
+                    r.className = 'dock-ripple';
+                    const icon = c.querySelector('.dock-icon');
+                    const b = icon.getBoundingClientRect();
+                    const s = Math.max(b.width, b.height);
+                    r.style.width = r.style.height = s + 'px';
+                    r.style.left = (e.clientX - b.left - s / 2) + 'px';
+                    r.style.top = (e.clientY - b.top - s / 2) + 'px';
+                    icon.appendChild(r);
+                    r.addEventListener('animationend', () => r.remove());
+                });
+            });
+        })();
+    </script>
 
     <script src="JS/ky0nwmerow.js"></script>
-
-
-
+    <script src="JS/s2dlrxbqxj.js"></script>
     <script src="JS/5guwuzaijb.js"></script>
+
+    <script>
+        (function forceHideDock() {
+            const hide = () => { const d = document.getElementById('dock'); if (d) d.style.cssText = 'display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;pointer-events:none!important;position:absolute!important;opacity:0!important;'; };
+            hide(); setTimeout(hide, 500); setTimeout(hide, 1500);
+        })();
+    </script>
+
+    <script>
+        (function () {
+            var btn = document.getElementById('enquiryBtn');
+            var overlay = document.getElementById('enquiryOverlay');
+            var closeBtn = document.getElementById('closeBtn');
+            if (!btn || !overlay) return;
+            btn.addEventListener('click', function () {
+                overlay.classList.add('is-open');
+                overlay.setAttribute('aria-hidden', 'false');
+                btn.classList.add('is-hidden');
+            });
+            function close() {
+                overlay.classList.remove('is-open');
+                overlay.setAttribute('aria-hidden', 'true');
+                btn.classList.remove('is-hidden');
+            }
+            if (closeBtn) closeBtn.addEventListener('click', close);
+            overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+        })();
+    </script>
 </body>
 
 </html>

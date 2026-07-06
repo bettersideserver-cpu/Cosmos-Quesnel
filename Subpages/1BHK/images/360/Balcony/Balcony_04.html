@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Load external CSS FIRST so our inline styles override them -->
+  <link rel="stylesheet" href="./../../../../wbn05d6fbh.css" />
+  <link rel="stylesheet" href="./../../../../JS/CSS/yp0wlolwzw.css">
+
+  <!-- Our styles AFTER external CSS to take priority -->
+  <style>
+    /* ===== JUMP BAR ===== */
+.dock-wrap, #dock { display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; height: 0 !important; overflow: hidden !important; position: absolute !important; }
+
+#jumpBar { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 9999; display: inline-flex; align-items: center; gap: 0; background: rgba(10, 10, 12, 0.75); backdrop-filter: blur(60px) saturate(130%); -webkit-backdrop-filter: blur(60px) saturate(130%); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 4px; box-shadow: 0 0 0 0.5px rgba(255,255,255,0.05), 0 20px 50px -12px rgba(0,0,0,0.5); font-family: 'DM Sans', -apple-system, sans-serif; }
+#jumpBar a { display: flex; align-items: center; justify-content: center; height: 34px; padding: 0 16px; border-radius: 10px; text-decoration: none; color: rgba(255,255,255,0.6); font-size: 11.5px; font-weight: 500; letter-spacing: 0.3px; transition: color 0.25s cubic-bezier(.4,0,.2,1), background 0.25s cubic-bezier(.4,0,.2,1); white-space: nowrap; cursor: pointer; }
+#jumpBar a:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.08); }
+#jumpBar a.active { color: #fff; background: rgba(255,255,255,0.15); font-weight: 600; }
+
+
+    /* ===== ENQUIRY BUTTON — use #enquiryBtn for max specificity ===== */
+    button#enquiryBtn.enquiry-btn {
+      position: fixed !important;
+      right: 0 !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      z-index: 10001 !important;
+      writing-mode: vertical-rl !important;
+      text-orientation: mixed !important;
+      padding: 24px 13px !important;
+      background: #111 !important;
+      color: #fff !important;
+      font-family: 'DM Sans', -apple-system, sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 11px !important;
+      letter-spacing: 2.5px !important;
+      text-transform: uppercase !important;
+      border: none !important;
+      border-radius: 12px 0 0 12px !important;
+      cursor: pointer !important;
+      white-space: nowrap !important;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.4) !important;
+      transition: opacity 0.3s ease, background 0.2s ease !important;
+      pointer-events: auto !important;
+      /* Ensure it's not clipped or overflowing */
+      overflow: visible !important;
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      left: auto !important;
+      margin: 0 !important;
+      width: auto !important;
+      height: auto !important;
+    }
+
+    button#enquiryBtn.enquiry-btn::after {
+      content: '' !important;
+      position: absolute !important;
+      inset: -4px !important;
+      border-radius: 14px 0 0 14px !important;
+      border: 2px solid rgba(255,255,255,0.25) !important;
+      animation: eq-ring 2.5s ease-out infinite !important;
+      pointer-events: none !important;
+      background: transparent !important;
+    }
+
+    @keyframes eq-ring {
+      0%   { opacity: 0.7; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.08); }
+    }
+
+    button#enquiryBtn.enquiry-btn.is-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    button#enquiryBtn.enquiry-btn:hover {
+      background: #2a2a2a !important;
+    }
+
+    @media (max-width: 600px) {
+      button#enquiryBtn.enquiry-btn {
+        font-size: 9px !important;
+        padding: 18px 10px !important;
+      }
+    }
+
+    /* ===== ENQUIRY OVERLAY & MODAL ===== */
+    .enquiry .overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-end;
+      background: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      z-index: 99999;
+      pointer-events: none;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease;
+    }
+
+    .enquiry .overlay.is-open {
+      background: rgba(0, 0, 0, 0.52);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      pointer-events: auto;
+    }
+
+    .enquiry .modal {
+      width: min(400px, 100vw);
+      height: 100%;
+      background: rgba(15, 15, 18, 0.75);
+      backdrop-filter: blur(60px) saturate(130%);
+      -webkit-backdrop-filter: blur(60px) saturate(130%);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 0;
+      box-shadow: -12px 0 50px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transform: translateX(100%);
+      transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+      font-family: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    .enquiry .overlay.is-open .modal {
+      transform: translateX(0);
+    }
+
+    .enquiry .modal-header {
+      padding: 20px 20px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .enquiry .modal-header::before {
+      content: '';
+      flex-shrink: 0;
+      width: 2px;
+      height: 18px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+    }
+
+    .enquiry .modal-header .title {
+      flex: 1;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    .enquiry .close {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255,255,255,0.35);
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .enquiry .close:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255,255,255,0.6);
+    }
+
+    .enquiry .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .enquiry .form {
+      display: grid;
+      gap: 12px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .enquiry .input,
+    .enquiry .select,
+    .enquiry .phone {
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .enquiry .input:focus,
+    .enquiry .select:focus,
+    .enquiry .phone:focus-within {
+      outline: none;
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .enquiry .input::placeholder {
+      color: rgba(255,255,255,0.22);
+    }
+
+    .enquiry .select {
+      appearance: none;
+      cursor: pointer;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    .enquiry .phone {
+      display: flex;
+      padding: 0;
+    }
+
+    .enquiry .phone select {
+      appearance: none;
+      border: none;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      padding: 0 10px;
+      min-width: 72px;
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      font-family: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    .enquiry .phone input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 12px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      font-family: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    .enquiry .phone input::placeholder {
+      color: rgba(255,255,255,0.22);
+    }
+
+    .enquiry .agree {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    .enquiry .agree a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: underline;
+    }
+
+    .enquiry .submit {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 13px;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.85);
+      cursor: pointer;
+      margin-top: 4px;
+      transition: all 0.2s ease;
+      font-family: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    .enquiry .submit:hover {
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.95);
+    }
+
+    /* ===== Form button row: Request Callback + Call Now ===== */
+    .enquiry .form-btn-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .enquiry .btn-callback {
+      flex: 1;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.9);
+      cursor: pointer;
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      transition: background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .enquiry .btn-callback:hover {
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+    }
+
+    .enquiry .btn-callnow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 13px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      color: rgba(255,255,255,0.85);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      text-decoration: none;
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .enquiry .btn-callnow:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    .enquiry .btn-callnow svg {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 420px) {
+      .enquiry .form-btn-row {
+        flex-direction: column;
+      }
+      .enquiry .btn-callback,
+      .enquiry .btn-callnow {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+ 
+    
+    #compass {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      z-index: 9999;
+    }
+
+    /* ✨ Outer glass */
+    .compass-circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: relative;
+
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(14px);
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.35),
+        inset 0 0 25px rgba(255, 255, 255, 0.05);
+    }
+
+    /* subtle inner ring */
+    .compass-circle::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+
+    /* directions */
+    .dir {
+      position: absolute;
+      color: rgba(22, 4, 4, 0.8);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .north {
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ff4d4d;
+    }
+
+    .south {
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .east {
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .west {
+      left: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* 🔥 premium needle */
+    .needle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 2px;
+      height: 15px;
+      transform: translate(-50%, -100%);
+      transform-origin: bottom center;
+
+      background: linear-gradient(to top, #ffffff, #ff4d4d);
+      border-radius: 2px;
+    }
+
+    /* needle tip */
+    .needle::after {
+      content: "";
+      position: absolute;
+      top: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 8px solid #ff4d4d;
+    }
+/* ===== JUMP BAR ===== */
+.dock-wrap, #dock { display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; height: 0 !important; overflow: hidden !important; position: absolute !important; }
+
+#jumpBar { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 9999; display: inline-flex; align-items: center; gap: 0; background: rgba(15, 15, 18, 0.42); backdrop-filter: blur(60px) saturate(130%); -webkit-backdrop-filter: blur(60px) saturate(130%); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 4px; box-shadow: 0 0 0 0.5px rgba(255,255,255,0.03), 0 20px 50px -12px rgba(0,0,0,0.35); font-family: 'DM Sans', -apple-system, sans-serif; }
+#jumpBar a { display: flex; align-items: center; justify-content: center; height: 34px; padding: 0 16px; border-radius: 10px; text-decoration: none; color: rgba(255,255,255,0.38); font-size: 11.5px; font-weight: 400; letter-spacing: 0.3px; transition: color 0.25s cubic-bezier(.4,0,.2,1), background 0.25s cubic-bezier(.4,0,.2,1); white-space: nowrap; cursor: pointer; }
+#jumpBar a:hover { color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.05); }
+#jumpBar a.active { color: rgba(255,255,255,0.95); background: rgba(255,255,255,0.1); font-weight: 500; }
+
+    /* center dot */
+    .center-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .needle {
+      transform-origin: bottom center;
+    }
+#navButtons {
+  position: fixed;
+  top: 110px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 9999;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: rgba(255,255,255,0.7);
+  padding: 8px 14px;
+  background: rgba(10, 10, 12, 0.72);
+  backdrop-filter: blur(60px) saturate(130%);
+  -webkit-backdrop-filter: blur(60px) saturate(130%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transition: all 0.25s cubic-bezier(.4,0,.2,1);
+  white-space: nowrap;
+  cursor: pointer;}
+
+.navBtn:hover {
+  color: #fff;
+  background: rgba(10, 10, 12, 0.85);
+  border-color: rgba(255,255,255,0.18);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transform: translateX(-2px);
+}
+  </style>
+
+
+  <title>Cosmos Quesnel</title>
+ 
+</head>
+
+<Body>
+
+
+  <div id="navButtons">
+  <a href="Balcony_03.html" class="navBtn">Upper Balcony</a>
+  <a href="Balcony_05.html" class="navBtn">Lower Balcony</a>
+</div>
+  <div id="compass">
+    <div class="compass-circle">
+      <div class="needle"></div>
+
+      <span class="dir north">N</span>
+      <span class="dir east">E</span>
+      <span class="dir south">S</span>
+      <span class="dir west">W</span>
+
+      <div class="center-dot"></div>
+    </div>
+  </div>
+  <div id="jumpBar">
+  <a href="../Bedroom.html">Bedroom</a>
+  <a href="../Bathroom.html">Bathroom</a>
+  <a href="../Kitchen.html">Kitchen</a>
+  <a href="../Enterance.html">Entrance</a>
+  <a href="../Lobby.html">Lobby</a>
+  <a href="Balcony_01.html" class="active">Balcony</a>
+</div>
+  <!-- <button id="waFab" class="wa-fab" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+
+    <svg class="wa-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path
+        d="M21.02 11.63c0 5.38-4.36 9.74-9.74 9.74-1.24 0-2.42-.23-3.51-.65l-6.78 2 1.67-6.54a9.8 9.8 0 0 1-1.12-4.55c0-5.38 4.36-9.74 9.74-9.74s9.74 4.36 9.74 9.74Z"
+        style="fill:#fff;stroke:#fff;stroke-miterlimit:10;stroke-width:.25px" />
+      <path
+        d="M15.45 13.68c-.32-.11-.54-.21-.75.11s-.86 1.07-.97 1.29c-.11.21-.32.21-.54.11-.32-.11-1.4-.43-2.58-1.5-.97-.86-1.61-1.83-1.83-2.15s0-.54.11-.75l.43-.43c.11-.11.21-.32.32-.54s.04-.43-.02-.64c-.06-.16-.64-1.72-.97-2.36-.21-.54-.43-.43-.64-.43h-.54c-.18 0-.48.06-.75.35-.27.28-1.02 1.01-1.02 2.47s0 2.79 1.18 4.19 3.22 2.9 5.16 3.65c1.93.75 2.15.54 2.58.54s1.72-.54 2.04-1.29.25-1.24.21-1.4-.11-.42-.38-.57l-1.05-.64Z"
+        style="fill:#25d366" />
+    </svg>
+  </button>
+  <div id="waLabel" class="wa-label">Chat on WhatsApp</div> -->
+  <button class="close-btn" id="closeCard">←</button>
+  <div class="main-container">
+    <div class="image-container"></div>
+  </div>
+  <!-- ══ ENQUIRY TRIGGER ══ -->
+  <button class="enquiry-btn" id="enquiryBtn" aria-label="Open Enquiry">Enquiry</button>
+
+  <!-- ══ SLIDE-IN ENQUIRY PANEL ══ -->
+  <div class="enquiry">
+    <div class="overlay" id="enquiryOverlay" aria-hidden="true">
+      <div class="modal" role="dialog" aria-labelledby="enquiryTitle">
+        <div class="modal-header">
+          <div id="enquiryTitle" class="title">Request Callback</div>
+          <button class="close" id="closeBtn" aria-label="Close">&#x2715;</button>
+        </div>
+        <div class="modal-body">
+          <form id="enquiryForm" class="form" novalidate>
+            <input class="input" name="fullName" placeholder="Full Name" required />
+            <div class="phone">
+              <select name="dialCode" aria-label="Country Code">
+                <option>+91</option>
+                <option>+971</option>
+                <option>+44</option>
+                <option>+1</option>
+              </select>
+              <input type="tel" name="phone" placeholder="Phone Number" maxlength="10" pattern="[0-9]{10}"
+                inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'')" required />
+            </div>
+            <input class="input" name="city" placeholder="City" required />
+            <input class="input" type="email" name="email" placeholder="Email Address"
+              pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required />
+            <select class="input select" name="preferredTime" required>
+              <option value="" disabled selected>Preferred Time to Call</option>
+              <option value="morning">Morning</option>
+              <option value="afternoon">Afternoon</option>
+              <option value="evening">Evening</option>
+            </select>
+            <div class="g-recaptcha" data-sitekey="6Le6qZQsAAAAALlNrziohJHHqf43BSZvE1wfoxnl"></div>
+            <div class="form-btn-row">
+              <button class="btn-callback" type="submit">Request a Call Back</button>
+              <a href="tel:+910000000000" class="btn-callnow">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+                Call Now
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="jumpBar">
+  <a href="../Bedroom.html">Bedroom</a>
+  <a href="../Bathroom.html">Bathroom</a>
+  <a href="../Kitchen.html">Kitchen</a>
+  <a href="../Enterance.html">Entrance</a>
+  <a href="../Lobby.html">Lobby</a>
+  <a href="Balcony_01.html" class="active">Balcony</a>
+</div>
+  <!-- <div id="videoOverlay" class="video-overlay">
+    <video id="walkthroughVideo" controls preload="none">
+      <source src="./../../../Video/Lutyen Lobby.webm" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div> -->
+  <!-- Request Callback Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js" integrity="..." crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/panolens@0.12.0/build/panolens.min.js"></script>
+
+  <!-- <script>const panoramaImage = new PANOLENS.ImagePanorama("../../../images/Apparments/1BHK/360/Dinning.jpg"); -->
+  <script>
+   function createArrowSVG() {
+      const size = 256; const canvas = document.createElement("canvas"); canvas.width = size; canvas.height = size;
+      const ctx = canvas.getContext("2d"); const cx = size / 2, cy = size / 2, outerR = 128, innerRingR = 76, dotR = 50;
+      ctx.save(); ctx.shadowColor = "rgba(0, 0, 0, 0.45)"; ctx.shadowBlur = 24; ctx.shadowOffsetY = 6;
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = "rgba(0,0,0,0.001)"; ctx.fill(); ctx.restore();
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = "rgba(255, 255, 255, 0.08)"; ctx.fill();
+      const glassGrad = ctx.createRadialGradient(cx, cy - 20, 10, cx, cy, outerR);
+      glassGrad.addColorStop(0, "rgba(255, 255, 255, 0.28)"); glassGrad.addColorStop(0.55, "rgba(255, 255, 255, 0.10)"); glassGrad.addColorStop(1, "rgba(255, 255, 255, 0.03)");
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = glassGrad; ctx.fill();
+      const gloss = ctx.createLinearGradient(cx, cy - outerR, cx, cy);
+      gloss.addColorStop(0, "rgba(255, 255, 255, 0.35)"); gloss.addColorStop(1, "rgba(255, 255, 255, 0)");
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.fillStyle = gloss; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, Math.PI * 2); ctx.strokeStyle = "rgba(255, 255, 255, 0.22)"; ctx.lineWidth = 2; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx, cy, innerRingR, 0, Math.PI * 2); ctx.strokeStyle = "rgba(255, 255, 255, 0.08)"; ctx.lineWidth = 1.5; ctx.stroke();
+      const dotGrad = ctx.createRadialGradient(cx - 2, cy - 3, 1, cx, cy, dotR);
+      dotGrad.addColorStop(0, "#123a8a"); dotGrad.addColorStop(1, "#0A1F44");
+      ctx.beginPath(); ctx.arc(cx, cy, dotR, 0, Math.PI * 2); ctx.fillStyle = dotGrad; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx - 3.5, cy - 4, 3, 0, Math.PI * 2); ctx.fillStyle = "rgba(255, 255, 255, 0.55)"; ctx.fill();
+      return canvas.toDataURL("image/png");
+    }
+  </script>
+
+  <script>
+    // 1) Define both images
+    const LOW_SRC = "./../../../../images/Thumbnail/360/Balcony/SEQ_IPX-balcony.0003.webp";
+    const HIGH_SRC = "./../../../../images/360/Balcony/SEQ_IPX-balcony.0003.jpg";
+
+    const imageContainer = document.querySelector(".image-container");
+
+    // 2) Create panoramas
+    const panoLow = new PANOLENS.ImagePanorama(LOW_SRC);
+    const panoHigh = new PANOLENS.ImagePanorama(HIGH_SRC);
+
+    // 3) Viewer
+    const viewer = new PANOLENS.Viewer({
+      container: imageContainer,
+      autoRotate: false,
+      autoRotateSpeed: 0.1,
+      controlBar: false,
+      cameraFov: 80
+    });
+
+    // after: const viewer = new PANOLENS.Viewer({...});
+    let didInitView = false;
+
+    // Keep the same initial yaw on both (texture yaw)
+    const TEXTURE_YAW = -Math.PI / 2 + 0; // your existing value
+    panoLow.rotation.y = TEXTURE_YAW;
+    panoHigh.rotation.y = TEXTURE_YAW;
+
+    // Desired tilt DOWN amount (pitch)
+    const TILT_DOWN = Math.PI / 50; // ~16°
+
+    function setInitialViewAndLockPitch() {
+      if (didInitView) return;   // ✅ run only once (prevents flicker on swap)
+      didInitView = true;
+
+      const controls = viewer.getControl();
+
+      // Positive value here, we pass -TILT to tilt DOWN
+      const TILT = -Math.PI / 40;     // adjust how much you want to tilt
+      controls.rotateUp(-TILT);      // tilt down
+
+      // No vertical limits (free up/down)
+      if ('minPolarAngle' in controls && 'maxPolarAngle' in controls) {
+        controls.minPolarAngle = 0;          // can look straight up
+        controls.maxPolarAngle = Math.PI;    // can look straight down
+      }
+
+      // Optional: rotation only (no panning)
+      if ('enablePan' in controls) controls.enablePan = false;
+    }
+
+
+    // Apply same camera view when each pano becomes active
+    panoLow.addEventListener('enter', setInitialViewAndLockPitch);
+    panoHigh.addEventListener('enter', setInitialViewAndLockPitch);
+
+    // Start with low; add both to viewer for smooth swap
+    viewer.add(panoLow);
+    viewer.add(panoHigh);
+    viewer.setPanorama(panoLow);
+
+
+    function degToRad(deg) {
+      return deg * Math.PI / 180;
+    }
+
+    function setFromAngles(spot, yawDeg, pitchDeg, radius = 5000) {
+      const yaw = degToRad(yawDeg);
+      const pitch = degToRad(pitchDeg);
+
+      const x = radius * Math.cos(pitch) * Math.sin(yaw);
+      const y = radius * Math.sin(pitch);
+      const z = radius * Math.cos(pitch) * Math.cos(yaw);
+
+      spot.position.set(x, y, z);
+    }
+
+
+
+
+
+
+
+
+
+
+
+ // 🔴 Hotspot 1
+    const ARROW_ICON = createArrowSVG();
+
+    const spot1 = new PANOLENS.Infospot(350, ARROW_ICON);
+    setFromAngles(spot1, 40, -10);
+    spot1.addHoverText("Lobby");
+    spot1.addEventListener('click', () => {
+      // keep visible for a moment
+      setTimeout(() => {
+        window.location.href = "../Lobby.html";
+      }, 800); // 0.8 sec delay
+    });
+
+
+
+
+    // ✅ Add all to panorama
+    [panoLow, panoHigh].forEach(pano => {
+      pano.add(spot1);
+    });
+    // Preload + swap high-res when ready
+    panoLow.addEventListener("load", () => {
+      panoHigh.addEventListener("load", () => {
+        viewer.setPanorama(panoHigh, 600); // fade swap
+        console.log("✅ Swapped to high-res panorama");
+      });
+      panoHigh.load();
+    });
+
+    panoHigh.addEventListener("error", (e) => {
+      console.warn("⚠️ Failed to load high-res:", e);
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const closeCard = document.getElementById("closeCard");
+
+      if (closeCard) {
+        closeCard.addEventListener("click", () => {
+          // 🔹 Change this path to wherever you want the button to take you
+          window.location.href = "./../../../../Subpages/1BHK/360/Lobby.html"
+          // Example: "../index.html" or "../Subpages/Tower_A.html"
+        });
+      }
+    });
+  </script>
+  <script src="./../../../../JS/bz021sxwxo.js"></script>
+  <script src="./../../../../JS/3qjueo9nsm.js"></script>
+  <script src="./../../../../JS/2a26l58eqz.js"></script>
+  <script src="./../../../../JS/5guwuzaijb.js"></script>
+  <script src="./../../../../JS/ky0nwmerow.js"></script>
+  <script src="./../../../../JS/ekdxgbwr0o.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      const needle = document.querySelector(".needle");
+
+      let currentAngle = 0;
+      let fixedNorth = null;
+      let roomOffset = 90; // 👈 NEW
+
+      function resetNorth() {
+        const dir = new THREE.Vector3();
+        viewer.camera.getWorldDirection(dir);
+        fixedNorth = Math.atan2(dir.x, dir.z) * (180 / Math.PI);
+      }
+
+      function updateCompass() {
+        const dir = new THREE.Vector3();
+        viewer.camera.getWorldDirection(dir);
+
+        let angle = Math.atan2(dir.x, dir.z) * (180 / Math.PI);
+
+        if (fixedNorth === null) {
+          resetNorth();
+        }
+
+        // 👇 APPLY ROOM OFFSET
+        let targetAngle = angle - fixedNorth + roomOffset;
+
+        let diff = targetAngle - currentAngle;
+        diff = ((diff + 180) % 360) - 180;
+
+        currentAngle += diff * 0.08;
+
+        needle.style.transform =
+          `translate(-50%, -100%) rotate(${currentAngle}deg)`;
+
+        requestAnimationFrame(updateCompass);
+      }
+
+      updateCompass();
+
+      // 👇 expose for manual control
+      window.setRoomDirection = (deg) => {
+        roomOffset = deg;
+      };
+    });
+  </script>
+    <!-- JUMPBAR — macOS Dock Style -->
+
+    <script>
+    (function(){
+        const items=document.querySelectorAll('.dock-item'),dockItems=document.getElementById('dockItems');
+        if(!dockItems||!items.length)return;
+        const BASE=52,MAX=80,RANGE=140;
+        function magnify(e){items.forEach(item=>{const icon=item.querySelector('.dock-icon'),svg=item.querySelector('.dock-icon svg'),label=item.querySelector('.dock-label'),rect=item.getBoundingClientRect(),cx=rect.left+rect.width/2,dist=Math.abs(e.clientX-cx);if(dist<RANGE){const t=1-dist/RANGE,sz=BASE+(MAX-BASE)*t;icon.style.width=sz+'px';icon.style.height=sz+'px';icon.style.borderRadius=(16+t*4)+'px';const iSz=22+t*10;svg.style.width=iSz+'px';svg.style.height=iSz+'px';item.style.width=sz+'px';if(t>.7){icon.style.background='linear-gradient(145deg,rgba(201,168,124,.2),rgba(201,168,124,.08))';icon.style.borderColor='rgba(201,168,124,.4)';icon.style.boxShadow='0 4px 24px rgba(201,168,124,.2)';svg.style.stroke='#c9a87c';svg.style.filter='drop-shadow(0 0 6px rgba(201,168,124,.4))';label.style.opacity='1';label.style.scale='1';label.style.translate='0 0';}else{reset(icon,svg,label);}}else{icon.style.width=BASE+'px';icon.style.height=BASE+'px';icon.style.borderRadius='16px';svg.style.width='22px';svg.style.height='22px';item.style.width=BASE+'px';reset(icon,svg,label);}});}
+        function reset(icon,svg,label){icon.style.background='';icon.style.borderColor='';icon.style.boxShadow='';svg.style.stroke='';svg.style.filter='';label.style.opacity='0';label.style.scale='.9';label.style.translate='0 6px';}
+        function resetAll(){items.forEach(item=>{const icon=item.querySelector('.dock-icon'),svg=item.querySelector('.dock-icon svg'),label=item.querySelector('.dock-label');icon.style.width=icon.style.height='';icon.style.borderRadius='';svg.style.width=svg.style.height='';item.style.width='';reset(icon,svg,label);});}
+        dockItems.addEventListener('mousemove',magnify);dockItems.addEventListener('mouseleave',resetAll);
+        items.forEach(c=>{c.addEventListener('click',e=>{c.classList.add('is-bouncing');c.addEventListener('animationend',()=>c.classList.remove('is-bouncing'),{once:true});const r=document.createElement('span');r.className='dock-ripple';const icon=c.querySelector('.dock-icon'),b=icon.getBoundingClientRect(),s=Math.max(b.width,b.height);r.style.width=r.style.height=s+'px';r.style.left=(e.clientX-b.left-s/2)+'px';r.style.top=(e.clientY-b.top-s/2)+'px';icon.appendChild(r);r.addEventListener('animationend',()=>r.remove());});});
+    })();
+    </script>
+      <script>
+    (function() {
+      var btn = document.getElementById('enquiryBtn');
+      var overlay = document.getElementById('enquiryOverlay');
+      var closeBtn = document.getElementById('closeBtn');
+      if (!btn || !overlay) return;
+
+      // Stop Panolens from intercepting pointer events on the button
+      btn.addEventListener('pointerdown', function(e) { e.stopPropagation(); });
+      btn.addEventListener('mousedown', function(e) { e.stopPropagation(); });
+      btn.addEventListener('touchstart', function(e) { e.stopPropagation(); });
+
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        btn.classList.add('is-hidden');
+      });
+
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        btn.classList.remove('is-hidden');
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', close);
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+
+      // === FORCE STYLE OVERRIDE after external JS runs ===
+      // Some external JS files may re-apply styles; this ensures the button stays correct
+      setTimeout(function() {
+        btn.style.cssText = 'position:fixed!important;right:0!important;top:50%!important;transform:translateY(-50%)!important;z-index:10001!important;writing-mode:vertical-rl!important;text-orientation:mixed!important;padding:24px 13px!important;background:#111!important;color:#fff!important;font-family:"DM Sans",-apple-system,sans-serif!important;font-weight:700!important;font-size:11px!important;letter-spacing:2.5px!important;text-transform:uppercase!important;border:none!important;border-radius:12px 0 0 12px!important;cursor:pointer!important;white-space:nowrap!important;box-shadow:-4px 0 20px rgba(0,0,0,0.4)!important;pointer-events:auto!important;overflow:visible!important;display:block!important;opacity:1!important;visibility:visible!important;';
+      }, 100);
+    })();
+  </script>
+  <script>
+  (function forceHideDock() {
+    const hide = () => { const d = document.getElementById('dock'); if (d) d.style.cssText = 'display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;pointer-events:none!important;position:absolute!important;opacity:0!important;'; };
+    hide(); setTimeout(hide, 500); setTimeout(hide, 1500);
+  })();
+</script>
+<script>
+  (function forceHideDock() {
+    const hide = () => { const d = document.getElementById('dock'); if (d) d.style.cssText = 'display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;pointer-events:none!important;position:absolute!important;opacity:0!important;'; };
+    hide(); setTimeout(hide, 500); setTimeout(hide, 1500);
+  })();
+</script>
+</body>
+
+</html>
