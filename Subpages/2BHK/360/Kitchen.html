@@ -596,7 +596,7 @@
 
     const viewer = new PANOLENS.Viewer({ container: imageContainer, autoRotate: false, autoRotateSpeed: 0.1, controlBar: false, cameraFov: 80 });
     let didInitView = false;
-    const TEXTURE_YAW = -Math.PI / 2 + 0;
+    const TEXTURE_YAW = Math.PI / 2 + 30;
     panoLow.rotation.y = TEXTURE_YAW; panoHigh.rotation.y = TEXTURE_YAW;
 
     function setInitialViewAndLockPitch() {
@@ -647,17 +647,45 @@
     panoHigh.addEventListener("error", (e) => { console.warn("Failed to load high-res:", e); });
   </script>
 
-  <script>
+ <script>
+    // 🧠 Remember which floor user came from
+    (function rememberFloor() {
+        const ref = document.referrer;
+        const match = ref.match(/Floor_(\d+)\.html/);
+        if (match) {
+            sessionStorage.setItem('lastFloor', match[1]);
+        }
+    })();
+
     document.addEventListener("DOMContentLoaded", () => {
-      const widget = document.getElementById("ciWidget");
-      const toggle = document.getElementById("ciToggle");
-      const ciClose = document.getElementById("ciClose");
-      if (ciClose) { ciClose.addEventListener("click", (e) => { e.stopPropagation(); widget.classList.add("collapsed"); toggle.classList.add("visible"); }); }
-      if (toggle) { toggle.addEventListener("click", () => { widget.classList.remove("collapsed"); toggle.classList.remove("visible"); }); }
-      const closeCard = document.getElementById("closeCard");
-      if (closeCard) { closeCard.addEventListener("click", () => { window.location.href = "../../Lobby_Top.html"; }); }
+        const widget = document.getElementById("ciWidget");
+        const toggle = document.getElementById("ciToggle");
+        const ciClose = document.getElementById("ciClose");
+
+        if (ciClose) {
+            ciClose.addEventListener("click", (e) => {
+                e.stopPropagation();
+                widget.classList.add("collapsed");
+                toggle.classList.add("visible");
+            });
+        }
+        if (toggle) {
+            toggle.addEventListener("click", () => {
+                widget.classList.remove("collapsed");
+                toggle.classList.remove("visible");
+            });
+        }
+
+        // 🔙 Back button → go back to the remembered floor
+        const closeCard = document.getElementById("closeCard");
+        if (closeCard) {
+            closeCard.addEventListener("click", () => {
+                const floor = sessionStorage.getItem('lastFloor') || '1';
+                window.location.href = `../../Floor_${floor}.html`;
+            });
+        }
     });
-  </script>
+</script>
 
   <script src="./../../../JS/bz021sxwxo.js"></script>
   <script src="./../../../JS/3qjueo9nsm.js"></script>

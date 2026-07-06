@@ -68,18 +68,18 @@
             font-size: 13px;
             letter-spacing: 0.3px;
             text-decoration: none;
-            background: rgba(255,255,255,0.05);
-            color: rgba(255,255,255,0.6);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             box-shadow: none;
             transition: all 0.2s ease;
             font-family: 'DM Sans', -apple-system, sans-serif;
         }
 
         .call-btn:hover {
-            background: rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.85);
-            border-color: rgba(255,255,255,0.12);
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.85);
+            border-color: rgba(255, 255, 255, 0.12);
         }
 
         .splash {
@@ -167,9 +167,9 @@
             background: rgba(15, 15, 18, 0.42);
             backdrop-filter: blur(60px) saturate(130%);
             -webkit-backdrop-filter: blur(60px) saturate(130%);
-            border: 1px solid rgba(255,255,255,0.07);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
             font-family: 'DM Sans', -apple-system, sans-serif;
         }
 
@@ -252,26 +252,46 @@
             border-radius: 12px 0 0 12px;
             cursor: pointer;
             white-space: nowrap;
-            box-shadow: -4px 0 20px rgba(0,0,0,0.4);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
             transition: opacity 0.3s ease, background 0.2s ease;
         }
+
         .enquiry-btn::after {
             content: '';
             position: absolute;
             inset: -4px;
             border-radius: 14px 0 0 14px;
-            border: 2px solid rgba(255,255,255,0.25);
+            border: 2px solid rgba(255, 255, 255, 0.25);
             animation: eq-ring 2.5s ease-out infinite;
             pointer-events: none;
         }
+
         @keyframes eq-ring {
-            0%   { opacity: 0.7; transform: scale(1); }
-            100% { opacity: 0; transform: scale(1.08); }
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.08);
+            }
         }
-        .enquiry-btn.is-hidden { opacity: 0; pointer-events: none; }
-        .enquiry-btn:hover { background: #2a2a2a; }
+
+        .enquiry-btn.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .enquiry-btn:hover {
+            background: #2a2a2a;
+        }
+
         @media (max-width: 600px) {
-            .enquiry-btn { font-size: 9px; padding: 18px 10px; }
+            .enquiry-btn {
+                font-size: 9px;
+                padding: 18px 10px;
+            }
         }
 
         .enquiry .overlay {
@@ -329,13 +349,13 @@
             flex-shrink: 0;
             width: 2px;
             height: 18px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 2px;
         }
 
         .enquiry .modal-header .title {
             flex: 1;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 500;
             font-size: 16px;
             letter-spacing: 0.3px;
@@ -350,7 +370,7 @@
             border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 10px;
             background: rgba(255, 255, 255, 0.04);
-            color: rgba(255,255,255,0.35);
+            color: rgba(255, 255, 255, 0.35);
             cursor: pointer;
             font-size: 13px;
             transition: all 0.2s;
@@ -358,7 +378,7 @@
 
         .enquiry .close:hover {
             background: rgba(255, 255, 255, 0.08);
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .enquiry .modal-body {
@@ -379,12 +399,12 @@
         .enquiry .phone {
             width: 100%;
             box-sizing: border-box;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 10px;
             padding: 12px 14px;
             font-size: 13px;
-            color: rgba(255,255,255,0.85);
+            color: rgba(255, 255, 255, 0.85);
             font-family: 'DM Sans', -apple-system, sans-serif;
             transition: border-color 0.2s, background 0.2s;
         }
@@ -393,12 +413,12 @@
         .enquiry .select:focus,
         .enquiry .phone:focus-within {
             outline: none;
-            border-color: rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.07);
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.07);
         }
 
         .enquiry .input::placeholder {
-            color: rgba(255,255,255,0.22);
+            color: rgba(255, 255, 255, 0.22);
         }
 
         .enquiry .select {
@@ -417,11 +437,11 @@
         .enquiry .phone select {
             appearance: none;
             border: none;
-            border-right: 1px solid rgba(255,255,255,0.07);
+            border-right: 1px solid rgba(255, 255, 255, 0.07);
             padding: 0 10px;
             min-width: 72px;
             background: transparent;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 13px;
             font-family: 'DM Sans', -apple-system, sans-serif;
         }
@@ -432,12 +452,12 @@
             background: transparent;
             padding: 12px;
             font-size: 13px;
-            color: rgba(255,255,255,0.85);
+            color: rgba(255, 255, 255, 0.85);
             font-family: 'DM Sans', -apple-system, sans-serif;
         }
 
         .enquiry .phone input::placeholder {
-            color: rgba(255,255,255,0.22);
+            color: rgba(255, 255, 255, 0.22);
         }
 
         .enquiry .agree {
@@ -445,24 +465,24 @@
             align-items: flex-start;
             gap: 8px;
             font-size: 11px;
-            color: rgba(255,255,255,0.25);
+            color: rgba(255, 255, 255, 0.25);
         }
 
         .enquiry .agree a {
-            color: rgba(255,255,255,0.45);
+            color: rgba(255, 255, 255, 0.45);
             text-decoration: underline;
         }
 
         .enquiry .submit {
             width: 100%;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 13px;
             font-weight: 500;
             font-size: 13px;
             letter-spacing: 0.5px;
-            background: rgba(255,255,255,0.08);
-            color: rgba(255,255,255,0.85);
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.85);
             cursor: pointer;
             margin-top: 4px;
             transition: all 0.2s ease;
@@ -470,9 +490,9 @@
         }
 
         .enquiry .submit:hover {
-            background: rgba(255,255,255,0.14);
-            border-color: rgba(255,255,255,0.15);
-            color: rgba(255,255,255,0.95);
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .submit[aria-busy="true"] {
@@ -519,10 +539,20 @@
         }
 
         /* OLD DOCK — HIDDEN */
-        .dock-wrap, #dock { display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; height: 0 !important; overflow: hidden !important; position: absolute !important; }
+        .dock-wrap,
+        #dock {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            position: absolute !important;
+        }
 
         /* JUMP BAR */
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
         #jumpBar {
             position: fixed;
             bottom: 28px;
@@ -535,9 +565,10 @@
             background: #ffffff;
             border-radius: 50px;
             padding: 5px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.18);
             font-family: 'DM Sans', -apple-system, sans-serif;
         }
+
         #jumpBar a {
             display: flex;
             align-items: center;
@@ -554,8 +585,17 @@
             white-space: nowrap;
             cursor: pointer;
         }
-        #jumpBar a:hover { color: #111; background: #f0f0f0; }
-        #jumpBar a.active { color: #fff; background: #111; font-weight: 600; }
+
+        #jumpBar a:hover {
+            color: #111;
+            background: #f0f0f0;
+        }
+
+        #jumpBar a.active {
+            color: #fff;
+            background: #111;
+            font-weight: 600;
+        }
 
 
         /* ── FAB CLUSTER ── */
@@ -569,6 +609,7 @@
             flex-direction: column;
             gap: 10px;
         }
+
         .fab-item {
             display: flex;
             align-items: center;
@@ -580,20 +621,46 @@
             border: none;
             cursor: pointer;
             overflow: hidden;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.35);
-            transition: width 0.25s cubic-bezier(.4,0,.2,1), border-radius 0.25s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+            transition: width 0.25s cubic-bezier(.4, 0, .2, 1), border-radius 0.25s ease;
             white-space: nowrap;
             font-family: 'DM Sans', -apple-system, sans-serif;
             font-size: 12px;
             font-weight: 600;
         }
-        .fab-item:hover { width: 140px; border-radius: 22px; }
-        .fab-whatsapp { background: #25d366; color: #fff; }
-        .fab-whatsapp:hover { background: #1ebe5d; }
-        .fab-email    { background: #1a73e8; color: #fff; }
-        .fab-email:hover { background: #1558c0; }
-        .fab-location { background: #ea4335; color: #fff; }
-        .fab-location:hover { background: #d33426; }
+
+        .fab-item:hover {
+            width: 140px;
+            border-radius: 22px;
+        }
+
+        .fab-whatsapp {
+            background: #25d366;
+            color: #fff;
+        }
+
+        .fab-whatsapp:hover {
+            background: #1ebe5d;
+        }
+
+        .fab-email {
+            background: #1a73e8;
+            color: #fff;
+        }
+
+        .fab-email:hover {
+            background: #1558c0;
+        }
+
+        .fab-location {
+            background: #ea4335;
+            color: #fff;
+        }
+
+        .fab-location:hover {
+            background: #d33426;
+        }
+
         .fab-icon {
             min-width: 44px;
             height: 44px;
@@ -602,7 +669,13 @@
             justify-content: center;
             flex-shrink: 0;
         }
-        .fab-icon svg { width: 20px; height: 20px; fill: #fff; }
+
+        .fab-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+
         .fab-label {
             opacity: 0;
             transform: translateX(-6px);
@@ -610,16 +683,43 @@
             padding-right: 14px;
             color: #fff;
         }
-        .fab-item:hover .fab-label { opacity: 1; transform: translateX(0); }
+
+        .fab-item:hover .fab-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
         @media (max-width: 600px) {
-            .fab-cluster { left: 10px; top: auto; bottom: 90px; transform: none; gap: 8px; }
-            .fab-item { width: 40px; height: 40px; }
-            .fab-item:hover { width: 40px; border-radius: 50%; }
-            .fab-label { display: none; }
+            .fab-cluster {
+                left: 10px;
+                top: auto;
+                bottom: 150px;
+                transform: none;
+                gap: 8px;
+            }
+
+            .fab-item {
+                width: 40px;
+                height: 40px;
+            }
+
+            .fab-item:hover {
+                width: 40px;
+                border-radius: 50%;
+            }
+
+            .fab-label {
+                display: none;
+            }
         }
 
         /* ── FORM BUTTONS ── */
-        .form-btn-row { display: flex; gap: 8px; margin-top: 8px; }
+        .form-btn-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
         .btn-callback {
             flex: 1;
             border: none;
@@ -633,13 +733,17 @@
             transition: background 0.15s;
             font-family: 'DM Sans', -apple-system, sans-serif;
         }
-        .btn-callback:hover { background: #e8e8e8; }
+
+        .btn-callback:hover {
+            background: #e8e8e8;
+        }
+
         .btn-callnow {
             display: inline-flex;
             align-items: center;
             gap: 6px;
             padding: 13px 16px;
-            border: 1px solid rgba(255,255,255,0.18);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 8px;
             background: transparent;
             color: #fff;
@@ -650,8 +754,165 @@
             transition: background 0.15s;
             white-space: nowrap;
         }
-        .btn-callnow:hover { background: rgba(255,255,255,0.1); }
 
+        .btn-callnow:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ══════════════════════════════════════════
+           LIVE BUTTON — Bottom Left
+           ══════════════════════════════════════════ */
+        .live-btn-bottom {
+            position: fixed;
+            left: 20px;
+            bottom: 28px;
+            z-index: 11000;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            background: #ef4444;
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45), 0 2px 8px rgba(0, 0, 0, 0.18);
+            transition: all 0.2s ease;
+        }
+
+        .live-btn-bottom:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(239, 68, 68, 0.55), 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            position: relative;
+            animation: live-pulse 1.5s ease-in-out infinite;
+        }
+
+        .live-dot::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            animation: live-ring 1.6s ease-out infinite;
+        }
+
+        @keyframes live-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.65; }
+        }
+
+        @keyframes live-ring {
+            0% { opacity: 0.7; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.8); }
+        }
+
+        @media (max-width: 600px) {
+            .live-btn-bottom {
+                left: 10px;
+                bottom: 90px;
+                padding: 10px 16px;
+                font-size: 11px;
+            }
+        }
+
+        /* ══════════════════════════════════════════
+           AMENITY BAR — Top Center
+           ══════════════════════════════════════════ */
+        .amenity-bar {
+            position: fixed;
+            top: 26px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10000;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #ffffff;
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.18);
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            max-width: calc(100vw - 40px);
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .amenity-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .amenity-bar a {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            height: 36px;
+            padding: 0 14px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #555;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .amenity-bar a:hover {
+            color: #111;
+            background: #f0f0f0;
+        }
+
+        .amenity-bar a.active {
+            color: #fff;
+            background: #111;
+            font-weight: 600;
+        }
+
+        .amenity-bar a.active svg {
+            stroke: #fff;
+        }
+
+        .amenity-bar svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 600px) {
+            .amenity-bar {
+                top: 75px;
+                left: 50%;
+                padding: 4px;
+                gap: 2px;
+                max-width: calc(100vw - 20px);
+            }
+            .amenity-bar a {
+                height: 30px;
+                padding: 0 10px;
+                font-size: 10.5px;
+                gap: 5px;
+            }
+            .amenity-bar svg {
+                width: 12px;
+                height: 12px;
+            }
+        }
     </style>
 
 </head>
@@ -685,17 +946,17 @@
                     fill="white" opacity=".28" />
                 <rect x="11" y="5" width="2" height="9" rx="1" fill="white" />
             </svg>
-            <span>Click on Tower's To Select Floor</span>
+            <span>Click on Floor's To Select Apparmentsr</span>
         </div>
     </div>
-<div id="infoCard" class="info-card">
-  //
+    <div id="infoCard" class="info-card">
+        //
         <!-- <div class="image-placeholder">
             <img src="images/Thumbnail/Home.webp" alt="Home" />
         </div> -->
         <div class="info-details" id="details"></div>
     </div>
-</div>
+    </div>
 
     <!-- Info Card Modal -->
     <div id="floorTip" class="floortip"></div>
@@ -706,30 +967,28 @@
             <img id="mainImage" src="images/Thumbnail/Home_Low.webp" data-full="images/Home.jpg" alt="Home"
                 fetchpriority="high" decoding="async" width="3840" height="5830" class="blur-up" />
             <div class="Cutout">
-                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 3840 5830">
-                    <path id="Floor_06" data-link="Subpages/Lobby_Top.html" data-name="Floor 06"
-                        data-img="images/Thumbnail/Tower_A.jpg"
-                        d="m3401.83 2626.5-143.16 30 3.16 32.17 129.45 40.39 4.89 66.22 2.77.22v14.11l-388.61-110.83 27.67-6.22-108.72-31.23-28.34 6-159-45.22 28-6.78-129.66-37.66-28.34 8-431.05-122.84 26.5-9.5-260.11-75.83-106 44.83-158.11-40.5.92-71.75 16.63-7.69-.5-11.83 16.5-7 .84-10.84-431.95-127.94L813.17 2452l16.94-276.22-15.05-4.17v-12l-16.78-4.94v-5.23l364.39-306 8.11 2.17 5.89-4.55 351.83 124 43.17-32.84 6.33 2.34 23.5-14.5L2095 2103l79.44-39.11L3219.83 2469v4.67l28.23 10.22-.34 5.78-13.44 3.11.22 11-12.67 3 1.23 14.44 27 9.34 2.11 29.88 149.66 52.73z"
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" xml:space="preserve" viewBox="0 0 3840 2160">
+                    <defs>
+                        <style>
+                            .st0 {
+                                fill: #fff
+                            }
+                        </style>
+                    </defs>
+                    <path id="Floor_x5F_05" data-link="Subpages/Floor_5.html" data-name="Floor 05"
+                        d="m2976.46 654.6-2.83 81.16 80.33 1.17-.77 13.61-2.65 47.22-38.58 11.84-35.25-.67-34.17-1.25-66.83 45-50.28-5-73.78 19.33-319.11-12.44-363.78-13.56-11.55 2.45-305.56-15.78-14 2.89-111.77-4.89h-13.34l-313.33-13.78-14.89 1.78-149.78-5.33-50.89-2.22.48-13.89 3.91-2 .25-8.75 3.09-.92v-4.89H975.82v-8.75l-1.45-41.16-4.56-129.35h-10.85v-10.67h-10.49v-4.5h20.97v-11.58l105.38-1.82 218.17-4.17 1143.83-11 29.17 1.83 210.52-2.55 153.81 9.11h57.81l105.83 6.94v12.42h17.42v4.58h-9.59v11h-8.75l-1.91 44.67 91.16-.25v11.17l-43.16 2.16z"
                         class="st0" />
-                    <path id="Floor_05" data-link="Subpages/Lobby_Top.html" data-name="Floor 05"
-                        data-img="images/Thumbnail/Tower_A.jpg"
-                        d="M3414.18 2978.69v14.25l-391.03-83.44 27.45-5.11-110.09-23.67-27.66 4.25-159.89-33.86 27.75-5.25-130.5-28.86-29.25 5.67-436.25-92.64 27.83-7.5-264.8-57.67-108 33.33-160.35-28.83-.1-47.44 73.89-26.34-527.58-118.25-198.81 101.42 116.34 23.33-613.09 249.59 14-189.36-10.66-1.73.38-11.83-10.83-.89v-7.5L813.17 2452l472.44-307.22 431.95 127.94-.84 10.84-16.5 7 .5 11.83-16.63 7.69-.92 71.75 158.11 40.5 106-44.83 260.11 75.83-26.5 9.5 431.05 122.84 28.34-8 129.66 37.66-28 6.78 159 45.22 28.34-6 108.72 31.23-27.67 6.22 388.61 110.83-126.54 21.67 4.34 48.83 130.02 30.75 4.34 67.92z"
+                    <path id="Floor_x5F_04" data-link="Subpages/Floor_4.html" data-name="Floor 04"
+                        d="M3046.21 884.01v2.92l-1.08.92-1.5 45.91v12l-39.17 17.5-41-1.25-28.47-2.11-8.9 9.77-58.66 64.46-49.78-3.34-75.33 35.56-313.78-21.56-362.72-23.39-10.56 1.56-139.72-9.33-163.33-13.5-12.83 1.33-124.5-8.5-310.12-22.72-15.5 1.83-148.11-10.94-51.66-4-47.67-5.17-42.83 5.17-110.17-7.12-84.67-6.11-1.37-23.16-2.07-35.06-2.11-.89v-2.66l87.11-6.89-3.89-86.89h-8.83v-9.34h-8.09v-5.58l110.92-6.5v8.75h115.56v4.89l-3.09.92-.25 8.75-3.91 2-.48 13.89 50.89 2.22 149.78 5.33 14.89-1.78 313.33 13.78h13.34l111.77 4.89 14-2.89 305.56 15.78 11.55-2.45 363.78 13.56 319.11 12.44 73.78-19.33 50.28 5 66.83-45 34.17 1.25-1.5 73.08z"
                         class="st0" />
-                    <path id="Floor_04" data-link="Subpages/Lobby_Top.html" data-name="Floor 04"
-                        data-img="images/Thumbnail/Tower_A.jpg"
-                        d="m3035.9 3124.61 28.67-3.33-110.61-15.45-27.92 2.25-162.33-22.19 28.33-3.67-132.5-19-28.66 4-441.73-62.89 27.34-5.33-268.34-38.67-108.66 22.5-165-12.55.89-38.72 73.33-17.67-537.67-80.11-201.33 68.83 120.33 16.17-621.33 188 21.33-255.11 613.09-249.59-116.34-23.33 198.81-101.42 527.58 118.25-73.89 26.34.1 47.44 160.35 28.83 108-33.33 264.8 57.67-27.83 7.5 436.25 92.64 29.25-5.67 130.5 28.86-27.75 5.25 159.89 33.86 27.66-4.25 110.09 23.67-27.45 5.11 391.03 83.44-127.28 15.56 4.89 67.44 130.64 22.03 4.33 69.34 3.25-.09.84 13.25z"
+                    <path id="Floor_x5F_03" data-link="Subpages/Floor_3.html" data-name="Floor 03"
+                        d="m3039.88 1030.1-1.25 1.33-2.66 54.16-.09 1.87-37.75 28.5-42.67-3.08-27.2-1.59-75 105.34-42.44-4.45-75.11 49.78-314.67-30.45-354.89-34.66-11.11 3.55-138.03-13.55-163.08-20.45-12.67 4.67-123.77-12.67-309.78-35.77-15.33 4-146.45-13.78-52.89-10-45.33-4.78-42.67 8.11-108.55-10.05-84.89-8.78-3.6-58.92-.18-2.97 83.33-11.89-2.33-63.56 110.17 7.12 42.83-5.17 47.67 5.17 51.66 4 148.11 10.94 15.5-1.83 310.12 22.72 124.5 8.5 12.83-1.33 163.33 13.5 139.72 9.33 10.56-1.56 362.72 23.39 313.78 21.56 75.33-35.56 49.78 3.34 58.66-64.46 36.46 6.49-3.17 49.02 79.33 2.75z"
                         class="st0" />
-                    <path id="Floor_03" data-link="Subpages/Lobby_Top.html" data-name="Floor 03"
-                        data-img="images/Thumbnail/Tower_A.jpg"
-                        d="m3313.96 3362.97.36 9.42-11.33-.5-21.34 1.58-71.66-1.41-.45-12.75-29.78-1.45-26 4.33-60-3.33v-10h-13.66l-22.67 3-88.33-3.33-2.67-10.34-144-8.33h-16.33l-24 4-113-4.33v-11.34l-40.34-3-27.33 1.67-654.33-37.33-113 7.66-136.78-7.55v-15.33l-29.67-1-20.66 2.33-235.56-13v-24.45l-76.67-4.88-25.11 5.55-50.44-3.55 67.55-10.45-130-8.67-204.66 33.12s127.11 7.11 128 6.88c.89-.22-628.34 90.06-628.34 90.06l16.95-229.47 621.33-188-120.33-16.17 201.33-68.83 537.67 80.11-73.33 17.67-.89 38.72 165 12.55 108.66-22.5 268.34 38.67-27.34 5.33 441.73 62.89 28.66-4 132.5 19-28.33 3.67 162.33 22.19 27.92-2.25 110.61 15.45-28.67 3.33 394.95 55.86-130.36 10.67 6.55 84.05 131.09 12.5 4.61 70.53 3.16.11.39 13.45z"
+                    <path id="Floor_x5F_02" data-link="Subpages/Floor_2.html" data-name="Floor 02"
+                        d="m3032.38 1173.38-2.09 2.33-1.28 55.28-38.66 34-41.92-3.09-26.17-2.25-71.33 132.89-48.22-1-74.45 63.11-309.83-40.05-10-5.34-20.33-3.16v-11.34l-143.17-19.16-7.67 9.83-41.5-4.83v-7.84l-112.5-13.16-10.66 5.16-17.5-.66-.67-6.17-128.83-14.83-9.17 4.33-39-4.5.67-6.67-106.5-13.16-12.17 5.5-17-1.34v-5l-113.33-12.66-10.84 6.83-33.33-4.33v-4.75l-484-59.34-49.22-17.22-13.67 6.5-13.16-1.16v-7.34l-83.84-7.66-11.33 7.66-27.45-4.28-42.83 9.34-40.17-4.5-2.83-58.84 82.33-16.5-2.27-57.88 108.55 10.05 42.67-8.11 45.33 4.78 52.89 10 146.45 13.78 15.33-4 309.78 35.77 123.77 12.67 12.67-4.67 163.08 20.45 138.03 13.55 11.11-3.55 354.89 34.66 314.67 30.45 75.11-49.78 42.44 4.45 75-105.34 27.2 1.59-2.42 53.58 78.84 5.5z"
                         class="st0" />
-                    <path id="Floor_02" data-link="Subpages/Lobby_Top.html" data-name="Floor 02"
-                        data-img="images/Thumbnail/Tower_A.jpg"
-                        d="M3465.15 3553.89v13.67l-132.05 1.45-353.06 3.88-341.33 3.78-148.45 1.33-522.19 4.25-6.06 1.28-14.83-.67-4.83 1-250.22 3.11v-6.22h-31.12l-20.88 3.11-239.12 3.11v-18.22l-80-2.67h-24.88l-52.45-3.11-502.89-3.85-266.58-2.04 17.55-220.83s629.23-90.28 628.34-90.06c-.89.23-128-6.88-128-6.88l204.66-33.12 130 8.67-67.55 10.45 50.44 3.55 25.11-5.55 76.67 4.88v24.45l235.56 13 20.66-2.33 29.67 1v15.33l136.78 7.55 113-7.66 654.33 37.33 27.33-1.67 40.34 3v11.34l113 4.33 24-4h16.33l144 8.33 2.67 10.34 88.33 3.33 22.67-3h13.66v10l60 3.33 26-4.33 29.78 1.45.45 12.75 71.66 1.41 21.34-1.58 11.33.5-.36-9.42 132.33 8.81-130.83 5.19 7.22 102.34 130.97 4.36 5.45 70.11z"
-                        class="st0" />
-                    <path id="Floor_01" data-link="Subpages/Lobby_Top.html" data-name="Floor 01"
-                        data-img="images/Thumbnail/Tower_A.jpg"
-                        d="m3635.93 3895.79-52.83 5.17-6.17-2.33s5.5-5.34 10.83-8.84c5.34-3.5 7-3.5 10.84-6.83 3.83-3.33 3-3 3-5.67s-1.34-1.5-3-3.66c-1.67-2.17-6.67-7.34-9.34-9.17-2.66-1.83-2 .5-2 1s.84 4.17.84 6.17-3.34 3-4.67 4.33-2.17.5-3-.5-5.17-2.83-6.67-2.5-5.33 1.5-6.5 1.67c-1.16.16-2.83-.67-4.33-.67s-1.17-.5-2.17-2.83c-1-2.34-2.16-2.34-3.5-4.34-1.33-2-3.33-5.16-5.16-6.83-1.84-1.67-3-3.83-4.34-4.83-1.33-1-6-2-6-2s.17 4.5 0 7c-.16 2.5-2.5 6.5-2.5 6.5s-1.33 1.83-3.66 3.66c-2.34 1.84-3.67.5-7.17.84-3.5.33-3.83.5-5.83.83s-2.67 6-3 8c-.34 2-2.34 3.33-2.34 3.33s-6.16 9.34-6.66 9.84-5.67 4.83-5.67 4.83l-3.33.17-1.67-15.5-13.33-1-1.34 5.66 4.5 10.84-8.16 6.33-11.34.5 4-10.83 4.5-8.5s-.22-2.56-.77-5.78c-.56-3.22-1.45-1.11-1.45-1.11s-7.55-22.67-9.33-19.78-2.45 6.33-4.56 7.22-4.89.11-6.66-2.33c-1.78-2.45-1.34-1.89-1.67-5.56-.33-3.66-3.33-12.33-3.67-14.55-.33-2.23-13.77-17-17.11-15.89-3.33 1.11-9.22 4-11 5.22s-2.22 10.67-1.11 14.56c1.11 3.88 3.56 7.11 2.67 10.88-.89 3.78-13.22 2.89-17.11 2.23-3.89-.67-4-3.89-4-3.89s-7.56-12.45-9.34-16.78c-1.77-4.33-2.22-13.22-2.22-15.44s-8.22-11.34-8.22-11.34-14.67 11.34-15.22 11.34-11.56-4.89-11.56-4.89l-9.67 8.55s-22.77 5.45-24.22 5.45 17.11 10 17.11 10l.89 9.44s-16.22-4.89-19.78-5.44c-3.55-.56-8.77 5.77-8.77 6.33s14 7.44 14.89 8.22c.88.78 3.22 22.56 3.22 22.56l-5.56 1.78-8.11-18.12-11.67 2.67s2.89 11 3.23 14.56c.33 3.55-.34 10.89-1.67 14.89s-11.56-10.34-11.67-11.34-7.77-15.33-7.77-15.33 3.77 27.33 3.55 27.89c-.22.55-12-2.78-14.55-3.56-2.56-.78 4.33-9.44 4.33-10.11s-16.22-28.78-16.56-28.78-12.66 12.89-12.66 12.89l-.45 19-5.44 6.67-2.59-14.2c2.72-13.05 1.03-25.25-5.16-36.58.89-11.42-2.9-19.97-13.17-24.58-8.01-15.7-21.05-28.98-50.25-34.5l-122.75-8c-28.03-2.82-55.65 23.46-83.33 45.25-7.9-2.66-20-1.5-27.7 2.75-7.69 4.25-14.37 14.51-20.33 24l-6.33 12 1.16 29.16c.41 12.44 2.74 20.54 10 17.5v5.34l-66.83 5.16-177.92 3.5-85.66 2.25-74 .09-23.84 1.58-404.75 32.89c3.72-5.84 4.92-14.56 4.84-24.75l3.25-42.58-7.89-10.89-.34-27.21c-14.55-14.42-26.91-28.27-33-40.5-46.81-12.07-95.86-17.95-146.83-18.5-26.43-1.96-55.75-1.34-86.83.83-17.99 1.85-33.75 5.23-44.84 11.84l-23.83 8.66c-29.25 15.6-57.27 32.76-83.67 52-37.33 1.67-73.16 20.67-73.16 20.67-7.48 4.62-12.22 9.64-14.67 15l-2.83 4.5-.95 6.05-34.77 2.45h-2.45c-.55 0-3.78-.56-4.22-.67-.45-.11.33-4.22.33-4.55s2.78-10.89 2.78-10.89l.56-3.11-1.12-4.89 2.23-9.89-2.67-11.67s-7-21-7-24-10.67-22-10.67-22-17.33-3.66-18.66-4c-1.34-.33-31.67-11.66-31.67-11.66l-20 1.33 1.39 3.33s-13.33-1.33-14.67-5.16c-1.33-3.84-1.16 0-1.16 0s-9.5 3.83-14.17 6.66c-4.67 2.84-7 5.17-10.33 6.17-3.34 1-.84-1-.17-4.83.67-3.84 3.33-14 1.83-15.84-1.5-1.83-3.83-4.33-5.33-6-1.5-1.66-4-4-7.67-6.5-3.66-2.5-12.33-4.5-14.83-6s-4.5-.5-10.83-.16c-6.34.33-6.17 1.16-10.67 2-4.5.83-2.17-.34-7.5-3.5-5.33-3.17-4 .66-6.67 1.66-2.66 1-2.5 2.17-7 5.34-4.5 3.16-5 8.5-6 12s-6.66-.34-6.16-1.67 3.83-5.67 3.83-5.67l-13-.33s-2.33 11-3.33 12-11.17 1.5-10.84.67c.34-.84 1-20.67 1-21.17s-6.16-2.83-8.33-2.5 1.33 5.17 1.67 6.83c.33 1.67-.84 11-.67 13.67s-6.67.67-6.67.17-2.83-12.34-2.83-12.34l-6 .17.68 6.33s-4.01 3-4.35 3.84c-.33.83 2.5 2.16 3.5 2.16s.84 6.17.84 6.84-4.5 1.5-4.5 1.5l-7.39-7.06-9.34-.89-2.66 8 2.66 11.56-6.22 8.44-7.11-10.22-6.67-6.22s-10.66 6.22-12 7.95c-1.33 1.73-7.11-5.73-7.11-5.73l2.67-8-4.89-5.33h-10.67l-14.22.88-14.67 7.12s-5.33.44-9.33.44h-4s-2.22 2.67-3.11 4.44c-.89 1.78-4.89 4.89-6.22 5.78-1.34.89-5.34 0-5.34 0s-.88-2.22-1.77-11.11-4.45-15.11-4.45-15.11h-6.22c-1.33 0-5.33-5.33-5.33-5.33l-7.11-9.34-7.12.45-16 2.22-8 3.11s-5.77 3.11-6.22 4c-.44.89 0 15.11 0 15.11l-2.66-2.66s-7.56-8-9.78-10.55-10.22-2.79-12.45-3.23c-2.22-.45-12-6.22-12-6.22l-8.89-5.34-9.33-2.66s-3.11 5.33-4.89 8.44-2.66 4.44-2.66 4.44l-7.12-4.88v7.11c0 3.11-7.55 2.22-7.55 2.22l-1.78-4c-1.78-4-.89-1.78-1.33-4.45-.45-2.66-7.11-8.44-9.34-9.33-2.22-.89 0 3.18 0 3.18h-10.66s-3.56-.07-4.89-.07-12.45.45-15.56-.89c-3.11-1.33-7.11-5.77-9.77-8.44-2.67-2.67-3.12-2.22-4.45-4s-6.22-2.67-6.22-2.67-6.67-.44-9.33-.44-9.34-.45-13.78-.45-3.11 1.78-3.11 1.78l-13.78 5.78-2.67-3.56-19.55-9.77-9.78 4-6.67 9.33h-9.78l-3.55-4.45 9.33-10.22-27.11-2.66-14.67 2.22-14.66 4-15.11 6.66h-4.89l-11.56-7.11-19.11-1.33h-5.33l-15.11 5.33h-4.45l-5.33-6.22-5.33-2.22 10.66-195.52 502.89 3.85 52.45 3.11h24.88l80 2.67v18.22l239.12-3.11 20.88-3.11h31.12v6.22l250.22-3.11 4.83-1 14.83.67 6.06-1.28 522.19-4.25 148.45-1.33 341.33-3.78 353.06-3.88 5.16 84.73 35.34.66 160.22 73.5s7.78-1.44 10.11-1.77c2.33-.34 2.33.44 2.33.44l3.67 3.44s3.78 1.12 4.89.78c1.11-.33 4.56-2.33 6.56-3.22s2 1.44 3.11 3.22 2.33 2 2.33 2 10.44 8.34 10.78 8.56c.33.22 5.89-1.67 6.22-1.78s3.44 7.56 3.44 7.56-2.77-.12-3.11 1c-.33 1.11 2.78 5.22 2.89 5.66.11.45 7.11 2.11 7.11 2.11l2.45 1.34 2 7.66s4.33 6.67 5.55 9c1.23 2.34 3.11 6.89 3.11 6.89l7.67 4.34 6.22 3.11 3.23 8.33-1.45 9-.67 10.22-14.55 6.56-3.45 7.22 25.67.56z"
+                    <path id="Floor_x5F_01" data-link="Subpages/Floor_1.html" data-name="Floor 01"
+                        d="m3023.38 1317.4-1.67 45.09.5 9.36-32 33.83-95-11.67-44.83 41.17 22.83.33-59.58 57.53-1.34 29.59 8.92 1.66-66.17 67.84v10.72l-40.33 41.33-300.72-47.72-9.34-2.67-19.83-1.33v-3.33l-140.33-20.17-10.34 3.67-40.5-5.17v-4.17l-111.5-17.83-10.83 2.5-17.5-1.83v-2.34l-127.67-19.16-9.5 3.5-37.83-4.34v-3l-114.33-17.66-4.17-3.67-16.5-1.33 1.33-4.84-113.5-15-10.5 5.17-34.39-6.39v-3.11l-109.88-16.83h-5l-316.78-50.62-106.67-16.16-4.67 1.66h-12.16l1.33-10.66-80.17-12-16.83 5.83-26.67-4.33-7-146.34 27.45 4.28 11.33-7.66 83.84 7.66v7.34l13.16 1.16 13.67-6.5 49.22 17.22 484 59.34v4.75l33.33 4.33 10.84-6.83 113.33 12.66v5l17 1.34 12.17-5.5 106.5 13.16-.67 6.67 39 4.5 9.17-4.33 128.83 14.83.67 6.17 17.5.66 10.66-5.16 112.5 13.16v7.84l41.5 4.83 7.67-9.83 143.17 19.16v11.34l20.33 3.16 10 5.34 309.83 40.05 74.45-63.11 48.22 1 71.33-132.89 26.17 2.25-1.05 43.17 77.16 6.92 1 2.66z"
                         class="st0" />
                 </svg>
             </div>
@@ -771,7 +1030,10 @@
                         <div class="form-btn-row">
                             <button class="btn-callback" type="submit">Request a Call Back</button>
                             <a href="tel:+910000000000" class="btn-callnow">
-                                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                    <path
+                                        d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z" />
+                                </svg>
                                 Call Now
                             </a>
                         </div>
@@ -787,43 +1049,110 @@
 
     <!-- ── FLOATING ACTION BUTTONS ── -->
     <div class="fab-cluster">
-        <a class="fab-item fab-whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <a class="fab-item fab-whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener"
+            aria-label="WhatsApp">
             <div class="fab-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.112 1.529 5.835L.057 23.386a.5.5 0 0 0 .606.63l5.753-1.51A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 0 1-5.003-1.371l-.359-.213-3.714.975.993-3.63-.234-.373A9.818 9.818 0 1 1 12 21.818z"/></svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path
+                        d="M12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.112 1.529 5.835L.057 23.386a.5.5 0 0 0 .606.63l5.753-1.51A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 0 1-5.003-1.371l-.359-.213-3.714.975.993-3.63-.234-.373A9.818 9.818 0 1 1 12 21.818z" />
+                </svg>
             </div>
             <span class="fab-label">WhatsApp</span>
         </a>
         <a class="fab-item fab-email" href="mailto:info@example.com" aria-label="Email Us">
             <div class="fab-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
             </div>
             <span class="fab-label">Email Us</span>
         </a>
-        <a class="fab-item fab-location" href="https://maps.app.goo.gl/ZgXm51Arpmt4dveE7" target="_blank" rel="noopener" aria-label="Live Location">
+        <a class="fab-item fab-location" href="https://maps.app.goo.gl/ZgXm51Arpmt4dveE7" target="_blank" rel="noopener"
+            aria-label="Live Location">
             <div class="fab-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
             </div>
-            <span class="fab-label">Live Location</span>
+            <span class="fab-label">Map</span>
         </a>
     </div>
+
+    <!-- ══════════════════════════════════════════
+         AMENITY BAR — TOP CENTER
+         ══════════════════════════════════════════ -->
+    <div class="amenity-bar" id="amenityBar">
+        <a href="https://www.google.com/maps/search/Restaurants/@52.9799575,-122.4942054,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" data-amenity="restaurants" aria-label="Restaurants">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 2v7c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2V2" />
+                <line x1="6" y1="2" x2="6" y2="22" />
+                <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7" />
+            </svg>
+            Restaurants
+        </a>
+        <a href="https://www.google.com/maps/search/Transit+stations/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" data-amenity="transit" aria-label="Transit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 6v6" />
+                <path d="M16 6v6" />
+                <path d="M2 12h20" />
+                <path d="M18 18h3a1 1 0 0 0 1-1v-3.4a2 2 0 0 0-.1-.7l-1.5-5.2A2 2 0 0 0 18.5 6H4a2 2 0 0 0-2 2v9a1 1 0 0 0 1 1h3" />
+                <circle cx="7" cy="18" r="2" />
+                <path d="M9 18h6" />
+                <circle cx="17" cy="18" r="2" />
+            </svg>
+            Transit
+        </a>
+        <a href="https://www.google.com/maps/search/Pharmacies/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" data-amenity="pharmacies" aria-label="Pharmacies">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.5 20.5 20 11a4.95 4.95 0 0 0-7-7l-9.5 9.5a4.95 4.95 0 0 0 7 7Z" />
+                <path d="m8.5 8.5 7 7" />
+            </svg>
+            Pharmacies
+        </a>
+        <a href="https://www.google.com/maps/search/ATMs/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1!4m7!2m6!3m5!2s442+Kinchant+St!3s0x53870f59feabdec7:0x56895dcd6d76c365!4m2!1d-122.4935506!2d52.9799497?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" data-amenity="atm" aria-label="ATM">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="5" width="20" height="14" rx="2" />
+                <line x1="2" y1="10" x2="22" y2="10" />
+                <line x1="6" y1="15" x2="9" y2="15" />
+            </svg>
+            ATM
+        </a>
+        <a href="https://www.google.com/maps/search/grocery+store/@52.9799592,-122.4984215,1028m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" data-amenity="grocery" aria-label="Grocery Store">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" />
+            </svg>
+            Grocery Store
+        </a>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         LIVE BUTTON — BOTTOM LEFT
+         ══════════════════════════════════════════ -->
+    <a href="Subpages/GodEye/LiveView.html" class="live-btn-bottom" aria-label="Live View">
+        <span class="live-dot"></span>
+        <span>Live</span>
+    </a>
 
     <!-- Hotspot overlay -->
 
     <!-- ═══════════════════════════════════════════════
          JUMPBAR — macOS Dock Style (ENHANCED)
          ═══════════════════════════════════════════════ -->
-         
+
     <!-- JUMP BAR -->
     <div id="jumpBar">
-        
-        <a href="Subpages/GodEye/Parking_01.html">Parking 1</a>
-        <a href="Subpages/GodEye/Parking_02.html">Parking 2</a>
         <a href="index.html" class="active">Home</a>
-        <a href="Subpages/Tower_A.html" >Front View</a>
         <a href="Subpages/Tower_B.html">Back View</a>
+        <a href="Subpages/GodEye/Parking_01.html">Parking</a>
     </div>
 
- 
+
 
 
     <script>
@@ -941,6 +1270,27 @@
         });
     </script>
 
+    <!-- ══ AMENITY BAR — Active state toggle ══ -->
+    <script>
+        (function () {
+            const bar = document.getElementById('amenityBar');
+            if (!bar) return;
+            const links = bar.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Toggle active state — placeholder for future filter logic
+                    if (link.classList.contains('active')) {
+                        link.classList.remove('active');
+                    } else {
+                        links.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                    // If href is just "#", prevent navigation
+                    if (link.getAttribute('href') === '#') e.preventDefault();
+                });
+            });
+        })();
+    </script>
 
 
     <!-- ═══ macOS Dock magnification logic (ENHANCED) ═══ -->
@@ -1050,19 +1400,19 @@
     <script src="JS/5guwuzaijb.js"></script>
 
     <script>
-    (function forceHideDock() {
-        const hide = () => { const d = document.getElementById('dock'); if (d) d.style.cssText = 'display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;pointer-events:none!important;position:absolute!important;opacity:0!important;'; };
-        hide(); setTimeout(hide, 500); setTimeout(hide, 1500);
-    })();
+        (function forceHideDock() {
+            const hide = () => { const d = document.getElementById('dock'); if (d) d.style.cssText = 'display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;pointer-events:none!important;position:absolute!important;opacity:0!important;'; };
+            hide(); setTimeout(hide, 500); setTimeout(hide, 1500);
+        })();
     </script>
 
     <script>
-        (function() {
+        (function () {
             var btn = document.getElementById('enquiryBtn');
             var overlay = document.getElementById('enquiryOverlay');
             var closeBtn = document.getElementById('closeBtn');
             if (!btn || !overlay) return;
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 overlay.classList.add('is-open');
                 overlay.setAttribute('aria-hidden', 'false');
                 btn.classList.add('is-hidden');
@@ -1073,8 +1423,8 @@
                 btn.classList.remove('is-hidden');
             }
             if (closeBtn) closeBtn.addEventListener('click', close);
-            overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
-            document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+            overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
         })();
     </script>
 </body>

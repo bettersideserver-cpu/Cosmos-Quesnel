@@ -318,7 +318,7 @@ body {
 
 #ui-hint {
     position: fixed;
-    top: 40px;
+    top: 100px;
     /* default desktop position */
     left: 50%;
     transform: translateX(-50%);
