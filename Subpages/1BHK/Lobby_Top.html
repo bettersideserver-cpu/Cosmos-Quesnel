@@ -471,7 +471,7 @@
                 <span>Kitchen</span>
             </button>
 
-            <button class="tour-pill" onclick="goToRoom('Bedroom_01', this)">
+            <button class="tour-pill" onclick="goToRoom('Bedroom_1', this)">
                 <svg viewBox="0 0 24 24" fill="none">
                     <path d="M3 12V8H21V12" stroke="currentColor" stroke-width="1.8" />
                     <path d="M3 12H21V20H3V12Z" stroke="currentColor" stroke-width="1.8" />
@@ -479,7 +479,7 @@
                 <span>Bedroom 1</span>
             </button>
 
-            <button class="tour-pill" onclick="goToRoom('Bedroom_02', this)">
+            <button class="tour-pill" onclick="goToRoom('Bedroom_2', this)">
                 <svg viewBox="0 0 24 24" fill="none">
                     <path d="M3 12V8H21V12" stroke="currentColor" stroke-width="1.8" />
                     <path d="M3 12H21V20H3V12Z" stroke="currentColor" stroke-width="1.8" />
@@ -586,14 +586,33 @@
         viewer.camera.fov = 100;
         viewer.camera.updateProjectionMatrix();
 
-        const rooms = {
-            Lobby: new PANOLENS.ImagePanorama("images/Lobby.jpg"),
-            Kitchen: new PANOLENS.ImagePanorama("images/Kitchen.jpg"),
-            Bathroom: new PANOLENS.ImagePanorama("images/Bathroom.jpg"),
-            Bedroom_1: new PANOLENS.ImagePanorama("images/Bedroom.jpg"),
-            Bedroom_2: new PANOLENS.ImagePanorama("images/Bedroom-2.jpg"),
-            balcony: null  // will be set after floor system init
+        const roomFiles = {
+            Lobby: "Lobby",
+            Kitchen: "Kitchen",
+            Bathroom: "Bathroom",
+            Bedroom_1: "Bedroom",
+            Bedroom_2: "Bedroom-2"
         };
+
+        const rooms = {};
+
+        for (const room in roomFiles) {
+
+            rooms[room] = {
+                low: new PANOLENS.ImagePanorama(`images/WEBP/${roomFiles[room]}.webp`),
+                high: new PANOLENS.ImagePanorama(`images/${roomFiles[room]}.jpg`),
+                loaded: false,
+                loading: false
+            };
+
+        }
+
+        const img = new Image();
+
+        img.onload = () => console.log("JPG works");
+        img.onerror = () => console.log("JPG failed");
+
+        img.src = "images/Lobby.jpg";
 
 
         // ── Balcony floor system ──
@@ -632,8 +651,30 @@
 
         rooms.balcony = createBalconyPanorama(currentBalconyFloor);
 
-        Object.values(rooms).forEach(p => viewer.add(p));
-        Object.values(rooms).forEach(room => { room.fadeDuration = 1200; });
+        Object.values(rooms).forEach(room => {
+
+            if (room.low) {
+
+                viewer.add(room.low);
+                viewer.add(room.high);
+
+                room.low.fadeDuration = 1200;
+                room.high.fadeDuration = 1200;
+
+                room.high.addEventListener("load", () => {
+                    room.loaded = true;
+                });
+
+            } else {
+
+                // Balcony
+                viewer.add(room);
+                room.fadeDuration = 1200;
+
+            }
+
+        });
+
         // ── Floor indicator ──
         function updateFloorIndicator() {
             document.getElementById("floorIndicator").innerHTML =
@@ -725,7 +766,37 @@
                             requestAnimationFrame(zoom);
                         } else {
                             overlay.style.opacity = 0.25;
-                            viewer.setPanorama(rooms[to]);
+                            if (to === "balcony") {
+
+                                viewer.setPanorama(rooms.balcony);
+
+                            } else {
+
+                                const room = rooms[to];
+
+                                viewer.setPanorama(room.low);
+
+                                if (room.loaded) {
+
+                                    setTimeout(() => {
+                                        viewer.setPanorama(room.high);
+                                    }, 100);
+
+                                } else {
+
+                                    room.high.addEventListener("load", function loaded() {
+
+                                        room.high.removeEventListener("load", loaded);
+
+                                        if (viewer.panorama === room.low) {
+                                            viewer.setPanorama(room.high);
+                                        }
+
+                                    });
+
+                                }
+
+                            }
                             viewer.camera.fov = 100;
                             viewer.camera.updateProjectionMatrix();
                             setTimeout(() => { overlay.style.opacity = 0; }, 300);
@@ -736,7 +807,16 @@
                     zoom();
                 }, 400);
             });
-            rooms[from].add(spot);
+            if (from === "balcony") {
+
+                rooms.balcony.add(spot);
+
+            } else {
+
+                rooms[from].low.add(spot);
+                rooms[from].high.add(spot);
+
+            }
         }
 
         const roomData = {
@@ -772,7 +852,43 @@
             const overlay = document.getElementById("fadeOverlay");
             overlay.style.opacity = 0.25;
             setTimeout(() => {
-                viewer.setPanorama(rooms[roomName]);
+                if (roomName === "balcony") {
+
+                    viewer.setPanorama(rooms.balcony);
+
+                } else {
+
+                    const room = rooms[roomName];
+
+                    // Show low-quality image first
+                    viewer.setPanorama(room.low);
+
+                    // If high image already loaded
+                    if (room.loaded) {
+
+                        viewer.setPanorama(room.high);
+
+                    } else if (!room.loading) {
+
+                        room.loading = true;
+
+                        const img = new Image();
+
+                        img.onload = () => {
+
+                            room.loaded = true;
+
+                            if (viewer.panorama === room.low) {
+                                viewer.setPanorama(room.high);
+                            }
+
+                        };
+
+                        img.src = `images/${roomFiles[roomName]}.jpg`;
+
+                    }
+
+                }
                 viewer.camera.fov = 100;
                 viewer.camera.updateProjectionMatrix();
                 overlay.style.opacity = 0;
@@ -797,7 +913,17 @@
         addHotspot("Kitchen", "Bathroom", 110, -3, "Bathroom");
         addHotspot("Kitchen", "Bedroom_1", 45, -3, "Bedroom");
 
-        viewer.setPanorama(rooms.Lobby);
+        viewer.setPanorama(rooms.Lobby.low);
+
+        rooms.Lobby.high.addEventListener("load", function loaded() {
+
+            rooms.Lobby.high.removeEventListener("load", loaded);
+
+            if (viewer.panorama === rooms.Lobby.low) {
+                viewer.setPanorama(rooms.Lobby.high);
+            }
+
+        });
         showInfoCard("Lobby");
         updateBalconyControls("Lobby");
 

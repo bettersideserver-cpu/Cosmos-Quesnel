@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>2 BHK</title>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/three@0.105.2/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/panolens@0.12.0/build/panolens.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap');
@@ -576,18 +576,58 @@
         viewer.camera.fov = 100;
         viewer.camera.updateProjectionMatrix();
 
-        const rooms = {
-            Lobby: new PANOLENS.ImagePanorama("images/Lobby.jpg"),
-            Kitchen: new PANOLENS.ImagePanorama("images/Kitchen.jpg"),
-            Bathroom: new PANOLENS.ImagePanorama("images/Bathroom.jpg"),
-            Bedroom_01: new PANOLENS.ImagePanorama("images/Bedroom_01.jpg"),
-            Bedroom_01_1: new PANOLENS.ImagePanorama("images/Bedroom_01-1.jpg"),
-            Bedroom_02: new PANOLENS.ImagePanorama("images/Bedroom_02.jpg"),
-            Bedroom_02_1: new PANOLENS.ImagePanorama("images/Bedroom_02-1.jpg"),
-            balcony: null  // will be set after floor system init
-
-
+        const roomFiles = {
+            Lobby: "Lobby",
+            Kitchen: "Kitchen",
+            Bathroom: "Bathroom",
+            Bedroom_01: "Bedroom_01",
+            Bedroom_02: "Bedroom_02",
+            Bedroom_01_1: "Bedroom_01_1",
+            Bedroom_02_2: "Bedroom_02_2"
+            
         };
+
+        const rooms = {};
+
+        for (const room in roomFiles) {
+
+            rooms[room] = {
+                low: new PANOLENS.ImagePanorama(`images/WEBP/${roomFiles[room]}.webp`),
+                high: new PANOLENS.ImagePanorama(`images/${roomFiles[room]}.jpg`),
+                loaded: false,
+                loading: false
+            };
+
+        }
+
+        // ── Reliable high-res preloader ──
+        // Panolens' own "load" event can fire (and be missed) before we ever
+        // attach a listener to it -- that race is why Lobby sometimes never
+        // swapped to full-res on first load, but worked after revisiting.
+        // A plain Image() object's onload always fires asynchronously, even
+        // when the image is already cached, so it's used here instead.
+        function preloadHighRes(key, url) {
+            const img = new Image();
+            img.onload = () => {
+                rooms[key].loaded = true;
+            };
+            img.src = url;
+        }
+        for (const room in roomFiles) {
+            preloadHighRes(room, `images/${roomFiles[room]}.jpg`);
+        }
+
+        // Swap low → high once the high-res is confirmed loaded, retrying
+        // until it's ready instead of depending on a single event firing.
+        function waitAndSwap(key) {
+            if (rooms[key].loaded) {
+                if (viewer.panorama === rooms[key].low) {
+                    viewer.setPanorama(rooms[key].high);
+                }
+            } else {
+                setTimeout(() => waitAndSwap(key), 150);
+            }
+        }
 
 
         // ── Balcony floor system ──
@@ -601,8 +641,29 @@
 
         rooms.balcony = createBalconyPanorama(currentBalconyFloor);
 
-        Object.values(rooms).forEach(p => viewer.add(p));
-        Object.values(rooms).forEach(room => { room.fadeDuration = 1200; });
+        Object.values(rooms).forEach(room => {
+
+            if (room.low) {
+
+                viewer.add(room.low);
+                viewer.add(room.high);
+
+                room.low.fadeDuration = 1200;
+                room.high.fadeDuration = 1200;
+
+                room.high.addEventListener("load", () => {
+                    room.loaded = true;
+                });
+
+            } else {
+
+                // Balcony
+                viewer.add(room);
+                room.fadeDuration = 1200;
+
+            }
+
+        });
         // ── Floor indicator ──
         function updateFloorIndicator() {
             document.getElementById("floorIndicator").innerHTML =
@@ -635,8 +696,8 @@
             const r = 5000;
             const yaw = -150;
             const pitch = -6;
-            const phi = THREE.MathUtils.degToRad(90 - pitch);
-            const theta = THREE.MathUtils.degToRad(yaw);
+            const phi = THREE.Math.degToRad(90 - pitch);
+            const theta = THREE.Math.degToRad(yaw);
             spot.position.set(
                 r * Math.sin(phi) * Math.cos(theta),
                 r * Math.cos(phi),
@@ -659,8 +720,8 @@
 
         function lookAtYaw(yaw, pitch = 0) {
             const r = 5000;
-            const phi = THREE.MathUtils.degToRad(90 - pitch);
-            const theta = THREE.MathUtils.degToRad(yaw);
+            const phi = THREE.Math.degToRad(90 - pitch);
+            const theta = THREE.Math.degToRad(yaw);
             viewer.tweenControlCenter(
                 new THREE.Vector3(
                     r * Math.sin(phi) * Math.cos(theta),
@@ -673,8 +734,8 @@
         function addHotspot(from, to, yaw, pitch, text) {
             const spot = new PANOLENS.Infospot(500, ARROW_ICON);
             const r = 5000;
-            const phi = THREE.MathUtils.degToRad(90 - pitch);
-            const theta = THREE.MathUtils.degToRad(yaw);
+            const phi = THREE.Math.degToRad(90 - pitch);
+            const theta = THREE.Math.degToRad(yaw);
             spot.position.set(
                 r * Math.sin(phi) * Math.cos(theta),
                 r * Math.cos(phi),
@@ -694,7 +755,16 @@
                             requestAnimationFrame(zoom);
                         } else {
                             overlay.style.opacity = 0.25;
-                            viewer.setPanorama(rooms[to]);
+                            if (to === "balcony") {
+
+                                viewer.setPanorama(rooms.balcony);
+
+                            } else {
+
+                                viewer.setPanorama(rooms[to].low);
+                                waitAndSwap(to);
+
+                            }
                             viewer.camera.fov = 100;
                             viewer.camera.updateProjectionMatrix();
                             setTimeout(() => { overlay.style.opacity = 0; }, 300);
@@ -705,7 +775,16 @@
                     zoom();
                 }, 400);
             });
-            rooms[from].add(spot);
+            if (from === "balcony") {
+
+                rooms.balcony.add(spot);
+
+            } else {
+
+                rooms[from].low.add(spot);
+                rooms[from].high.add(spot);
+
+            }
         }
 
         const roomData = {
@@ -741,7 +820,43 @@
             const overlay = document.getElementById("fadeOverlay");
             overlay.style.opacity = 0.25;
             setTimeout(() => {
-                viewer.setPanorama(rooms[roomName]);
+                if (roomName === "balcony") {
+
+                    viewer.setPanorama(rooms.balcony);
+
+                } else {
+
+                    const room = rooms[roomName];
+
+                    // Show low-quality image first
+                    viewer.setPanorama(room.low);
+
+                    // If high image already loaded
+                    if (room.loaded) {
+
+                        viewer.setPanorama(room.high);
+
+                    } else if (!room.loading) {
+
+                        room.loading = true;
+
+                        const img = new Image();
+
+                        img.onload = () => {
+
+                            room.loaded = true;
+
+                            if (viewer.panorama === room.low) {
+                                viewer.setPanorama(room.high);
+                            }
+
+                        };
+
+                        img.src = `images/${roomFiles[roomName]}.jpg`;
+
+                    }
+
+                }
                 viewer.camera.fov = 100;
                 viewer.camera.updateProjectionMatrix();
                 overlay.style.opacity = 0;
@@ -771,7 +886,9 @@
 
         addHotspot("Bathroom", "Kitchen", 200, -3, "Kitchen");
 
-        viewer.setPanorama(rooms.Lobby);
+        viewer.setPanorama(rooms.Lobby.low);
+        waitAndSwap("Lobby");
+
         showInfoCard("Lobby");
         updateBalconyControls("Lobby");
 
